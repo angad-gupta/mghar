@@ -212,62 +212,25 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="owl-carousel owl-theme latest">
+
+                                    @if($featured_videos->total() != 0) 
+                                    @foreach($featured_videos as $key => $value)
+                                    @php 
+                                        $fimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                    @endphp
                                     <div class="item">
-                                        <a href="#" class="featured-post-small">
+                                        <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small">
                                             <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img16.png')}}" alt="">
+                                                <img src="{{$fimages}}" alt="">
                                                 <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img17.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img18.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img19.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img20.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img6.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
+                                    @endforeach
+                                    @else
+                                    <span>No Featured Video Added</span>
+                                    @endif
+
                                 </div>
                             </div>
                         </div>

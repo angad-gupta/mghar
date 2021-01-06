@@ -35,6 +35,7 @@
                     <th>Total Views</th>
                     <th>Is Popular ?</th>
                     <th>Is Trending ?</th>
+                    <th>Is Featured ?</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -54,6 +55,7 @@
                     <td>{{ $value->total_views }}</td>
                     <td class="{{ ($value->is_popular == '1') ? 'text-success font-weight-bold' :'text-danger font-weight-bold' }}">{{ ($value->is_popular == '1') ? 'Yes' :'No' }}</td>
                     <td class="{{ ($value->is_trending == '1') ? 'text-success font-weight-bold' :'text-danger font-weight-bold' }}">{{ ($value->is_trending == '1') ? 'Yes' :'No' }}</td>
+                    <td class="{{ ($value->is_featured == '1') ? 'text-success font-weight-bold' :'text-danger font-weight-bold' }}">{{ ($value->is_featured == '1') ? 'Yes' :'No' }}</td>
                     <td>
 
                         <a class="btn bg-teal-400 btn-icon rounded-round" href="{{route('video.edit',$value->id)}}" data-popup="tooltip" data-original-title="Edit" data-placement="bottom"><i class="icon-pencil6"></i></a>

@@ -1,4 +1,5 @@
-
+<script src="{{asset('admin/global/js/plugins/forms/selects/bootstrap_multiselect.js')}}"></script>
+<script src="{{asset('admin/global/js/demo_pages/form_multiselect.js')}}"></script>
 <fieldset class="mb-3">
     <legend class="text-uppercase font-size-sm font-weight-bold"></legend>
 
@@ -144,6 +145,52 @@
                                     </span>
                                 </span>
                                 {!! Form::select('is_trending',[ '1'=>'Yes','2'=>'No'], $value = null, ['id'=>'is_trending','class'=>'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <label class="col-form-label col-lg-3">Is Featured ?:</label>
+                        <div class="col-lg-9 form-group-feedback form-group-feedback-right">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-dots"></i>
+                                    </span>
+                                </span>
+                                {!! Form::select('is_featured',[ '1'=>'Yes','2'=>'No'], $value = null, ['id'=>'is_featured','class'=>'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <label class="col-form-label col-lg-3">Select Celebrity:</label>
+                        <div class="col-lg-9 form-group-feedback form-group-feedback-right">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-music"></i>
+                                    </span>
+                                </span>
+                                <select class="form-control multiselect" name="celebrities[]" multiple='multiple' data-fouc>
+                                    @foreach($celebrity as $key => $value)
+                                        @php
+                                            $select ="";
+                                            if(isset($video_info)){
+                                                $celebritie = json_decode($video_info->celebrities);  
+                                                if($celebritie){
+                                                    if(in_array($key, $celebritie)){
+                                                        $select = "selected='selected'";
+                                                    }
+                                                }
+                                            }
+                                        @endphp
+                                        <option value="{{$key}}" {{$select}}>{{$value}}</option>
+                                    @endforeach
+                                </select> 
                             </div>
                         </div>
                     </div>

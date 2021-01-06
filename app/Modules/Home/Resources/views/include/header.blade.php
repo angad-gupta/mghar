@@ -27,7 +27,7 @@
                         <div class="nav-bar d-flex ml-4">
                             <ul class="list-unstyled list-inline mb-0">
                                 <li class="list-inline-item"><a href="#">Movies</a></li>
-                                <li class="list-inline-item"><a href="#">Videos</a></li>
+                                <li class="list-inline-item"><a href="{{ route('videos')}}">Videos</a></li>
                                 <li class="list-inline-item"><a href="#">Celebrity Bio</a></li>
                                 <li class="list-inline-item"><a href="#">News</a></li>
                             </ul>

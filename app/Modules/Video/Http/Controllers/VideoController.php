@@ -8,17 +8,20 @@ use Illuminate\Routing\Controller;
 
 use App\Modules\Video\Repositories\VideoInterface;
 use App\Modules\Genre\Repositories\GenreInterface;
+use App\Modules\Celebrity\Repositories\CelebrityInterface;
 
 class VideoController extends Controller
 {
 
     protected $video;
     protected $genre;
+    protected $celebrity;
     
-    public function __construct(VideoInterface $video, GenreInterface $genre)
+    public function __construct(VideoInterface $video, GenreInterface $genre, CelebrityInterface $celebrity)
     {
         $this->video = $video;
         $this->genre = $genre;
+        $this->celebrity = $celebrity;
     }
 
     /**
@@ -40,6 +43,7 @@ class VideoController extends Controller
     {
         $data['is_edit'] = false;
         $data['genre'] = $this->genre->getList();
+        $data['celebrity'] = $this->celebrity->getList();  
         return view('video::video.create',$data);
     }
 
@@ -52,6 +56,10 @@ class VideoController extends Controller
     {
         $data = $request->all();
         
+        $celebrities = json_encode($data['celebrities']);
+        unset($data['celebrities']);
+        $data['celebrities'] = $celebrities;
+
          try{
             if ($request->hasFile('video_cover_image')) {
                 $data['video_cover_image'] = $this->video->upload($data['video_cover_image']);
@@ -86,6 +94,7 @@ class VideoController extends Controller
         $data['is_edit'] = true;
         $data['genre'] = $this->genre->getList();
         $data['video_info'] = $this->video->find($id);
+        $data['celebrity'] = $this->celebrity->getList();  
         return view('video::video.edit',$data);
     }
 
@@ -99,6 +108,9 @@ class VideoController extends Controller
     {
        $data = $request->all();
         
+        $celebrities = json_encode($data['celebrities']);
+        unset($data['celebrities']);
+        $data['celebrities'] = $celebrities;
         try{
 
             if ($request->hasFile('video_cover_image')) {

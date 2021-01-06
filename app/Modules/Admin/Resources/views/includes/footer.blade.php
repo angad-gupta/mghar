@@ -16,7 +16,7 @@
     $('document').ready(function () {
 
         tinymce.init({
-            selector: ".simple_textarea_description", theme: "modern", width: 420, height: 200,
+            selector: ".simple_textarea_description", theme: "modern", width: 1600, height: 200,
         });
 
         tinymce.init({
@@ -26,7 +26,7 @@
 
         /*---------------------------- TINYMCE EDITOR ---------------------------*/
         tinymce.init({
-            selector: ".textarea_description", theme: "modern", width: 680, height: 300,
+            selector: ".textarea_description", theme: "modern", width: 1600, height: 300,
             plugins: [
                 "advlist autolink link image lists charmap print preview hr anchor pagebreak",
                 "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",

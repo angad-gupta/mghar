@@ -360,68 +360,30 @@
                             </div>
                         </div>
                         <div class="row">
+
+                            @if($blog_info->total() != 0) 
+                            @foreach($blog_info as $key => $value)
+                            @php 
+                                $blogimages = ($value->blog_image) ? asset($value->file_full_path).'/'.$value->blog_image : asset('admin/default.png');
+                            @endphp
                             <div class="col d-flex">
                                 <div class="featured-post-small">
                                     <div class="featured-post-small-img">
-                                        <img src="{{asset('home/images/v-img.png')}}" alt="">
+                                        <img src="{{$blogimages}}" alt="">
                                     </div>
                                     <div class="featured-post_content">
-                                        <a href="#"><h5>Nepali Film Industry Faces NPR 1 Billion Loss Amid COVID-19!</h5></a>
-                                        <span class="posted-time"><i class="fa fa-clock icon"></i> 1 hrs ago</span>
-                                        <p class="mb-0 pt-1">"Lajjawati Jhar" is Third Single of Mahesh Kafle.
-                                            ✹Available at Spotify, Apple Music, JioSaavn : https://bit.ly/33OPFPu</p>
+                                        <a href="{{ route('blog-detail',['blog_id'=>$value->id]) }}"><h5>{{ $value->title }}</h5></a>
+                                        <span class="posted-time"><i class="fa fa-clock icon"></i> {{ $value->created_at->diffForHumans() }}</span>
+                                        <p class="mb-0 pt-1">{!! $value->sub_content !!}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col d-flex">
-                                <div class="featured-post-small">
-                                    <div class="featured-post-small-img">
-                                        <img src="{{asset('home/images/v-img1.png')}}" alt="">
-                                    </div>
-                                    <div class="featured-post_content">
-                                        <a href="#"><h5>Nepali Film Industry Faces NPR 1 Billion Loss Amid COVID-19!</h5></a>
-                                        <span class="posted-time"><i class="fa fa-clock icon"></i> 1 hrs ago</span>
-                                        <p class="mb-0 pt-1">Twelve Notes Presents:-
-                                            JAIL PANI SAHULA | जेल पनि सहुँला | Melina Rai & Bal Bahadur Rajbanshi | Feat. Laxmi Bardewa Jiban Bhattarai / Raj Khadka New Nepali song 2020 </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col d-flex">
-                                <div class="featured-post-small">
-                                    <div class="featured-post-small-img">
-                                        <img src="{{asset('home/images/v-img2.png')}}" alt="">
-                                    </div>
-                                    <div class="featured-post_content">
-                                        <a href="#"><h5>Nepali Film Industry Faces NPR 1 Billion Loss Amid COVID-19!</h5></a>
-                                        <span class="posted-time"><i class="fa fa-clock icon"></i> 1 hrs ago</span>
-                                        <p class="mb-0 pt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col d-flex">
-                                <div class="featured-post-small">
-                                    <div class="featured-post-small-img">
-                                        <img src="{{asset('home/images/v-img3.png')}}" alt="">
-                                    </div>
-                                    <div class="featured-post_content">
-                                        <a href="#"><h5>Nepali Film Industry Faces NPR 1 Billion Loss Amid COVID-19!</h5></a>
-                                        <span class="posted-time"><i class="fa fa-clock icon"></i> 1 hrs ago</span>
-                                        <p class="mb-0 pt-1">Ut diam quam nulla porttitor massa id. Et magnis dis parturient montes nascetur ridiculus mus mauris. Odio facilisis mauris sit amet massa vitae tortor condimentum.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col d-flex">
-                                <div class="featured-post-small">
-                                    <div class="featured-post-small-img">
-                                        <img src="{{asset('home/images/v-img4.png')}}" alt="">
-                                    </div>
-                                    <div class="featured-post_content">
-                                        <a href="#"><h5>Nepali Film Industry Faces NPR 1 Billion Loss Amid COVID-19!</h5></a>
-                                        <span class="posted-time"><i class="fa fa-clock icon"></i> 1 hrs ago</span>
-                                        <p class="mb-0 pt-1">Morbi tristique senectus et netus et malesuada fames. Ac tincidunt vitae semper quis.</p>
-                                    </div>
-                                </div>
-                            </div>
+
+                            @endforeach
+                            @else
+                            <span>No News/Blog Added</span>
+                            @endif
+
                         </div>
                     </div>
                 </div>

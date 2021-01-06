@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 
 use App\Modules\Genre\Repositories\GenreInterface;
 use App\Modules\Video\Repositories\VideoInterface;
+use App\Modules\Blog\Repositories\BlogInterface;
 
 
 class HomeController extends Controller
@@ -15,11 +16,13 @@ class HomeController extends Controller
 
     protected $video;
     protected $genre;
+    protected $blog;
     
-    public function __construct(VideoInterface $video, GenreInterface $genre)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog)
     {
         $this->video = $video;
         $this->genre = $genre;
+        $this->blog = $blog;
     }
 
     /**
@@ -30,10 +33,18 @@ class HomeController extends Controller
     {
         $data['popular_videos'] = $this->video->getVideoByType('is_popular',$limit= 20);
         $data['trending_videos'] = $this->video->getVideoByType('is_trending',$limit= 20);
-        $data['latest_videos'] = $this->video->findAll($$limit = 20);
+        $data['latest_videos'] = $this->video->findAll($limit = 20);
+        $data['blog_info'] = $this->blog->findAllActiveBlog($limit= 20);  
         $data['genre'] = $this->genre->getList();
 
         return view('home::index', $data);
+    }
+
+    public function Videos(Request $request){
+        $data['videos'] = $this->video->findAll($limit = 24);
+        $data['genre'] = $this->genre->getList();
+
+        return view('home::video-lists', $data);
     }
 
     /**
@@ -58,8 +69,24 @@ class HomeController extends Controller
         $this->video->update($video_id,$video_data);
 
         $data['video_id'] = $video_id;
+        $data['featured_videos'] = $this->video->getVideoByType('is_featured',$limit= 20);
 
         return view('home::video-detail', $data);
+    }
+
+    public function BlogDetail(Request $request){
+
+        $input = $request->all();
+
+        $blog_id = $input['blog_id'];
+
+        $data['blog_detail'] = $this->blog->find($blog_id);
+        $data['related_blog'] = $this->blog->findRelatedBlog($blog_id);  
+
+        $data['blog_id'] = $blog_id;
+
+        return view('home::blog-detail', $data);
+
     }
 
     /**

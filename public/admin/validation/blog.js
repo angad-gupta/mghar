@@ -1,18 +1,15 @@
-$(document).ready( function () {
-    $("#product_submit").validate({
+$(document).ready(function () {
+    $("#blog_submit").validate({
         rules: {
-            product_name: "required",
-            product_code: "required",
-            manufactured_date: "required",
-            cost_price: "required",
-            mrp: "required"
+            title: "required",
+            sub_content: "required",
+            content: "required"
         },
         messages: {
-            product_name: "Enter Product Name",
-            product_code: "Enter Product Code",
-            manufactured_date: "Enter Manudactured Date",
-            cost_price: "Enter Cost Price",
-            mrp: "Enter MRP"
+            title: "Please Enter Title",
+            sub_content: "Please Enter Sub Content",
+            content: "Please Enter Content"
+
         },
         errorElement: "em",
         errorPlacement: function (error, element) {  console.log(element)

@@ -83,6 +83,20 @@
                         </a>
                     </li>
                 @endif
+                @if($menuRoles->assignedRoles('celebrity.index'))
+                    <li class="nav-item">
+                        <a href="{{route('celebrity.index')}}" class="nav-link @if($Route[0]=='celebrity') active @endif" data-popup="tooltip" data-original-title="Celebrity Management"
+                           data-placement="right"><i class="icon-chess-queen"></i><span>Celebrity Management</span>
+                        </a>
+                    </li>
+                @endif
+                @if($menuRoles->assignedRoles('blog.index'))
+                    <li class="nav-item">
+                        <a href="{{route('blog.index')}}" class="nav-link @if($Route[0]=='blog') active @endif" data-popup="tooltip" data-original-title="News Blog Management"
+                           data-placement="right"><i class="icon-media"></i><span>News Blog Management</span>
+                        </a>
+                    </li>
+                @endif
 
 
 

@@ -19,7 +19,9 @@ class Video extends Model
         'status',
         'total_views',
         'is_popular',
-        'is_trending'
+        'is_trending',
+        'is_featured',
+        'celebrities'
 
     ];
 

@@ -1,0 +1,14 @@
+{
+    "name": "Celebrity",
+    "alias": "celebrity",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "App\\Modules\\Celebrity\\Providers\\CelebrityServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
