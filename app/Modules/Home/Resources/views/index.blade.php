@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="owl-carousel owl-theme banner">
                 <div class="item">
-                    <a href="video-single.php" class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
+                    <a href="#" class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
                        style="background-image: url('https://cdn.mos.cms.futurecdn.net/9vb2YWe3j5GwoVJagDzxLQ.jpg');">
                         <div class="container">
                             <div class="row">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="item">
                     <!-- banner image size: 1600*500-->
-                    <a href="video-single.php" class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
+                    <a href="#" class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
                        style="background-image: url('https://i0.wp.com/utsav360.com/wp-content/uploads/2019/05/dal-bhat-tarkari-poster.jpg');">
                         <div class="container">
                             <div class="row">
@@ -121,7 +121,7 @@
 		                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
 		                                            </div>
 		                                            <div class="featured-post_content">
-		                                                <a href="video-single.php"><h5>{{ $value->video_title }}</h5></a>
+		                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{ $value->video_title }}</h5></a>
 		                                                <span class="posted-time"><i class="fa fa-clock icon"></i> {{ $value->created_at->diffForHumans() }}</span>
 		                                            </div>
 		                                        </div>
@@ -244,7 +244,7 @@
 						                	$pimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
 						                @endphp
 		                                    <div class="item">
-		                                        <a href="#" class="featured-post-small">
+		                                        <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small">
 		                                            <div class="featured-post-small-img">
 		                                                <img src="{{$pimages}}" alt="Video Image">
 		                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
