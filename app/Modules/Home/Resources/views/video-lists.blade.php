@@ -9,14 +9,22 @@
                     <div class="col-12">
                         <div class="main-title">
                             <h3 class="mb-0">Videos</h3>
-                                <!-- <div class="form-group mb-2">
+                                {!! Form::open(['route' => ['videos'], 'method' => 'get','id'=>'searchGenreSubmit']) !!}
+                                <div class="form-group mb-2">
                                     <select class="form-control" name="genre" id="genre_select_video">
                                          <option value="0">--Select Any--</option>
                                         @foreach($genre as $key =>$val)
-                                            <option value="{{$key}}">{{$val}}</option>
+                                            @php 
+                                                $select ="";
+                                                if(in_array($key,$genre_search)){
+                                                 $select = "selected='selected'";
+                                            }
+                                            @endphp
+                                            <option value="{{$key}}" {{$select}}>{{$val}}</option>
                                         @endforeach
                                     </select>
-                                </div> -->
+                                </div>
+                                {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
@@ -55,5 +63,13 @@
 </div>
 </div>
 
-
 @include('home::include.footer')
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('#genre_select_video').on('change',function(){
+            $('#searchGenreSubmit').submit();
+        });
+    });
+</script>

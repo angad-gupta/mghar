@@ -50,7 +50,7 @@
                     <td>{{$video_info->firstItem() +$key}}</td>
                     <td><a target="_blank" href="{{ $image }}"><img src="{{ $image }}" style="width: 50px;"></a></td>
                     <td>{{ $value->video_title }}</td>
-                    <td>{{ optional($value->genreInfo)->genre_title }}</td>
+                    <td>{{ optional($value->genre)->genre_title }}</td>
                     <td class="{{ ($value->status == '1') ? 'text-success font-weight-bold' :'text-danger font-weight-bold' }}">{{ ($value->status == '1') ? 'Enabled' :'Disabled' }}</td>
                     <td>{{ $value->total_views }}</td>
                     <td class="{{ ($value->is_popular == '1') ? 'text-success font-weight-bold' :'text-danger font-weight-bold' }}">{{ ($value->is_popular == '1') ? 'Yes' :'No' }}</td>

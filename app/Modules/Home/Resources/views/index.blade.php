@@ -51,7 +51,7 @@
                             <div class="col-12">
                                 <div class="main-title">
                                     <h4 class="mb-0">Latest Videos</h4>
-                                    <a class="view-all" href="category.php"><i class="fa fa-list"></i> View All</a>
+                                    <a class="view-all" href="{{ route('videos') }}"><i class="fa fa-list"></i> View All</a>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                             <div class="col-12">
                                 <div class="main-title">
                                     <h4 class="mb-0">Popular Videos</h4>
-                                    <a class="view-all" href="category.php"><i class="fa fa-list"></i> View All</a>
+                                    <a class="view-all" href="{{ route('videos',['video_type'=>'is_popular']) }}"><i class="fa fa-list"></i> View All</a>
                                 </div>
                             </div>
                         </div>
@@ -230,7 +230,7 @@
                             <div class="col-12">
                                 <div class="main-title">
                                     <h4 class="mb-0">Trending Videos</h4>
-                                    <a class="view-all" href="category.php"><i class="fa fa-list"></i> View All</a>
+                                    <a class="view-all" href="{{ route('videos',['video_type'=>'is_trending']) }}"><i class="fa fa-list"></i> View All</a>
                                 </div>
                             </div>
                         </div>

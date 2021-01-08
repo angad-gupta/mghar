@@ -41,8 +41,16 @@ class HomeController extends Controller
     }
 
     public function Videos(Request $request){
-        $data['videos'] = $this->video->findAll($limit = 24);
+
+        $search = $request->all();  
+        $data['videos'] = $this->video->findAll($limit = 24,$search);
         $data['genre'] = $this->genre->getList();
+
+        if (array_key_exists('genre', $search)) {
+             $data['genre_search'] = $search;
+        } else {
+            $data['genre_search'] = '';
+        }
 
         return view('home::video-lists', $data);
     }
@@ -67,6 +75,18 @@ class HomeController extends Controller
         );
 
         $this->video->update($video_id,$video_data);
+
+        //Artist Related
+        $celebrities = $this->video->findVideoCeleb($video_id); 
+
+        $celebrityIds = array();
+        foreach ($celebrities as $key => $value) {
+            
+            $cel_id = $value->celebrity_id;
+            array_push($celebrityIds, $cel_id);
+        }
+        $celebDatas['cel_id'] = $celebrityIds;
+        $data['artist_related'] = $this->video->getArtistRelatedVideo($video_id,$celebDatas,$limit= 20); 
 
         $data['video_id'] = $video_id;
         $data['featured_videos'] = $this->video->getVideoByType('is_featured',$limit= 20);

@@ -130,62 +130,25 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="owl-carousel owl-theme latest">
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img14.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img13.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img12.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img11.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img10.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img9.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="featured-post-small">
-                                            <div class="featured-post-small-img">
-                                                <img src="{{asset('home/images/v-img8.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
+
+                                    @if(sizeof($artist_related) > 0)
+                                        @foreach($artist_related as $key => $val)
+                                        @php 
+                                            $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
+                                            $raimages = ($videoInfo->video_cover_image) ? asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image : asset('admin/default.png');
+                                        
+                                        @endphp
+                                        <div class="item">
+                                            <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}" class="featured-post-small">
+                                                <div class="featured-post-small-img">
+                                                    <img src="{{$raimages}}" alt="">
+                                                    <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        @endforeach
+                                    @endif
+
                                 </div>
                             </div>
                         </div>
@@ -205,7 +168,7 @@
                             <div class="col-12">
                                 <div class="main-title">
                                     <h4 class="mb-0">Featured Videos</h4>
-                                    <a class="view-all" href="#"><i class="fa fa-list"></i> View All</a>
+                                    <a class="view-all" href="{{ route('videos',['video_type'=>'is_featured']) }}"><i class="fa fa-list"></i> View All</a>
                                 </div>
                             </div>
                         </div>

@@ -36,14 +36,16 @@
                 </div>
                 <div class="col-5">
                     <div class="d-flex align-items-center justify-content-end">
-                        <div class="mg-search">
-                            <input type="text" placeholder="Title, Genre, People">
+                         <div class="mg-search">
+                        {!! Form::open(['route' => ['videos'], 'method' => 'get']) !!}
+                            <input type="text" name="search_val" placeholder="Video Title">
                             <i class="fa fa-search"></i>
+                        {!! Form::close() !!}
                         </div>
-                        <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-user"></i> &nbsp;Subscribe | Login</a>
+                    
+                        <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-user"></i> &nbsp;Register | Login</a>
                     </div>
                 </div>
-
             </div>
         </div>
     </header>

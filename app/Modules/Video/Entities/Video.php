@@ -4,6 +4,8 @@ namespace App\Modules\Video\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Modules\Genre\Entities\Genre;
+use App\Modules\Celebrity\Entities\Celebrity;
+use App\Modules\Video\Entities\VideoCeleb;
 
 class Video extends Model
 {
@@ -20,8 +22,7 @@ class Video extends Model
         'total_views',
         'is_popular',
         'is_trending',
-        'is_featured',
-        'celebrities'
+        'is_featured'
 
     ];
 
@@ -30,8 +31,22 @@ class Video extends Model
         return self::FILE_PATH . $this->file_name;
     }
 
-    public function genreInfo(){
-        return $this->belongsTo(Genre::class,'genre_id');
+    public function genre(){
+        return $this->belongsTo(Genre::class,'genre_id','id');
     }
+
+    public function Celebrity(){
+        return $this->belongsTo(Celebrity::class,'celebrities','id');
+    }
+
+    public function CelebVideo()
+    {
+        return $this->hasMany(VideoCeleb::class, 'video_id');
+    }
+
+    static function findByVidId($vid_id){
+        return Video::find($vid_id);
+    }
+
 
 }

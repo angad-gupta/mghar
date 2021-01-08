@@ -55,17 +55,27 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        
-        $celebrities = json_encode($data['celebrities']);
-        unset($data['celebrities']);
-        $data['celebrities'] = $celebrities;
-
+    
          try{
             if ($request->hasFile('video_cover_image')) {
                 $data['video_cover_image'] = $this->video->upload($data['video_cover_image']);
             }
 
-            $this->video->save($data);
+            $videoInfo = $this->video->save($data);
+            $video_id = $videoInfo->id;
+
+            $celebrities = $data['celebrities'];
+            $countname = sizeof($celebrities);
+                for($i = 0; $i < $countname; $i++){
+                    
+                    if($data['celebrities'][$i]){
+                         $celebVideo['video_id'] = $video_id;
+                         $celebVideo['celebrity_id'] = $data['celebrities'][$i];
+
+                         $this->video->saveCelebrityVideo($celebVideo);
+                    }
+                }
+
             alertify()->success('Video Created Successfully');
         }catch(\Throwable $e){
             alertify($e->getMessage())->error();
@@ -108,9 +118,6 @@ class VideoController extends Controller
     {
        $data = $request->all();
         
-        $celebrities = json_encode($data['celebrities']);
-        unset($data['celebrities']);
-        $data['celebrities'] = $celebrities;
         try{
 
             if ($request->hasFile('video_cover_image')) {
@@ -118,6 +125,20 @@ class VideoController extends Controller
             }
 
             $this->video->update($id,$data);
+            $video_id = $id;
+            $this->video->deleteCelebrityVideo($video_id);
+
+            $celebrities = $data['celebrities'];
+            $countname = sizeof($celebrities);
+                for($i = 0; $i < $countname; $i++){
+                    
+                    if($data['celebrities'][$i]){
+                         $celebVideo['video_id'] = $video_id;
+                         $celebVideo['celebrity_id'] = $data['celebrities'][$i];
+
+                         $this->video->saveCelebrityVideo($celebVideo);
+                    }
+                }
              alertify()->success('Video Updated Successfully');
         }catch(\Throwable $e){
            alertify($e->getMessage())->error();
@@ -134,6 +155,7 @@ class VideoController extends Controller
     public function destroy($id)
     {
         try{
+            $this->video->deleteCelebrityVideo($id);
             $this->video->delete($id);
              alertify()->success('Video Deleted Successfully');
         }catch(\Throwable $e){

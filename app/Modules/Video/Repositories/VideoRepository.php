@@ -2,6 +2,7 @@
 namespace App\Modules\Video\Repositories;
 
 use App\Modules\Video\Entities\Video;
+use App\Modules\Video\Entities\VideoCeleb;
 
 class VideoRepository implements VideoInterface
 {
@@ -9,6 +10,19 @@ class VideoRepository implements VideoInterface
     public function findAll($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1])
     { 
          $result =Video::when(array_keys($filter, true), function ($query) use ($filter) {
+
+            if (isset($filter['search_val'])) { 
+                $query->where('video_title', 'like', '%' . $filter['search_val'] . '%');
+            }            
+
+            if (isset($filter['video_type'])) { 
+                $query->where($filter['video_type'],'=','1');
+            }
+
+            if (isset($filter['genre'])) { 
+                $query->where('genre_id','=',$filter['genre']);
+            }
+
            
         })->orderBy('id', $sort['sort'])->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));
         
@@ -20,6 +34,10 @@ class VideoRepository implements VideoInterface
         return Video::find($id);
     }
     
+    public function findVideoCeleb($id){
+        return VideoCeleb::where('video_id','=',$id)->get();
+    }
+    
    public function getList(){  
        $result = Video::where('status','=','1')->pluck('video_title', 'id');
        return $result;
@@ -27,6 +45,10 @@ class VideoRepository implements VideoInterface
     
     public function save($data){
         return Video::create($data);
+    }
+
+    public function saveCelebrityVideo($data){
+        return VideoCeleb::create($data);
     }
     
     public function update($id,$data){
@@ -37,6 +59,10 @@ class VideoRepository implements VideoInterface
     public function delete($id){
         $result = Video::find($id);
         return $result->delete();
+    }
+    
+    public function deleteCelebrityVideo($id){
+        $result = VideoCeleb::where('video_id','=',$id)->delete();
     }
     
     public function upload($file){
@@ -53,6 +79,15 @@ class VideoRepository implements VideoInterface
          $result =Video::when(array_keys($filter, true), function ($query) use ($filter) {
            
         })->where($type,'=','1')->orderBy('id', $sort['sort'])->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));
+        
+        return $result; 
+    }
+
+    public function getArtistRelatedVideo($video_id,$celebs,$limit=null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]){
+
+        $result =VideoCeleb::when(array_keys($filter, true), function ($query) use ($filter) {
+           
+        })->whereIn('celebrity_id', $celebs['cel_id'])->where('video_id','!=',$video_id)->orderBy('id', $sort['sort'])->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));
         
         return $result; 
     }

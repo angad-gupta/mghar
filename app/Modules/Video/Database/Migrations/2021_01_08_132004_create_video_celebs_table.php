@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCelebrityFields extends Migration
+class CreateVideoCelebsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class AddCelebrityFields extends Migration
      */
     public function up()
     {
-        Schema::table('videos', function (Blueprint $table) {
-            $table->text('celebrities')->nullable()->after('is_trending');
+        Schema::create('video_celebs', function (Blueprint $table) {
+            $table->increments('id');
 
+            $table->integer('video_id')->nullable();
+            $table->integer('celebrity_id')->nullable();
+
+            $table->timestamps();
         });
     }
 
@@ -26,10 +30,6 @@ class AddCelebrityFields extends Migration
      */
     public function down()
     {
-        Schema::table('videos', function (Blueprint $table) {
-            $table->dropColumn('celebrities');
-        });
+        Schema::dropIfExists('video_celebs');
     }
 }
-
-

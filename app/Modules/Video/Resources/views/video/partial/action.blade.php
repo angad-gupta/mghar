@@ -179,15 +179,17 @@
                                     @foreach($celebrity as $key => $value)
                                         @php
                                             $select ="";
-                                            if(isset($video_info)){
-                                                $celebritie = json_decode($video_info->celebrities);  
-                                                if($celebritie){
-                                                    if(in_array($key, $celebritie)){
+                                        @endphp
+                                           @if($is_edit)
+                                                @foreach($video_info->CelebVideo as $vkey => $celVid)   
+                                                @php
+                                                    if($key == $celVid['celebrity_id']){
                                                         $select = "selected='selected'";
                                                     }
-                                                }
-                                            }
-                                        @endphp
+                                                 @endphp
+                                                @endforeach
+                                            @endif
+                                         
                                         <option value="{{$key}}" {{$select}}>{{$value}}</option>
                                     @endforeach
                                 </select> 
