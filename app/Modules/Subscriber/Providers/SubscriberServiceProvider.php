@@ -5,6 +5,9 @@ namespace App\Modules\Subscriber\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
+use App\Modules\Subscriber\Repositories\SubscriberInterface;
+use App\Modules\Subscriber\Repositories\SubscriberRepository;
+
 class SubscriberServiceProvider extends ServiceProvider
 {
     /**
@@ -36,6 +39,15 @@ class SubscriberServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->subscriberRegister();
+    }
+
+
+    public function subscriberRegister(){
+        $this->app->bind(
+            SubscriberInterface::class,
+            SubscriberRepository::class
+        );
     }
 
     /**

@@ -9,6 +9,9 @@ use Illuminate\Routing\Controller;
 use App\Modules\Genre\Repositories\GenreInterface;
 use App\Modules\Video\Repositories\VideoInterface;
 use App\Modules\Blog\Repositories\BlogInterface;
+use App\Modules\Subscriber\Repositories\SubscriberInterface;
+
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -17,32 +20,41 @@ class HomeController extends Controller
     protected $video;
     protected $genre;
     protected $blog;
+    protected $subscriber;
     
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber)
     {
         $this->video = $video;
         $this->genre = $genre;
         $this->blog = $blog;
+        $this->subscriber = $subscriber;
     }
 
     /**
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $input = $request->all();
+        
+        $data['message'] = '';
         $data['popular_videos'] = $this->video->getVideoByType('is_popular',$limit= 20);
         $data['trending_videos'] = $this->video->getVideoByType('is_trending',$limit= 20);
         $data['latest_videos'] = $this->video->findAll($limit = 20);
         $data['blog_info'] = $this->blog->findAllActiveBlog($limit= 20);  
         $data['genre'] = $this->genre->getList();
 
+        if (array_key_exists('message', $input)) {
+            $data['message'] = $input['message'];
+        }
         return view('home::index', $data);
     }
 
     public function Videos(Request $request){
 
-        $search = $request->all();  
+        $search = $request->all();
+        $data['message'] = ''; 
         $data['videos'] = $this->video->findAll($limit = 24,$search);
         $data['genre'] = $this->genre->getList();
 
@@ -62,7 +74,7 @@ class HomeController extends Controller
     public function VideoDetail(Request $request)
     {
         $input = $request->all();
-
+        $data['message'] = '';
         $video_id = $input['video_id'];
 
         $data['video_detail'] = $videoInfo = $this->video->find($video_id);
@@ -97,7 +109,7 @@ class HomeController extends Controller
     public function BlogDetail(Request $request){
 
         $input = $request->all();
-
+        $data['message'] = '';
         $blog_id = $input['blog_id'];
 
         $data['blog_detail'] = $this->blog->find($blog_id);
@@ -106,6 +118,53 @@ class HomeController extends Controller
         $data['blog_id'] = $blog_id;
 
         return view('home::blog-detail', $data);
+
+    }
+
+
+    public function studentRegisterForm(Request $request)
+    {
+        $input = $request->all();
+        $data['message'] = '';
+        if (Auth::guard('subscriber')->check()) {
+            return redirect(route('student-dashboard'));
+        }
+
+        $data['message'] = (array_key_exists('message', $input)) ? $input['message'] : false;
+
+        return view('home::subscriber-register', $data);
+    }
+
+    public function subscriberRegister(Request $request){
+        $input = $request->all();
+
+        $email = $input['email'];
+
+        try {
+            $subscriberData = array(
+                'username' => $input['username'],
+                'full_name' => $input['full_name'],
+                'email' => $input['email'],
+                'mobile_no' => $input['mobile_no'],
+                'is_external_authenticate' => '0',
+                'status' => '1',
+                'email_verified' => '1',
+                'user_type' =>'subscriber',
+                'password' => bcrypt($input['password']),
+                'registered_ip'=> \Request::ip()
+            );
+
+            $subscriberInfo = $this->subscriber->save($subscriberData);
+
+            $registerSubscriber['message'] = 'You have registered Successfully.';
+        } catch (\Throwable $e) {
+            $registerSubscriber['message'] = 'Something Wrong With Message';
+        }
+
+        return redirect(route('home', $registerSubscriber));
+    }
+
+    public function subscriberAccount(){
 
     }
 

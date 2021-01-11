@@ -18,3 +18,20 @@ Route::get('videos', ['as' => 'videos', 'uses' => 'HomeController@Videos']);
 Route::get('video-detail', ['as' => 'video-detail', 'uses' => 'HomeController@VideoDetail']);
 
 Route::get('blog-detail', ['as' => 'blog-detail', 'uses' => 'HomeController@BlogDetail']);
+
+Route::get('subscriber-register', ['as' => 'subscriber-register', 'uses' => 'HomeController@studentRegisterForm']);
+
+Route::post('subscriber-register/store', ['as' => 'subscriber-register.store', 'uses' => 'HomeController@subscriberRegister']);
+
+Route::get('subscriber-account', ['as' => 'subscriber-account', 'uses' => 'HomeController@subscriberAccount']);
+
+Route::post('subscriber-login', ['as' => 'subscriber-login-post', 'uses' => 'SubscriberController@subscriberAuthenticate']);
+
+Route::get('subscriber-logout', ['as' => 'subscriber-logout', 'uses' => 'SubscriberController@subscriberLogout']);
+
+
+Route::group(['prefix' => 'subscriber', 'middleware' => ['auth:subscriber']], function () {
+
+    Route::get('subscriber-dashboard', ['as' => 'subscriber-dashboard', 'uses' => 'SubscriberController@dashboard']);
+
+});

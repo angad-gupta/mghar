@@ -65,18 +65,23 @@
 						                @php 
 						                	$pimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
 						                @endphp
-		                                    <div class="item">
-		                                        <div class="featured-post-small">
-		                                            <div class="featured-post-small-img">
-		                                                <img src="{{$pimages}}" alt="Video Image">
-		                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-		                                            </div>
-		                                            <div class="featured-post_content">
-		                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{ $value->video_title }}</h5></a>
-		                                                <span class="posted-time"><i class="fa fa-clock icon"></i> {{ $value->created_at->diffForHumans() }}</span>
-		                                            </div>
-		                                        </div>
-		                                    </div>
+
+                                              <div class="item">
+                                            <div class="featured-post-small">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
+                                                    <img src="{{$pimages}}" alt="">
+                                                    <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
+                                                </a>
+                                                 @php
+                                                    $videoTitle = (strlen($value->video_title) >= 60) ? substr($value->video_title,0,56).'...' : $value->video_title;
+                                                    @endphp
+                                                <div class="featured-post_content">
+                                                    <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{ $videoTitle }}</h5></a>
+                                                    <span class="posted-time"><i class="fa fa-clock icon"></i>{{ $value->created_at->diffForHumans() }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
 		                               	@endforeach
 					                @else
 					                <span>No Latest Video Added</span>
@@ -114,18 +119,22 @@
 						                @php 
 						                	$pimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
 						                @endphp
-		                                    <div class="item">
-		                                        <div class="featured-post-small">
-		                                            <div class="featured-post-small-img">
-		                                                <img src="{{$pimages}}" alt="Video Image">
-		                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-		                                            </div>
-		                                            <div class="featured-post_content">
-		                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{ $value->video_title }}</h5></a>
-		                                                <span class="posted-time"><i class="fa fa-clock icon"></i> {{ $value->created_at->diffForHumans() }}</span>
-		                                            </div>
-		                                        </div>
-		                                    </div>
+                                        <div class="item">
+                                            <div class="featured-post-small">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
+                                                    <img src="{{$pimages}}" alt="">
+                                                    <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
+                                                </a>
+                                                 @php
+                                                    $videoTitle = (strlen($value->video_title) >= 60) ? substr($value->video_title,0,56).'...' : $value->video_title;
+                                                    @endphp
+                                                <div class="featured-post_content">
+                                                    <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{ $videoTitle }}</h5></a>
+                                                    <span class="posted-time"><i class="fa fa-clock icon"></i>{{ $value->created_at->diffForHumans() }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
 		                               	@endforeach
 					                @else
 					                <span>No Popular Video Added</span>

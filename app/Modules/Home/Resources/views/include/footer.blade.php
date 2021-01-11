@@ -62,6 +62,8 @@
     </div>
 </div>
 
+
+    {!! Form::hidden('message', $message, ['class'=>'message']) !!}
 </body>
 
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
@@ -74,5 +76,30 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider-min.js"></script>
 <script src="{{asset('home/js/magnific.min.js')}}"></script>
 <script src="{{asset('home/js/custom.js')}}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+<script src="{{asset('admin/validation/subscriberRegister.js')}}"></script>
+<script>
+$(document).ready(function() {
+    $(".toggle-password").click(function() {
+
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    }); 
+
+    var is_message = $('.message').val();
+
+    if (is_message != '') {
+        $('#exampleModal').modal('show');
+        return false;
+    }
+
+})
+</script>
 
 </html>

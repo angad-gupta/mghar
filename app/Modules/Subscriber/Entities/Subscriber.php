@@ -3,8 +3,9 @@
 namespace App\Modules\Subscriber\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Subscriber extends Model
+class Subscriber extends Authenticatable
 {
     protected $fillable = [
 

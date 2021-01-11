@@ -21,7 +21,7 @@ class CreateSubscribersTable extends Migration
             $table->text('full_name');
             $table->text('email');
             $table->string('mobile_no')->nullable();
-            $table->text('provider_id')->nullable()
+            $table->text('provider_id')->nullable();
             $table->boolean('is_external_authenticate')->default(0);
             $table->boolean('status')->default(0);
             $table->boolean('email_verified')->default(0);

@@ -41,6 +41,11 @@ return [
             'provider' => 'users',
         ],
 
+        'subscriber' => [
+            'driver' => 'session',
+            'provider' => 'subscribers',
+        ],
+
         'api' => [
             'driver' => 'passport',
             'provider' => 'users',
@@ -69,6 +74,10 @@ return [
             'driver' => 'eloquent',
             'model' => \App\Modules\User\Entities\User::class,
         ],
+        'subscribers' => [
+            'driver' => 'eloquent',
+            'model' => \App\Modules\Subscriber\Entities\Subscriber::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -94,6 +103,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'subscribers' => [
+            'provider' => 'subscribers',
             'table' => 'password_resets',
             'expire' => 60,
         ],
