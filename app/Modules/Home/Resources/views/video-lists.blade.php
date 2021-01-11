@@ -16,9 +16,11 @@
                                         @foreach($genre as $key =>$val)
                                             @php 
                                                 $select ="";
-                                                if(in_array($key,$genre_search)){
-                                                 $select = "selected='selected'";
-                                            }
+                                                if($genre_search){
+                                                    if(in_array($key,$genre_search)){ 
+                                                        $select = "selected='selected'";
+                                                    }   
+                                                }
                                             @endphp
                                             <option value="{{$key}}" {{$select}}>{{$val}}</option>
                                         @endforeach
