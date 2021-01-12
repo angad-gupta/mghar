@@ -97,6 +97,13 @@
                         </a>
                     </li>
                 @endif
+                @if($menuRoles->assignedRoles('khelaujuhari.index'))
+                    <li class="nav-item">
+                        <a href="{{route('khelaujuhari.index')}}" class="nav-link @if($Route[0]=='khelaujuhari') active @endif" data-popup="tooltip" data-original-title="News Blog Management"
+                           data-placement="right"><i class="icon-shutter"></i><span>Khelau Juhari Management</span>
+                        </a>
+                    </li>
+                @endif
 
 
 

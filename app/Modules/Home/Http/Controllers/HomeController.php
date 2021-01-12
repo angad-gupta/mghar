@@ -10,6 +10,7 @@ use App\Modules\Genre\Repositories\GenreInterface;
 use App\Modules\Video\Repositories\VideoInterface;
 use App\Modules\Blog\Repositories\BlogInterface;
 use App\Modules\Subscriber\Repositories\SubscriberInterface;
+use App\Modules\KhelauJuhari\Repositories\KhelauJuhariInterface;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -21,13 +22,15 @@ class HomeController extends Controller
     protected $genre;
     protected $blog;
     protected $subscriber;
+    protected $khelaujuhari;
     
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari)
     {
         $this->video = $video;
         $this->genre = $genre;
         $this->blog = $blog;
         $this->subscriber = $subscriber;
+        $this->khelaujuhari = $khelaujuhari;
     }
 
     /**
@@ -67,7 +70,7 @@ class HomeController extends Controller
         return view('home::video-lists', $data);
     }
 
-    /**
+     /**
      * Show the form for creating a new resource.
      * @return Response
      */
@@ -104,6 +107,42 @@ class HomeController extends Controller
         $data['featured_videos'] = $this->video->getVideoByType('is_featured',$limit= 20);
 
         return view('home::video-detail', $data);
+    }
+
+    public function Khelau(Request $request){
+         $data['message'] = '';
+        if (Auth::guard('subscriber')->check()) {
+            $data['khelaujuhari_info'] = $this->khelaujuhari->findAll($limit= 50);  
+            return view('home::Khelau-juhari-lists', $data);
+         }else{
+             alertify('Please SignIn To Access Khelau Juhari')->error();
+            return redirect(route('home'));
+         }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     * @return Response
+     */
+    public function KhelaujuhariDetail(Request $request)
+    {
+        $input = $request->all();
+        $data['message'] = '';
+        $juhari_id = $input['juhari_id'];
+
+        $data['khelau_detail'] = $juhariInfo = $this->khelaujuhari->find($juhari_id);
+        $data['related_videos'] = $this->khelaujuhari->findRelatedVideo($juhari_id);
+
+        $videoView = $juhariInfo->total_views;
+        $newCount = $videoView + 1;
+
+        $juhari_data = array(
+            'total_views' => $newCount
+        );
+
+        $this->khelaujuhari->update($juhari_id,$juhari_data);
+
+        return view('home::khelau-juhari-detail', $data);
     }
 
     public function BlogDetail(Request $request){

@@ -14,8 +14,10 @@
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::get('videos', ['as' => 'videos', 'uses' => 'HomeController@Videos']);
-
 Route::get('video-detail', ['as' => 'video-detail', 'uses' => 'HomeController@VideoDetail']);
+
+Route::get('khelau', ['as' => 'khelau', 'uses' => 'HomeController@Khelau']);
+Route::get('khelaujuhari-detail', ['as' => 'khelaujuhari-detail', 'uses' => 'HomeController@KhelaujuhariDetail']);
 
 Route::get('blog-detail', ['as' => 'blog-detail', 'uses' => 'HomeController@BlogDetail']);
 

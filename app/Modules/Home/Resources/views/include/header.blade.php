@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css">
     <link href="{{asset('home/css/magnific.css')}}" rel="stylesheet">
     <link href="{{asset('home/css/style.css')}}" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 
      @yield('script')
      
@@ -23,6 +24,7 @@
     use Illuminate\Support\Facades\Auth;
     $subscriberInfo = Auth::guard('subscriber')->user();
 @endphp
+
     <header class="header">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -33,7 +35,7 @@
                         </a>
                         <div class="nav-bar d-flex ml-4">
                             <ul class="list-unstyled list-inline mb-0">
-                                <li class="list-inline-item"><a href="#">Movies</a></li>
+                                <li class="list-inline-item"><a href="{{ route('khelau')}}">Khelau Juhari</a></li>
                                 <li class="list-inline-item"><a href="{{ route('videos')}}">Videos</a></li>
                                 <li class="list-inline-item"><a href="#">Celebrity Bio</a></li>
                                 <li class="list-inline-item"><a href="#">News</a></li>
@@ -68,7 +70,7 @@
             </div>
         </div>
     </header>
-
+    
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -114,3 +116,6 @@
             </div>
         </div>
     </div>
+
+
+@include('alertify::alertify')
