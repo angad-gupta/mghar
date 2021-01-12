@@ -119,3 +119,10 @@
 
 
 @include('alertify::alertify')
+
+
+<style type="text/css">
+    .alertify-logs{
+        z-index: 99999;
+    }
+</style>
