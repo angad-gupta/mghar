@@ -37,7 +37,7 @@
                             <ul class="list-unstyled list-inline mb-0">
                                 <li class="list-inline-item"><a href="{{ route('khelau')}}">Khelau Juhari</a></li>
                                 <li class="list-inline-item"><a href="{{ route('videos')}}">Videos</a></li>
-                                <li class="list-inline-item"><a href="#">Celebrity Bio</a></li>
+                                <!-- <li class="list-inline-item"><a href="#">Celebrity Bio</a></li> -->
                                 <li class="list-inline-item"><a href="#">News</a></li>
                             </ul>
                         </div>

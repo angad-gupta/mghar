@@ -3,41 +3,41 @@
     <div class="banner-slider">
         <div class="container-fluid">
             <div class="owl-carousel owl-theme banner">
+
+@php
+            $bannerImage = array('banner1.jpeg' => 'banner1.jpeg',
+                            'banner2.jpeg'=>'banner2.jpeg',
+                            'banner3.jpeg'=>'banner3.jpeg',
+                            'banner4.jpeg'=>'banner4.jpeg',
+                            'banner5.jpeg'=>'banner5.jpeg',
+                            'banner6.jpeg'=>'banner6.jpeg',
+                            'banner7.jpeg'=>'banner7.jpeg'
+                            );
+
+
+            foreach($bannerImage as $key => $img){
+
+                $bannerImg = asset('home/images').'/'.$img;
+            @endphp
+
                 <div class="item">
-                    <a href="#" class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
-                       style="background-image: url('https://cdn.mos.cms.futurecdn.net/9vb2YWe3j5GwoVJagDzxLQ.jpg');">
+                    <a href="{{ route('videos') }}" class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
+                       style="background-image: url({{ $bannerImg }});">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 col-lg-6">
                                     <div class="sy-banner-info">
-                                        <h2>Live Action Movie - Mulan</h2>
-                                        <span>Action  |  2020</span>
-                                        <p class="mb-0">Mulan is a 2020 American action drama film produced by Walt Disney Pictures. It is a live-action adaptation of Disney's 1998 animated film of the same name, itself based on the Chinese folklore story, "The Ballad of Mulan".</p>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="item">
-                    <!-- banner image size: 1600*500-->
-                    <a href="#" class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
-                       style="background-image: url('https://i0.wp.com/utsav360.com/wp-content/uploads/2019/05/dal-bhat-tarkari-poster.jpg');">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-lg-6">
-                                    <div class="sy-banner-info">
-                                        <h2>Dal Bhat Tarkari</h2>
-                                        <span>Comedy, Family  |  2020</span>
-                                        <p class="mb-0">
-                                            Respected senior comedian actors Madan Krishna Shrestha and Hari Bamsha Acharya’s new most-awaited movie ‘Dal Bhat Tarkari’ is releasing today (Baisakh 20/May 3) on Qfx, FCube, and BigMovies. Ever since the Mahajodi announced their new movie on August 15, 2018, people were super excited and couldn’t wait to the epic duo once again together onscreen.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+
+         @php   } @endphp
+
+   
             </div>
         </div>
     </div>
@@ -166,7 +166,7 @@
                             <div class="col-12">
                                 <div class="owl-carousel owl-theme latest">
                                     <div class="item">
-                                        <a href="#" class="featured-post-big">
+                                        <a href="{{ route('videos')}}" class="featured-post-big">
                                             <div class="featured-post-big-img">
                                                 <img src="{{asset('home/images/v-img7.png')}}" alt="">
                                                 <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
@@ -174,7 +174,7 @@
                                         </a>
                                     </div>
                                     <div class="item">
-                                        <a href="#" class="featured-post-big">
+                                        <a href="{{ route('videos')}}" class="featured-post-big">
                                             <div class="featured-post-big-img">
                                                 <img src="{{asset('home/images/v-img1.png')}}" alt="">
                                                 <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
@@ -182,7 +182,7 @@
                                         </a>
                                     </div>
                                     <div class="item">
-                                        <a href="#" class="featured-post-big">
+                                        <a href="{{ route('videos')}}" class="featured-post-big">
                                             <div class="featured-post-big-img">
                                                 <img src="{{asset('home/images/v-img2.png')}}" alt="">
                                                 <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
@@ -190,7 +190,7 @@
                                         </a>
                                     </div>
                                     <div class="item">
-                                        <a href="#" class="featured-post-big">
+                                        <a href="{{ route('videos')}}" class="featured-post-big">
                                             <div class="featured-post-big-img">
                                                 <img src="{{asset('home/images/v-img3.png')}}" alt="">
                                                 <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
@@ -198,7 +198,7 @@
                                         </a>
                                     </div>
                                     <div class="item">
-                                        <a href="#" class="featured-post-big">
+                                        <a href="{{ route('videos')}}" class="featured-post-big">
                                             <div class="featured-post-big-img">
                                                 <img src="{{asset('home/images/v-img4.png')}}" alt="">
                                                 <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
@@ -206,7 +206,7 @@
                                         </a>
                                     </div>
                                     <div class="item">
-                                        <a href="#" class="featured-post-big">
+                                        <a href="{{ route('videos')}}" class="featured-post-big">
                                             <div class="featured-post-big-img">
                                                 <img src="{{asset('home/images/v-img5.png')}}" alt="">
                                                 <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
@@ -214,7 +214,7 @@
                                         </a>
                                     </div>
                                     <div class="item">
-                                        <a href="#" class="featured-post-big">
+                                        <a href="{{ route('videos')}}" class="featured-post-big">
                                             <div class="featured-post-big-img">
                                                 <img src="{{asset('home/images/v-img6.png')}}" alt="">
                                                 <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
