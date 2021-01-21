@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Manoranjan Ghar</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css">
-    <link href="{{asset('home/css/magnific.css')}}" rel="stylesheet">
-    <link href="{{asset('home/css/style.css')}}" rel="stylesheet">
-    <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
-
-     @yield('script')
-     
-</head>
-
-<body>
-
 @php
     use Illuminate\Support\Facades\Auth;
     $subscriberInfo = Auth::guard('subscriber')->user();
@@ -38,7 +16,7 @@
                                 <li class="list-inline-item"><a href="{{ route('khelau')}}">Khelau Juhari</a></li>
                                 <li class="list-inline-item"><a href="{{ route('videos')}}">Videos</a></li>
                                 <!-- <li class="list-inline-item"><a href="#">Celebrity Bio</a></li> -->
-                                <li class="list-inline-item"><a href="#">News</a></li>
+                                <!-- <li class="list-inline-item"><a href="#">News</a></li> -->
                             </ul>
                         </div>
                     </div>
@@ -47,7 +25,7 @@
                     <div class="d-flex align-items-center justify-content-end">
                          <div class="mg-search">
                         {!! Form::open(['route' => ['videos'], 'method' => 'get']) !!}
-                            <input type="text" name="search_val" placeholder="Video Title">
+                            <input type="text" name="search_val" placeholder="Search Video">
                             <i class="fa fa-search"></i>
                         {!! Form::close() !!}
                         </div>

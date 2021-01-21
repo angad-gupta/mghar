@@ -1,4 +1,6 @@
-@include('home::include.header')
+@extends('home::layouts.master')
+@section('title')Manoranjan Blog Detail @stop
+@section('content')
 
  @php 
     $coverimage = ($blog_detail->blog_image) ? asset($blog_detail->file_full_path).'/'.$blog_detail->blog_image : asset('admin/default.png');
@@ -138,4 +140,4 @@
         </div>
     </div>
 
-@include('home::include.footer')
+@stop

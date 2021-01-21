@@ -111,13 +111,13 @@ class HomeController extends Controller
 
     public function Khelau(Request $request){
          $data['message'] = '';
-        if (Auth::guard('subscriber')->check()) {
+        // if (Auth::guard('subscriber')->check()) {
             $data['khelaujuhari_info'] = $this->khelaujuhari->findAll($limit= 50);  
             return view('home::Khelau-juhari-lists', $data);
-         }else{
-             alertify('Please SignIn To Access Khelau Juhari')->error();
-            return redirect(route('home'));
-         }
+         // }else{
+         //     alertify('Please SignIn To Access Khelau Juhari')->error();
+         //    return redirect(route('home'));
+         // }
     }
 
     /**

@@ -80,7 +80,7 @@
                         <label class="col-form-label col-lg-1">Description:</label>
                         <div class="col-lg-11 form-group-feedback form-group-feedback-right">
                             <div class="input-group">
-                                 {!! Form::textarea('description', null, ['id' => 'description','placeholder'=>'Enter Description', 'class' =>'form-control']) !!}
+                                 {!! Form::textarea('description', null, ['id' => 'description','placeholder'=>'Enter Description', 'class' =>'simple_textarea_description form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -90,14 +90,14 @@
             <div class="form-group row">
                 <div class="col-lg-6">
                     <div class="row">
-                        <label class="col-form-label col-lg-3">Khelau Juhari Url:<span class="text-danger">*</span></label>
+                        <label class="col-form-label col-lg-3">Khelau Juhari Video ID:<span class="text-danger">*</span></label>
                         <div class="col-lg-9 form-group-feedback form-group-feedback-right">
                             <div class="input-group">
                                 <span class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-presentation"></i>
                                     </span>
                                 </span>
-                                {!! Form::text('kj_embeded_url', $value = null, ['id'=>'kj_embeded_url','placeholder'=>'Enter Khelau Juhari Url/Embedded','class'=>'form-control']) !!}
+                                {!! Form::text('kj_embeded_url', $value = null, ['id'=>'kj_embeded_url','placeholder'=>'Enter Khelau Juhari Video Id','class'=>'form-control']) !!}
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,6 @@
-@include('home::include.header')
+@extends('home::layouts.master')
+@section('title')Manoranjan Ghar @stop
+@section('content')
 
     <div class="banner-slider">
         <div class="container-fluid">
@@ -41,6 +43,18 @@
             </div>
         </div>
     </div>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Manoranjan Ghar -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6368505889757007"
+         data-ad-slot="4403420886"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 
     <div class="featured-post-block">
         <div class="container-fluid">
@@ -97,6 +111,18 @@
         </div>
     </div>
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Manoranjan Ghar -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6368505889757007"
+         data-ad-slot="4403420886"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
     <div class="featured-post-block">
         <div class="container-fluid">
             <div class="row">
@@ -148,6 +174,19 @@
             </div>
         </div>
     </div>
+
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Manoranjan Ghar -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6368505889757007"
+         data-ad-slot="4403420886"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 
     <div class="featured-post-block">
         <div class="container-fluid">
@@ -229,6 +268,21 @@
             </div>
         </div>
     </div>
+
+
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Manoranjan Ghar -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6368505889757007"
+         data-ad-slot="4403420886"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
 
     <div class="featured-post-block">
         <div class="container-fluid">
@@ -401,4 +455,4 @@
     </div>
  -->
 
-@include('home::include.footer')
+@stop

@@ -297,12 +297,12 @@ a:hover,a:active,a:focus {
   margin-bottom: 4px;
 }
 
-.posted-time {
+.entry-meta span {
   color: #888;
   font-size: 14px;
 }
 
-.posted-time i {
+.entry-meta span i {
   color: #999;
   font-size: 12px;
 }
@@ -576,4 +576,27 @@ a:hover,a:active,a:focus {
   height: 100%;
   top: 0;
   left: 0;
+}
+
+.video-iframe iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.video-share a {
+  color: #555;
+  padding: 0 6px;
+}
+
+.video-share a.fb {
+  color: #3b5998;
+}
+
+.video-share a.tweet {
+  color: #55acee;
+}
+
+.show-more {
+  text-transform: uppercase;
+  font-size: 14px;
 }

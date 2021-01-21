@@ -1,4 +1,6 @@
-@include('home::include.header')
+@extends('home::layouts.master')
+@section('title')Khelau Juhari Video Detail @stop
+@section('content')
 
  @php 
     $coverimage = ($khelau_detail->kj_cover_image) ? asset($khelau_detail->file_full_path).'/'.$khelau_detail->kj_cover_image : asset('admin/default.png');
@@ -8,13 +10,26 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="banner-slider" style="text-align: center;">
-                        {!! $khelau_detail->kj_embeded_url !!}
-                    </div>
-                    <h5 class="mb-3">{{ $khelau_detail->kj_title }}</h5>
-                    <div class="entry-meta mb-4">
-                        <span class="posted-by mr-4"><i class="fa fa-user icon"></i>&nbsp; Manoranjan Ghar</span>
-                        <span class="posted-time"><i class="fa fa-clock icon"></i>&nbsp; {{ $khelau_detail->created_at->diffForHumans() }}</span>
+                    <div class="video-block">
+                        <div class="video-iframe">
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/{{$khelau_detail->kj_embeded_url}}" style="position:absolute;top:0;left:0;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        </div>
+                        <div class="video-content mt-4">
+                            <h4>{{ $khelau_detail->kj_title }}</h4>
+                            <div class="d-flex justify-content-between">
+                                <div class="entry-meta">
+                                    <span class="mr-4"><i class="fa fa-user icon"></i>&nbsp;Sugam Pokheral</span>
+                                    <span class="mr-4"><i class="fa fa-eye icon"></i>&nbsp;{{ $khelau_detail->created_at->diffForHumans() }}</span>
+                                    <span><i class="fa fa-clock icon"></i>&nbsp;5 minutes ago</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="video-desc">
+                                <p>Published Date : {{ date('Y-m-d',strtotime($khelau_detail->created_at))}}</p>
+                                   {!! $khelau_detail->description !!}
+                                <!-- <a class="show-more" href="">Show More</a> -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -22,15 +37,18 @@
     </div>
 
 
-    <div class="full-width mb-4">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <img src="https://www.onlinekhabar.com/wp-content/uploads/2020/10/1230x100_Online-Khabar-Banner.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Manoranjan Ghar -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6368505889757007"
+         data-ad-slot="4403420886"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 
 
     <div class="featured-post-block">
@@ -76,5 +94,16 @@
     </div>
 
 
-
-@include('home::include.footer')
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Manoranjan Ghar -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6368505889757007"
+         data-ad-slot="4403420886"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    
+@stop

@@ -1,4 +1,7 @@
-@include('home::include.header')
+@extends('home::layouts.master')
+@section('title')Subscriber Register @stop
+@section('content')
+
 <style>
 .field-icon {
   float: right;
@@ -72,5 +75,5 @@
     </div>
 
 
-@include('home::include.footer')
+@stop
 
