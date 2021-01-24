@@ -91,8 +91,6 @@
          (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 
-@include('home::include.footer')
-
 <script type="text/javascript">
     $(document).ready(function(){
 
