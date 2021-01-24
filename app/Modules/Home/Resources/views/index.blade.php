@@ -6,21 +6,12 @@
         <div class="container-fluid">
             <div class="owl-carousel owl-theme banner">
 
-@php
-            $bannerImage = array('banner1.jpeg' => 'banner1.jpeg',
-                            'banner2.jpeg'=>'banner2.jpeg',
-                            'banner3.jpeg'=>'banner3.jpeg',
-                            'banner4.jpeg'=>'banner4.jpeg',
-                            'banner5.jpeg'=>'banner5.jpeg',
-                            'banner6.jpeg'=>'banner6.jpeg',
-                            'banner7.jpeg'=>'banner7.jpeg'
-                            );
-
-
-            foreach($bannerImage as $key => $img){
-
-                $bannerImg = asset('home/images').'/'.$img;
+            @if($banner_info->total() != 0) 
+            @foreach($banner_info as $key => $value)
+            @php 
+                $bannerImg = ($value->banner_image) ? asset($value->file_full_path).'/'.$value->banner_image : asset('admin/default.png');
             @endphp
+
 
                 <div class="item">
                     <a href="{{ route('videos') }}" class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
@@ -37,8 +28,8 @@
                     </a>
                 </div>
 
-         @php   } @endphp
-
+            @endforeach
+            @endif
    
             </div>
         </div>

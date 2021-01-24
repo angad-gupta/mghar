@@ -104,6 +104,13 @@
                         </a>
                     </li>
                 @endif
+                @if($menuRoles->assignedRoles('banner.index'))
+                    <li class="nav-item">
+                        <a href="{{route('banner.index')}}" class="nav-link @if($Route[0]=='banner') active @endif" data-popup="tooltip" data-original-title="Banner Management"
+                           data-placement="right"><i class="icon-images2"></i><span>Banner Management</span>
+                        </a>
+                    </li>
+                @endif
 
 
 

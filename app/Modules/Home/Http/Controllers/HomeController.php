@@ -11,6 +11,7 @@ use App\Modules\Video\Repositories\VideoInterface;
 use App\Modules\Blog\Repositories\BlogInterface;
 use App\Modules\Subscriber\Repositories\SubscriberInterface;
 use App\Modules\KhelauJuhari\Repositories\KhelauJuhariInterface;
+use App\Modules\Banner\Repositories\BannerInterface;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -23,14 +24,16 @@ class HomeController extends Controller
     protected $blog;
     protected $subscriber;
     protected $khelaujuhari;
+    protected $banner;
     
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner)
     {
         $this->video = $video;
         $this->genre = $genre;
         $this->blog = $blog;
         $this->subscriber = $subscriber;
         $this->khelaujuhari = $khelaujuhari;
+        $this->banner = $banner;
     }
 
     /**
@@ -46,6 +49,7 @@ class HomeController extends Controller
         $data['trending_videos'] = $this->video->getVideoByType('is_trending',$limit= 20);
         $data['latest_videos'] = $this->video->findAll($limit = 20);
         $data['blog_info'] = $this->blog->findAllActiveBlog($limit= 20);  
+        $data['banner_info'] = $this->banner->findAllActiveBanner($limit= 20);  
         $data['genre'] = $this->genre->getList();
 
         if (array_key_exists('message', $input)) {
