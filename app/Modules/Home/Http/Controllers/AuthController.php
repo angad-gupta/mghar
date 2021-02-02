@@ -36,7 +36,8 @@ class AuthController extends Controller
     {
         $user = $this->subscriber->checkProviderId($getInfo->id);  
         if (!$user) {
-            $user = User::create([
+
+            $subscriberData = array(
                 'username' => $getInfo->name,
                 'full_name' => $getInfo->name,
                 'email' => $getInfo->email,
@@ -47,7 +48,10 @@ class AuthController extends Controller
                 'provider' => $provider,
                 'provider_id' => $getInfo->id,
                 'registered_ip'=> \Request::ip()
-            ]);
+            );
+
+            $user = $this->subscriber->save($subscriberData);
+
         }
         return $user;
     }
