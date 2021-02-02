@@ -87,7 +87,7 @@
                         <h5 class="mb-3">Social Login:</h5>
                         <ul class="list-unstyled d-flex justify-content-center mb-0">
                             <li><a class="fb" href="{{ url('/auth/redirect/facebook') }}"><i class="fab fa-facebook"></i></a></li>
-                            <!-- <li><a class="google mr-0" href=""><i class="fab fa-google"></i></a></li> -->
+                            <li><a class="google mr-0" href="{{ url('/auth/redirect/google') }}"><i class="fab fa-google"></i></a></li>
                         </ul>
                     </div>
                 </div>
