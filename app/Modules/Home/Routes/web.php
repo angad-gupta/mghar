@@ -32,8 +32,9 @@ Route::post('subscriber-login', ['as' => 'subscriber-login-post', 'uses' => 'Sub
 Route::get('subscriber-logout', ['as' => 'subscriber-logout', 'uses' => 'SubscriberController@subscriberLogout']);
 
 
-Route::get('/auth/redirect/{provider}', 'AuthController@redirect');
-Route::get('/callback/{provider}', 'AuthController@callback');
+Route::get('auth/redirect/{provider}', ['as' => 'auth/redirect/{provider}', 'uses' => 'AuthController@redirect']);
+Route::get('callback/{provider}', ['as' => 'callback/{provider}', 'uses' => 'AuthController@callback']);
+
 
 
 Route::group(['prefix' => 'subscriber', 'middleware' => ['auth:subscriber']], function () {
