@@ -38,10 +38,12 @@ class AuthController extends Controller
         $subscriberInfo = $this->subscriber->checkProviderId($getInfo->id);  
         if (!$subscriberInfo) {
 
+            $email = ($getInfo->email == null) ? $getInfo->id.'@gmail.com' : $getInfo->email;
+
             $subscriberData = array(
                 'username' => $getInfo->name,
                 'full_name' => $getInfo->name,
-                'email' => $getInfo->email,
+                'email' => $email,
                 'is_external_authenticate' => '1',
                 'status' => '1',
                 'email_verified' => '1',
