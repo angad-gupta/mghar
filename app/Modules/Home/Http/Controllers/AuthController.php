@@ -26,7 +26,7 @@ class AuthController extends Controller
     public function callback($provider)
     { 
         $getInfo = Socialite::driver($provider)->user();  
-        $user = $this->createUser($getInfo, $provider);
+        $user = $this->createUser($getInfo, $provider); dd($user);
         auth()->login($user);
 
         return redirect()->intended(route('home'));
@@ -34,8 +34,8 @@ class AuthController extends Controller
 
     function createUser($getInfo, $provider)
     {
-        $user = $this->subscriber->checkProviderId($getInfo->id);  
-        if (!$user) {
+        $subscriberInfo = $this->subscriber->checkProviderId($getInfo->id);  
+        if (!$subscriberInfo) {
 
             $subscriberData = array(
                 'username' => $getInfo->name,
@@ -50,10 +50,10 @@ class AuthController extends Controller
                 'registered_ip'=> \Request::ip()
             );
 
-            $user = $this->subscriber->save($subscriberData);
+            $subscriberInfo = $this->subscriber->save($subscriberData);
 
         }
-        return $user;
+        return $subscriberInfo;
     }
 }
 
