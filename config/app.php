@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
     
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -234,6 +235,8 @@ return [
         'Alertify' => odannyc\Alertify\Alertify::class,
         'Carbon' => 'Carbon\Carbon',
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

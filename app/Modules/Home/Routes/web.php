@@ -21,7 +21,7 @@ Route::get('khelaujuhari-detail', ['as' => 'khelaujuhari-detail', 'uses' => 'Hom
 
 Route::get('blog-detail', ['as' => 'blog-detail', 'uses' => 'HomeController@BlogDetail']);
 
-Route::get('subscriber-register', ['as' => 'subscriber-register', 'uses' => 'HomeController@studentRegisterForm']);
+Route::get('subscriber-register', ['as' => 'subscriber-register', 'uses' => 'HomeController@subscriberRegisterForm']);
 
 Route::post('subscriber-register/store', ['as' => 'subscriber-register.store', 'uses' => 'HomeController@subscriberRegister']);
 
@@ -30,6 +30,10 @@ Route::get('subscriber-account', ['as' => 'subscriber-account', 'uses' => 'HomeC
 Route::post('subscriber-login', ['as' => 'subscriber-login-post', 'uses' => 'SubscriberController@subscriberAuthenticate']);
 
 Route::get('subscriber-logout', ['as' => 'subscriber-logout', 'uses' => 'SubscriberController@subscriberLogout']);
+
+
+Route::get('/auth/redirect/{provider}', 'AuthController@redirect');
+Route::get('/callback/{provider}', 'AuthController@callback');
 
 
 Route::group(['prefix' => 'subscriber', 'middleware' => ['auth:subscriber']], function () {

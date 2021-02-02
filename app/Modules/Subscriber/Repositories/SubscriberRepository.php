@@ -58,4 +58,9 @@ class SubscriberRepository implements SubscriberInterface
         return $result->delete();
     }
 
+    public function checkProviderId($provider_id_field,$provider_id_val){
+        return Subscriber::where('provider_id', $getInfo->id)->first();
+    }
+
+
 }

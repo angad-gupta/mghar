@@ -165,7 +165,7 @@ class HomeController extends Controller
     }
 
 
-    public function studentRegisterForm(Request $request)
+    public function subscriberRegisterForm(Request $request)
     {
         $input = $request->all();
         $data['message'] = '';
