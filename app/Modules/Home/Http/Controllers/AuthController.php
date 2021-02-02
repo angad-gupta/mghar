@@ -34,7 +34,7 @@ class AuthController extends Controller
 
     function createUser($getInfo, $provider)
     {
-        $user = $this->subscriber->checkProviderId('provider_id',$getInfo->id);  
+        $user = $this->subscriber->checkProviderId($getInfo->id);  
         if (!$user) {
             $user = User::create([
                 'username' => $getInfo->name,

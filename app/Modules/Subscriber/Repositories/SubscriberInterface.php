@@ -18,6 +18,6 @@ interface SubscriberInterface
 
     public function delete($id);
 
-    public function checkProviderId($provider_id_field,$provider_id_val);
+    public function checkProviderId($provider_id_val);
 
 }
