@@ -26,7 +26,7 @@ class AuthController extends Controller
 
     public function callback($provider)
     { 
-        $getInfo = Socialite::driver($provider)->user();  dd($getInfo);
+        $getInfo = Socialite::driver($provider)->user();  
         $user = $this->createUser($getInfo, $provider); 
         Auth::guard('subscriber')->login($user);
 
