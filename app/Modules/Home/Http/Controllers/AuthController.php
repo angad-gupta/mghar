@@ -27,7 +27,7 @@ class AuthController extends Controller
     { 
         $getInfo = Socialite::driver($provider)->user();  
         $user = $this->createUser($getInfo, $provider); dd($user);
-        auth()->login($user);
+        Auth::guard('subscriber')->login($user);
 
         return redirect()->intended(route('home'));
     }
