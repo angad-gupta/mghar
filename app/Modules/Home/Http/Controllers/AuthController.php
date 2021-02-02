@@ -15,12 +15,7 @@ class AuthController extends Controller
     
     public function __construct(SubscriberInterface $subscriber)
     {
-        $this->video = $video;
-        $this->genre = $genre;
-        $this->blog = $blog;
         $this->subscriber = $subscriber;
-        $this->khelaujuhari = $khelaujuhari;
-        $this->banner = $banner;
     }
     
     public function redirect($provider)
@@ -49,9 +44,9 @@ class AuthController extends Controller
                 'status' => '1',
                 'email_verified' => '1',
                 'user_type' =>'subscriber',
-                'registered_ip'=> \Request::ip()
                 'provider' => $provider,
-                'provider_id' => $getInfo->id
+                'provider_id' => $getInfo->id,
+                'registered_ip'=> \Request::ip()
             ]);
         }
         return $user;
