@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Socialite;
 
+use Illuminate\Support\Facades\Auth;
 use App\Modules\Subscriber\Repositories\SubscriberInterface;
 
 class AuthController extends Controller
