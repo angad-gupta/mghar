@@ -14,7 +14,7 @@
     <link href="{{asset('home/css/style.css')}}" rel="stylesheet">
     <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 
-     @yield('script')
+
      
      @yield('share_head')
      
@@ -28,7 +28,6 @@
 
 @include('home::include.footer')
 
- {!! Form::hidden('message', $message, ['class'=>'message']) !!}
 </body>
 
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
@@ -43,7 +42,9 @@
 <script src="{{asset('home/js/custom.js')}}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-<script src="{{asset('admin/validation/subscriberRegister.js')}}"></script>
+
+@yield('script')
+
 <script>
 $(document).ready(function() {
     $(".toggle-password").click(function() {
@@ -56,13 +57,6 @@ $(document).ready(function() {
             input.attr("type", "password");
         }
     }); 
-
-    var is_message = $('.message').val();
-
-    if (is_message != '') {
-        $('#exampleModal').modal('show');
-        return false;
-    }
 
 })
 </script>

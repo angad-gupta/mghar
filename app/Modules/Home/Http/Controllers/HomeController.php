@@ -164,6 +164,10 @@ class HomeController extends Controller
 
     }
 
+    public function subscriberLogin(){
+        $data['message'] = '';
+        return view('home::subscriber-login', $data);
+    }
 
     public function subscriberRegisterForm(Request $request)
     {
@@ -199,12 +203,12 @@ class HomeController extends Controller
 
             $subscriberInfo = $this->subscriber->save($subscriberData);
 
-            $registerSubscriber['message'] = 'You have registered Successfully.';
+            alertify('You have registered Successfully.')->success();
         } catch (\Throwable $e) {
-            $registerSubscriber['message'] = 'Something Wrong With Message';
+             alertify('Something Wrong With Message')->error();
         }
 
-        return redirect(route('home', $registerSubscriber));
+        return redirect(route('subscriber-login'));
     }
 
     public function subscriberAccount(){

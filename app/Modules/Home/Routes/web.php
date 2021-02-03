@@ -21,6 +21,7 @@ Route::get('khelaujuhari-detail', ['as' => 'khelaujuhari-detail', 'uses' => 'Hom
 
 Route::get('blog-detail', ['as' => 'blog-detail', 'uses' => 'HomeController@BlogDetail']);
 
+Route::get('subscriber-login', ['as' => 'subscriber-login', 'uses' => 'HomeController@subscriberLogin']);
 Route::get('subscriber-register', ['as' => 'subscriber-register', 'uses' => 'HomeController@subscriberRegisterForm']);
 
 Route::post('subscriber-register/store', ['as' => 'subscriber-register.store', 'uses' => 'HomeController@subscriberRegister']);
@@ -39,6 +40,10 @@ Route::get('callback/{provider}', ['as' => 'callback/{provider}', 'uses' => 'Aut
 
 Route::group(['prefix' => 'subscriber', 'middleware' => ['auth:subscriber']], function () {
 
-    Route::get('subscriber-dashboard', ['as' => 'subscriber-dashboard', 'uses' => 'SubscriberController@dashboard']);
+    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'SubscriberController@dashboard']);
+
+    Route::put('subscriber/update/{id}', ['as' => 'subscriber.update', 'uses' => 'SubscriberController@subscriberProfileUpdate'])->where('id', '[0-9]+');
+
+	Route::post('subscriber-update-password', ['as' => 'subscriber-update-password', 'uses' => 'SubscriberController@updateSubscriberPassword']);
 
 });

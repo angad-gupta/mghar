@@ -48,3 +48,12 @@ $(".image-popup").magnificPopup({
         },
     },
 });
+
+//Pre-loader
+$(window).on('load', function() {
+    if($('.nnc-preloader').length > 0) {
+        $('.lds-ring').fadeOut();
+        $('.nnc-preloader').delay(350).fadeOut('slow');
+        $('body').delay(350).css({'overflow':'visible'});
+    }
+});

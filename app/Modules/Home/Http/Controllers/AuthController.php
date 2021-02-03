@@ -26,11 +26,19 @@ class AuthController extends Controller
 
     public function callback($provider)
     { 
-        $getInfo = Socialite::driver($provider)->user();  
-        $user = $this->createUser($getInfo, $provider); 
-        Auth::guard('subscriber')->login($user);
 
-        return redirect()->intended(route('home'));
+        try{
+            $getInfo = Socialite::driver($provider)->user();  
+            
+            $user = $this->createUser($getInfo, $provider); 
+            Auth::guard('subscriber')->login($user);
+            return redirect()->intended(route('home'));
+
+        } catch (\Exception $e) {
+             alertify('Something went wrong or You have rejected the app!')->error();
+            return redirect(route('home'));
+        }
+
     }
 
     function createUser($getInfo, $provider)

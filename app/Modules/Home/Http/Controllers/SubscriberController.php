@@ -30,12 +30,11 @@ class SubscriberController extends Controller
 
         if (Auth::guard('subscriber')->attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => 1])) {
 
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('dashboard'));
 
         } else {
-            // Flash('Invalid Credentials')->warning();
-            $logindata['message'] = "You have Enter Wrong Email or Password. Please Try Again !";
-            return redirect(route('home',$logindata));
+            alertify('You have Enter Wrong Email or Password. Please Try Again !')->error();
+            return redirect(route('home'));
         }
     }
 
@@ -46,67 +45,49 @@ class SubscriberController extends Controller
         return redirect(route('home'));
     }
 
-    public function dashboard(){
+    public function dashboard(Request $request){
 
+        $data = $request->all();
+
+        $id = Auth::guard('subscriber')->user()->id;
+        $data['subscriber_profile'] = Auth::guard('subscriber')->user()->find($id);
+
+        return view('home::subscriber.dashboard', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
+   public function subscriberProfileUpdate(Request $request, $id)
     {
-        return view('home::create');
+        $data = $request->all();
+
+        try {
+            $this->subscriber->update($id, $data);
+            alertify('Subscriber Profile Updated Successfully')->success();
+        } catch (\Throwable $e) {
+            alertify($e->getMessage())->error();
+        }
+
+        return redirect(route('dashboard'));
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function updateSubscriberPassword(Request $request){
+
+        $oldPassword = $request->get('old_password');
+        $newPassword = $request->get('password');  
+
+        $id = Auth::guard('subscriber')->user()->id;
+        $users = Auth::guard('subscriber')->user()->find($id);  
+
+        if (!(Hash::check($oldPassword, $users->password))) {
+             alertify('Old Password Do Not Match !')->error();
+            return redirect(route('dashboard'));
+        } else {
+            $data['password'] = Hash::make($newPassword);
+            $this->subscriber->update($id, $data);
+             alertify('Password Successfully Updated. Please Login Again!')->success();
+        }
+        Auth::guard('subscriber')->logout();
+        return redirect(route('subscriber-login'));
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        return view('home::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        return view('home::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

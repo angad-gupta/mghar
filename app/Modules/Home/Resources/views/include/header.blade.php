@@ -3,10 +3,16 @@
     $subscriberInfo = Auth::guard('subscriber')->user();
 @endphp
 
+    <div class="nnc-preloader">
+        <div class="nnc-ring">
+            <img width="24" src="{{asset('home/images/logo.jpeg')}}" alt="ManoranjanGhar">
+        </div>
+    </div>
+
     <header class="header">
         <div class="container-fluid">
             <div class="row align-items-center">
-                <div class="col-md-7">
+                <div class="col-md-4">
                     <div class="d-flex align-items-center">
                         <a href="{{ route('home') }}" class="logo">
                             <img src="{{asset('home/images/logo.jpeg')}}" alt="ManoranjanGhar">
@@ -21,7 +27,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-5">
+
+
+                  <div class="col-md-8">
                     <div class="d-flex align-items-center justify-content-end">
                          <div class="mg-search">
                         {!! Form::open(['route' => ['videos'], 'method' => 'get']) !!}
@@ -36,64 +44,19 @@
                                 {{$subscriberInfo->full_name}}
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <button class="dropdown-item" type="button">My Account</button>
+                                <a href="{{ route('dashboard')}}" class="dropdown-item" type="button">My Account</a>
                                 <a href="{{ route('subscriber-logout')}}" class="dropdown-item" type="button">Logout</a>
                             </div>
                         </div>
                     @else
-                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger btn-sm"><i class="fa fa-user"></i> &nbsp;Register | Login</a>
+                        <a href="{{ route('subscriber-login')}}" class="btn btn-danger btn-sm"><i class="fa fa-user"></i> Login</a>
                     @endif
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @if($message)
-                    <div class="alert alert-info alert-dismissible">
-                            {{$message}}
-                    </div>
-                @endif
-                <div class="modal-body">
-                    {!! Form::open(['route'=>'subscriber-login-post','method'=>'POST','id'=>'subscriber_submit','class'=>'form-horizontal','role'=>'form']) !!}
-                        <div class="form-row">
-                            <div class="col-12 mb-3">
-                                   {!! Form::email('email', $value = null, ['id'=>'email','placeholder'=>'Enter Email Address','class'=>'form-control','required']) !!}
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-12 mb-3">
-                                <input type="password" placeholder="Enter Password" class="form-control" id="password" name="password" required="required">
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <button class="btn btn-danger w-50 mr-3" type="submit">Login</button>
-                            <a href="{{ route('subscriber-register')}}" class="btn btn-primary w-50">Register</a>
-                        </div>
 
-                    {!! Form::close() !!}
-                    <hr>
-                    <div class="social-login">
-                        <h5 class="mb-3">Social Login:</h5>
-                        <ul class="list-unstyled d-flex justify-content-center mb-0">
-                            <li><a class="fb" href="{{ url('/auth/redirect/facebook') }}"><i class="fab fa-facebook"></i></a></li>
-                            <li><a class="google mr-0" href="{{ url('/auth/redirect/google') }}"><i class="fab fa-google"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 @include('alertify::alertify')
