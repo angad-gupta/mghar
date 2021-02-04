@@ -40,7 +40,7 @@ Route::get('callback/{provider}', ['as' => 'callback/{provider}', 'uses' => 'Aut
 
 Route::group(['prefix' => 'subscriber', 'middleware' => ['auth:subscriber']], function () {
 
-    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'SubscriberController@dashboard']);
+    Route::get('sdashboard', ['as' => 'sdashboard', 'uses' => 'SubscriberController@dashboard']);
 
     Route::put('subscriber/update/{id}', ['as' => 'subscriber.update', 'uses' => 'SubscriberController@subscriberProfileUpdate'])->where('id', '[0-9]+');
 

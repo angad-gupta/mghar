@@ -32,7 +32,7 @@ class AuthController extends Controller
             
             $user = $this->createUser($getInfo, $provider); 
             Auth::guard('subscriber')->login($user);
-            return redirect()->intended(route('dashboard'));
+            return redirect()->intended(route('sdashboard'));
 
         } catch (\Exception $e) {
              alertify('Something went wrong or You have rejected the app!')->error();

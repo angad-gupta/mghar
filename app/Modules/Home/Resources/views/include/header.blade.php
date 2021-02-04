@@ -19,8 +19,10 @@
                         </a>
                         <div class="nav-bar d-flex ml-4">
                             <ul class="list-unstyled list-inline mb-0">
+                                <li class="list-inline-item"><a href="{{ route('home')}}">Home</a></li>
                                 <li class="list-inline-item"><a href="{{ route('khelau')}}">Khelau Juhari</a></li>
-                                <li class="list-inline-item"><a href="{{ route('videos')}}">Videos</a></li>
+                                <li class="list-inline-item"><a href="{{ route('videos')}}">Latest</a></li>
+                                <li class="list-inline-item"><a href="#">My WatchList</a></li>
                                 <!-- <li class="list-inline-item"><a href="#">Celebrity Bio</a></li> -->
                                 <!-- <li class="list-inline-item"><a href="#">News</a></li> -->
                             </ul>

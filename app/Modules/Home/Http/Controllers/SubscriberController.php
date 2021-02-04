@@ -30,7 +30,7 @@ class SubscriberController extends Controller
 
         if (Auth::guard('subscriber')->attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => 1])) {
 
-            return redirect()->intended(route('dashboard'));
+            return redirect()->intended(route('sdashboard'));
 
         } else {
             alertify('You have Enter Wrong Email or Password. Please Try Again !')->error();
@@ -66,7 +66,7 @@ class SubscriberController extends Controller
             alertify($e->getMessage())->error();
         }
 
-        return redirect(route('dashboard'));
+        return redirect(route('sdashboard'));
 
     }
 
@@ -80,7 +80,7 @@ class SubscriberController extends Controller
 
         if (!(Hash::check($oldPassword, $users->password))) {
              alertify('Old Password Do Not Match !')->error();
-            return redirect(route('dashboard'));
+            return redirect(route('sdashboard'));
         } else {
             $data['password'] = Hash::make($newPassword);
             $this->subscriber->update($id, $data);

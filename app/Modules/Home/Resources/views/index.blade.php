@@ -36,7 +36,7 @@
     </div>
 
 
-    <div class="featured-post-block">
+ <div class="featured-post-block">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -45,7 +45,7 @@
                             <div class="col-12">
                                 <div class="main-title">
                                     <h4 class="mb-0">Latest Videos</h4>
-                                    <a class="view-all" href="{{ route('videos') }}"><i class="fa fa-list"></i> View All</a>
+                                    <a class="view-all" href="{{ route('videos') }}">View All <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -53,34 +53,27 @@
                             <div class="col-12">
                                 <div class="owl-carousel owl-theme latest">
 
-	
-									@if($latest_videos->total() != 0) 
-						                @foreach($latest_videos as $key => $value)
-						                @php 
-						                	$pimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
-						                @endphp
+                                    @if($latest_videos->total() != 0) 
+                                        @foreach($latest_videos as $key => $value)
+                                        @php 
+                                            $pimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                        @endphp
 
-                                              <div class="item">
-                                            <div class="featured-post-small">
-                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
-                                                    <img src="{{$pimages}}" alt="">
-                                                    <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                                </a>
-                                                 @php
-                                                    $videoTitle = (strlen($value->video_title) >= 60) ? substr($value->video_title,0,56).'...' : $value->video_title;
-                                                    @endphp
-                                                <div class="featured-post_content">
-                                                    <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{ $videoTitle }}</h5></a>
-                                                    <span class="posted-time"><i class="fa fa-clock icon"></i>{{ $value->created_at->diffForHumans() }}</span>
-                                                </div>
+                                    <div class="item">
+                                        <div class="featured-post-small">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
+                                                <img src="{{$pimages}}" alt="">
+                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
+                                            </a>
+                                            <div class="featured-post_content">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{$value->video_title}}</h5></a>
                                             </div>
                                         </div>
-                                        
-		                               	@endforeach
-					                @else
-					                <span>No Latest Video Added</span>
-					                @endif
-
+                                    </div>
+                                    @endforeach
+                                    @else
+                                    <span>No Latest Video Added</span>
+                                    @endif
 
                                 </div>
                             </div>
@@ -92,7 +85,7 @@
     </div>
 
 
-    <div class="featured-post-block">
+ <div class="featured-post-block">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -101,7 +94,7 @@
                             <div class="col-12">
                                 <div class="main-title">
                                     <h4 class="mb-0">Popular Videos</h4>
-                                    <a class="view-all" href="{{ route('videos',['video_type'=>'is_popular']) }}"><i class="fa fa-list"></i> View All</a>
+                                    <a class="view-all" href="{{ route('videos',['video_type'=>'is_popular']) }}">View All <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -109,31 +102,27 @@
                             <div class="col-12">
                                 <div class="owl-carousel owl-theme latest">
 
-                                	@if($popular_videos->total() != 0) 
-						                @foreach($popular_videos as $key => $value)
-						                @php 
-						                	$pimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
-						                @endphp
-                                        <div class="item">
-                                            <div class="featured-post-small">
-                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
-                                                    <img src="{{$pimages}}" alt="">
-                                                    <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                                </a>
-                                                 @php
-                                                    $videoTitle = (strlen($value->video_title) >= 60) ? substr($value->video_title,0,56).'...' : $value->video_title;
-                                                    @endphp
-                                                <div class="featured-post_content">
-                                                    <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{ $videoTitle }}</h5></a>
-                                                    <span class="posted-time"><i class="fa fa-clock icon"></i>{{ $value->created_at->diffForHumans() }}</span>
-                                                </div>
+                                    @if($popular_videos->total() != 0) 
+                                        @foreach($popular_videos as $key => $value)
+                                        @php 
+                                            $popimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                        @endphp
+
+                                    <div class="item">
+                                        <div class="featured-post-small">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
+                                                <img src="{{$popimages}}" alt="">
+                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
+                                            </a>
+                                            <div class="featured-post_content">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{$value->video_title}}</h5></a>
                                             </div>
                                         </div>
-
-		                               	@endforeach
-					                @else
-					                <span>No Popular Video Added</span>
-					                @endif
+                                    </div>
+                                    @endforeach
+                                    @else
+                                    <span>No Popular Video Added</span>
+                                    @endif
 
                                 </div>
                             </div>
@@ -227,42 +216,46 @@
     </div>
 
 
-
     <div class="featured-post-block">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="featured-post">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="main-title">
-                                    <h4 class="mb-0">Trending Videos</h4>
-                                    <a class="view-all" href="{{ route('videos',['video_type'=>'is_trending']) }}"><i class="fa fa-list"></i> View All</a>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="featured-post">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="main-title">
+                                        <h4 class="mb-0">Trending Videos</h4>
+                                        <a class="view-all" href="{{ route('videos',['video_type'=>'is_trending']) }}">View All <i class="fa fa-angle-right"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="owl-carousel owl-theme latest">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="owl-carousel owl-theme latest">
 
-                                	@if($trending_videos->total() != 0) 
-						                @foreach($trending_videos as $key => $value)
-						                @php 
-						                	$pimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
-						                @endphp
-		                                    <div class="item">
-		                                        <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small">
-		                                            <div class="featured-post-small-img">
-		                                                <img src="{{$pimages}}" alt="Video Image">
-		                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-		                                            </div>
-		                                        </a>
-		                                    </div>
-		                               	@endforeach
-					                @else
-					                <span>No Trending Video Added</span>
-					                @endif
+                                        @if($trending_videos->total() != 0) 
+                                            @foreach($trending_videos as $key => $value)
+                                            @php 
+                                                $trendimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                            @endphp
 
+                                        <div class="item">
+                                            <div class="featured-post-small">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
+                                                    <img src="{{$trendimages}}" alt="">
+                                                    <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
+                                                </a>
+                                                <div class="featured-post_content">
+                                                    <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{$value->video_title}}</h5></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                        @else
+                                        <span>No Trending Video Added</span>
+                                        @endif
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +263,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 
   <!--   <div class="featured-post-block">
         <div class="container-fluid">

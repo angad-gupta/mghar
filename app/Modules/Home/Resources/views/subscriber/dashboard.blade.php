@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-4 col-lg-3">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <!-- <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
+                        <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
                            role="tab"
                            aria-controls="v-pills-profile" aria-selected="false"><i class="fa fa-border-all"></i>&nbsp;
                             Membership & Billing</a>
@@ -32,8 +32,8 @@
                         <a class="nav-link" id="v-pills-address-tab" data-toggle="pill" href="#v-pills-address"
                            role="tab"
                            aria-controls="v-pills-address" aria-selected="false"><i class="fa fa-map-marker"></i>&nbsp;
-                            Purchase History</a> -->
-                        <a class="nav-link active" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-cog"></i>&nbsp;
+                            Purchase History</a>
+                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-cog"></i>&nbsp;
                             My Account Details</a>
                         <a class="nav-link" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false"><i class="fa fa-lock"></i>&nbsp;
                             Change Password</a>
@@ -42,7 +42,7 @@
 
                 <div class="col-md-8 col-lg-9 mt-4 mt-md-0">
                     <div class="tab-content" id="v-pills-tabContent">
-                        <!-- <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel"
+                        <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel"
                              aria-labelledby="v-pills-profile-tab">
                             <div class="d-flex justify-content-between">
                                 <h4>Membership & Billing</h4>
@@ -60,10 +60,10 @@
                                 <h4>My Plan Details</h4>
                             </div>
                             <div class="tab-content__block">
-                                <div class="d-flex justify-content-between w-100">
-                                    <h5><span class="badge badge-warning">Monthly</span></h5>
-                                    <a href="#"  data-toggle="modal" data-target="#changePlanModal">Change Plan</a>
+                                <div class="alert alert-danger" role="alert">
+                                    You have not Set Plan Yet. <a href="#">Subscribe Now</a> and become a member for exclusive member benefits.
                                 </div>
+                                <p class="mb-0">You are a member since 26 January, 2021.</p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-address" role="tabpanel"
@@ -106,8 +106,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div> -->
-                        <div class="tab-pane fade show active" id="v-pills-settings" role="tabpanel"
+                        </div>
+                        <div class="tab-pane fade " id="v-pills-settings" role="tabpanel"
                              aria-labelledby="v-pills-settings-tab">
                             <div class="d-flex justify-content-between">
                                 <h4>Account Details</h4>
