@@ -63,7 +63,7 @@
                                         <div class="featured-post-small">
                                             <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
                                                 <img src="{{$pimages}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
+                                                <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</a>
                                             </a>
                                             <div class="featured-post_content">
                                                 <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{$value->video_title}}</h5></a>
@@ -112,7 +112,7 @@
                                         <div class="featured-post-small">
                                             <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
                                                 <img src="{{$popimages}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
+                                                <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</a>
                                             </a>
                                             <div class="featured-post_content">
                                                 <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{$value->video_title}}</h5></a>
@@ -243,7 +243,7 @@
                                             <div class="featured-post-small">
                                                 <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
                                                     <img src="{{$trendimages}}" alt="">
-                                                    <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
+                                                    <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</a>
                                                 </a>
                                                 <div class="featured-post_content">
                                                     <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{$value->video_title}}</h5></a>

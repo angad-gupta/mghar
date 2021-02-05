@@ -22,7 +22,7 @@
                                 <li class="list-inline-item"><a href="{{ route('home')}}">Home</a></li>
                                 <li class="list-inline-item"><a href="{{ route('khelau')}}">Khelau Juhari</a></li>
                                 <li class="list-inline-item"><a href="{{ route('videos')}}">Latest</a></li>
-                                <li class="list-inline-item"><a href="#">My WatchList</a></li>
+                                <li class="list-inline-item"><a href="{{ route('my-wishlist')}}">My WatchList</a></li>
                                 <!-- <li class="list-inline-item"><a href="#">Celebrity Bio</a></li> -->
                                 <!-- <li class="list-inline-item"><a href="#">News</a></li> -->
                             </ul>

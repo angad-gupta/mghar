@@ -36,6 +36,10 @@ Route::get('subscriber-logout', ['as' => 'subscriber-logout', 'uses' => 'Subscri
 Route::get('auth/redirect/{provider}', ['as' => 'auth/redirect/{provider}', 'uses' => 'AuthController@redirect']);
 Route::get('callback/{provider}', ['as' => 'callback/{provider}', 'uses' => 'AuthController@callback']);
 
+Route::get('add-to-wishlist', ['as' => 'add-to-wishlist', 'uses' => 'SubscriberController@addToWishlist']);
+Route::get('remove-from-wishlist', ['as' => 'remove-from-wishlist', 'uses' => 'SubscriberController@removeFromWishlist']);
+
+Route::get('my-wishlist', ['as' => 'my-wishlist', 'uses' => 'HomeController@myWishlist']);
 
 
 Route::group(['prefix' => 'subscriber', 'middleware' => ['auth:subscriber']], function () {

@@ -2,6 +2,7 @@
 namespace App\Modules\Subscriber\Repositories;
 
 use App\Modules\Subscriber\Entities\Subscriber;
+use App\Modules\Subscriber\Entities\SubscriberWishlist;
 use DB;
 
 class SubscriberRepository implements SubscriberInterface
@@ -61,6 +62,28 @@ class SubscriberRepository implements SubscriberInterface
     public function checkProviderId($provider_id_val){
         return Subscriber::where('provider_id', $provider_id_val)->first();
     }
+
+
+    public function checkwishlistVideo($videoId){
+        return SubscriberWishlist::where('video_id','=',$videoId)->count();
+    }
+
+    public function addWishlist($data){
+        return SubscriberWishlist::create($data);
+    }
+
+    public function removeWishlist($videoId){
+        return SubscriberWishlist::where('video_id','=',$videoId)->delete();
+    }
+
+    public function getWishlistById($id, $limit=null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]){
+         $result =SubscriberWishlist::when(array_keys($filter, true), function ($query) use ($filter) {
+           
+        })->where('subscriber_id','=',$id)->orderBy('id', $sort['sort'])->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));
+        
+        return $result; 
+    }
+
 
 
 }

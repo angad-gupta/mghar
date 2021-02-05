@@ -90,4 +90,46 @@ class SubscriberController extends Controller
         return redirect(route('subscriber-login'));
     }
 
+    public function addToWishlist(Request $request){
+
+        $input = $request->all();
+
+         if (Auth::guard('subscriber')->check()) {
+
+                $id = Auth::guard('subscriber')->user()->id;
+
+                $videoId = $input['video_id'];
+                $checkWishlist = $this->subscriber->checkwishlistVideo($videoId);
+
+                if($checkWishlist > 0){
+                    alertify('Already Added To your Wishlist.')->error();
+                    return redirect()->back();
+                }
+
+                $wishlistdata = array(
+                    'video_id' => $input['video_id'],
+                    'subscriber_id'=> $id
+                );
+
+                $this->subscriber->addWishlist($wishlistdata);
+                alertify('Added To your Wishlist.')->success();
+                return redirect()->back();
+
+         }else{
+             alertify('Please Login Before Adding Wishlist.')->error();
+            return redirect(route('subscriber-login'));
+
+         }
+
+    }
+
+    public function removeFromWishlist(Request $request){
+        $input = $request->all();
+        $videoId = $input['video_id'];
+
+        $this->subscriber->removeWishlist($videoId);
+        alertify('Removed From your Wishlist.')->success();
+        return redirect()->back();
+    }
+
 }

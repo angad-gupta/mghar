@@ -4,6 +4,7 @@ namespace App\Modules\Subscriber\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Modules\Subscriber\Entities\SubscriberWishlist;
 
 class Subscriber extends Authenticatable
 {
@@ -24,4 +25,9 @@ class Subscriber extends Authenticatable
     	'remember_token'
 
     ];
+
+    public function WishlistInfo()
+    {
+        return $this->hasMany(SubscriberWishlist::class, 'subscriber_id');
+    }
 }

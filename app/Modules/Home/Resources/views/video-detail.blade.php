@@ -78,7 +78,7 @@
                                             <div class="featured-post-small">
                                                 <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}" class="featured-post-small-img">
                                                     <img src="{{$raimages}}" alt="">
-                                                    <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
+                                                    <a href="{{ route('add-to-wishlist',['video_id'=>$videoInfo->id]) }}" class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</a>
                                                 </a>
                                                 <div class="featured-post_content">
                                                     <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}"><h5>{{$videoInfo->video_title}}</h5></a>

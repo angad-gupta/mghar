@@ -215,54 +215,18 @@ class HomeController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+   public function myWishlist(){ 
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        return view('home::show');
-    }
+        if (Auth::guard('subscriber')->check()) {
+             $id = Auth::guard('subscriber')->user()->id;
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        return view('home::edit');
-    }
+             $data['wishlist_videos'] = $this->subscriber->getWishlistById($id);
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+             return view('home::video-mywishlist', $data);
+        }else{
+             alertify('Please Login Before Adding Wishlist.')->error();
+            return redirect(route('subscriber-login'));
+        }
+   }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

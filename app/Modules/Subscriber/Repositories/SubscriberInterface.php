@@ -20,4 +20,11 @@ interface SubscriberInterface
 
     public function checkProviderId($provider_id_val);
 
+
+    public function checkwishlistVideo($videoId);
+    public function addWishlist($data);
+    public function removeWishlist($videoId);
+    public function getWishlistById($id, $limit=null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]);
+
+
 }
