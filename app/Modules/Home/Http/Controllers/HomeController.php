@@ -12,6 +12,7 @@ use App\Modules\Blog\Repositories\BlogInterface;
 use App\Modules\Subscriber\Repositories\SubscriberInterface;
 use App\Modules\KhelauJuhari\Repositories\KhelauJuhariInterface;
 use App\Modules\Banner\Repositories\BannerInterface;
+use App\Modules\DynamicBlock\Repositories\BlockSectionInterface;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -25,8 +26,9 @@ class HomeController extends Controller
     protected $subscriber;
     protected $khelaujuhari;
     protected $banner;
-    
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner)
+    protected $blocksection;
+
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner,BlockSectionInterface $blocksection)
     {
         $this->video = $video;
         $this->genre = $genre;
@@ -34,6 +36,7 @@ class HomeController extends Controller
         $this->subscriber = $subscriber;
         $this->khelaujuhari = $khelaujuhari;
         $this->banner = $banner;
+        $this->blocksection = $blocksection;
     }
 
     /**
@@ -45,9 +48,11 @@ class HomeController extends Controller
         $input = $request->all();
         
         $data['message'] = '';
-        $data['popular_videos'] = $this->video->getVideoByType('is_popular',$limit= 20);
-        $data['trending_videos'] = $this->video->getVideoByType('is_trending',$limit= 20);
-        $data['latest_videos'] = $this->video->findAll($limit = 20);
+        // $data['popular_videos'] = $this->video->getVideoByType('is_popular',$limit= 20);
+        // $data['trending_videos'] = $this->video->getVideoByType('is_trending',$limit= 20);
+        // $data['latest_videos'] = $this->video->findAll($limit = 20);
+
+        $data['dynamic_block'] = $this->blocksection->findAll($limit= 20);
         $data['blog_info'] = $this->blog->findAllActiveBlog($limit= 20);  
         $data['banner_info'] = $this->banner->findAllActiveBanner($limit= 20);  
         $data['genre'] = $this->genre->getList();

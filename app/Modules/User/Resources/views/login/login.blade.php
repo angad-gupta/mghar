@@ -55,7 +55,7 @@
 							            @else
 							            <img src="{{ asset('admin/global/images/sharma_logo.png')}}" alt="" width="50%" height="50%">
 							            @endif -->
-							        <!-- <img src="{{ asset('admin/global/images/sharma_logo.png')}}" alt="" width="50%" height="50%"> -->
+							        <img src="{{asset('home/images/logo.png')}}" alt="" width="50%" height="50%">
 									<h5 class="mb-0 mt-2">Login to <b class="text-pink">Manoranjan Ghar CMS</b></h5>
 									<!-- <span class="d-block text-muted">Your credentials</span> -->
 								</div>

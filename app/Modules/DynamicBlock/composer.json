@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/dynamicblock",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "App\\Modules\\DynamicBlock\\Providers\\DynamicBlockServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Modules\\DynamicBlock\\": ""
+        }
+    }
+}

@@ -1,16 +1,14 @@
 $(document).ready( function () {
-    $("#video_submit").validate({
+    $("#block_submit").validate({
         rules: {
-            video_title: "required",
-            genre_id: "required",
-            video_embeded_url: "required",
-            display_block_section: "required"
+            block_section: "required",
+            last_name: "required",
+            genre_id: "required"
         },
         messages: {
-            video_title: "Enter Video Title",
-            genre_id: "Select Genre",
-            video_embeded_url: "Enter Embeded Video URL",
-            display_block_section: "Select Homepage Block Section"
+            block_section: "Enter First Name",
+            last_name: "Enter Last Name",
+            genre_id: "Select Genre"
         },
         errorElement: "em",
         errorPlacement: function (error, element) {  console.log(element)
@@ -52,3 +50,4 @@ $(document).ready( function () {
         }
     });
 });
+

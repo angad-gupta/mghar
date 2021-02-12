@@ -2,13 +2,11 @@ $(document).ready( function () {
     $("#celebrity_submit").validate({
         rules: {
             first_name: "required",
-            last_name: "required",
-            genre_id: "required"
+            sort_order: "required"
         },
         messages: {
             first_name: "Enter First Name",
-            last_name: "Enter Last Name",
-            genre_id: "Select Genre"
+            sort_order: "Enter Last Name"
         },
         errorElement: "em",
         errorPlacement: function (error, element) {  console.log(element)

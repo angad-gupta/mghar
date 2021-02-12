@@ -74,6 +74,25 @@
                 </div>
             </div>
 
+
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <label class="col-form-label col-lg-3">Select Homepage Block Section:<span class="text-danger">*</span></label>
+                        <div class="col-lg-9 form-group-feedback form-group-feedback-right">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-dots"></i>
+                                    </span>
+                                </span>
+                                {!! Form::select('display_block_section',$block_section, $value = null, ['id'=>'display_block_section','class'=>'display_block_section form-control','placeholder'=>'Select Homepage Block Section']) !!} 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="form-group row">
                 <div class="col-lg-12">
                     <div class="row">

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Modules\Genre\Entities\Genre;
 use App\Modules\Celebrity\Entities\Celebrity;
 use App\Modules\Video\Entities\VideoCeleb;
+use App\Modules\DynamicBlock\Entities\BlockSection;
 
 class Video extends Model
 {
@@ -20,6 +21,7 @@ class Video extends Model
         'description',
         'status',
         'total_views',
+        'display_block_section',
         'is_popular',
         'is_trending',
         'is_featured'
@@ -33,6 +35,10 @@ class Video extends Model
 
     public function genre(){
         return $this->belongsTo(Genre::class,'genre_id','id');
+    }
+
+        public function blockSection(){
+        return $this->belongsTo(BlockSection::class,'display_block_section','id');
     }
 
     public function Celebrity(){

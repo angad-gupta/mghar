@@ -68,6 +68,14 @@
                     <i class="icon-menu" title="Advance Construction Features"></i>
                 </li>
 
+                @if($menuRoles->assignedRoles('dynamicblock.index'))
+                    <li class="nav-item">
+                        <a href="{{route('dynamicblock.index')}}" class="nav-link @if($Route[0]=='dynamicblock') active @endif" data-popup="tooltip" data-original-title="Dynamic Block Management"
+                           data-placement="right"><i class="icon-grid"></i><span>Dynamic Block Management</span>
+                        </a>
+                    </li>
+                @endif
+
                 @if($menuRoles->assignedRoles('genre.index'))
                     <li class="nav-item">
                         <a href="{{route('genre.index')}}" class="nav-link @if($Route[0]=='genre') active @endif" data-popup="tooltip" data-original-title="Genre Management"

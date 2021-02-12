@@ -1,0 +1,14 @@
+{
+    "name": "DynamicBlock",
+    "alias": "dynamicblock",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "App\\Modules\\DynamicBlock\\Providers\\DynamicBlockServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -92,5 +92,12 @@ class VideoRepository implements VideoInterface
         return $result; 
     }
 
+    public function getAllBySection($block_id,$limit=null,$filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]){
+       $result =Video::when(array_keys($filter, true), function ($query) use ($filter) {
+           
+        })->where('display_block_section','=',$block_id)->orderBy('id', $sort['sort'])->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));
+        
+        return $result;
+    }
 
 }

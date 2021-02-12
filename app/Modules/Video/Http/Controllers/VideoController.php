@@ -9,6 +9,8 @@ use Illuminate\Routing\Controller;
 use App\Modules\Video\Repositories\VideoInterface;
 use App\Modules\Genre\Repositories\GenreInterface;
 use App\Modules\Celebrity\Repositories\CelebrityInterface;
+use App\Modules\DynamicBlock\Repositories\BlockSectionInterface;
+
 
 class VideoController extends Controller
 {
@@ -16,12 +18,14 @@ class VideoController extends Controller
     protected $video;
     protected $genre;
     protected $celebrity;
+    protected $blocksection;
     
-    public function __construct(VideoInterface $video, GenreInterface $genre, CelebrityInterface $celebrity)
+    public function __construct(VideoInterface $video, GenreInterface $genre, CelebrityInterface $celebrity,BlockSectionInterface $blocksection)
     {
         $this->video = $video;
         $this->genre = $genre;
         $this->celebrity = $celebrity;
+        $this->blocksection = $blocksection;
     }
 
     /**
@@ -44,6 +48,7 @@ class VideoController extends Controller
         $data['is_edit'] = false;
         $data['genre'] = $this->genre->getList();
         $data['celebrity'] = $this->celebrity->getList();  
+        $data['block_section'] = $this->blocksection->getList();  
         return view('video::video.create',$data);
     }
 
@@ -64,17 +69,19 @@ class VideoController extends Controller
             $videoInfo = $this->video->save($data);
             $video_id = $videoInfo->id;
 
-            $celebrities = $data['celebrities'];
-            $countname = sizeof($celebrities);
-                for($i = 0; $i < $countname; $i++){
-                    
-                    if($data['celebrities'][$i]){
-                         $celebVideo['video_id'] = $video_id;
-                         $celebVideo['celebrity_id'] = $data['celebrities'][$i];
+            if(array_key_exists('celebrities', $data)){
+                $celebrities = $data['celebrities'];
+                $countname = sizeof($celebrities);
+                    for($i = 0; $i < $countname; $i++){
+                        
+                        if($data['celebrities'][$i]){
+                             $celebVideo['video_id'] = $video_id;
+                             $celebVideo['celebrity_id'] = $data['celebrities'][$i];
 
-                         $this->video->saveCelebrityVideo($celebVideo);
+                             $this->video->saveCelebrityVideo($celebVideo);
+                        }
                     }
-                }
+            }
 
             alertify()->success('Video Created Successfully');
         }catch(\Throwable $e){
@@ -105,6 +112,7 @@ class VideoController extends Controller
         $data['genre'] = $this->genre->getList();
         $data['video_info'] = $this->video->find($id);
         $data['celebrity'] = $this->celebrity->getList();  
+        $data['block_section'] = $this->blocksection->getList();  
         return view('video::video.edit',$data);
     }
 
@@ -128,17 +136,19 @@ class VideoController extends Controller
             $video_id = $id;
             $this->video->deleteCelebrityVideo($video_id);
 
-            $celebrities = $data['celebrities'];
-            $countname = sizeof($celebrities);
-                for($i = 0; $i < $countname; $i++){
-                    
-                    if($data['celebrities'][$i]){
-                         $celebVideo['video_id'] = $video_id;
-                         $celebVideo['celebrity_id'] = $data['celebrities'][$i];
+            if(array_key_exists('celebrities', $data)){
+                $celebrities = $data['celebrities'];
+                $countname = sizeof($celebrities);
+                    for($i = 0; $i < $countname; $i++){
+                        
+                        if($data['celebrities'][$i]){
+                             $celebVideo['video_id'] = $video_id;
+                             $celebVideo['celebrity_id'] = $data['celebrities'][$i];
 
-                         $this->video->saveCelebrityVideo($celebVideo);
+                             $this->video->saveCelebrityVideo($celebVideo);
+                        }
                     }
-                }
+            }
              alertify()->success('Video Updated Successfully');
         }catch(\Throwable $e){
            alertify($e->getMessage())->error();

@@ -46,11 +46,11 @@ class LoginController extends Controller
                 return redirect()->intended(route('dashboard'));
             } else {
                 Flash('Invalid Access')->warning();
-                return redirect(route('login'));
+                return redirect(route('cms'));
             }
         }else{
             Flash('Please Enter Correct Username/Password')->warning();
-            return redirect(route('login'));
+            return redirect(route('cms'));
         }
 
     }
@@ -77,7 +77,7 @@ class LoginController extends Controller
 
         }
         Auth::logout();
-        return redirect(route('login'));
+        return redirect(route('cms'));
     }
 
     public function permissionDenied()
@@ -89,7 +89,7 @@ class LoginController extends Controller
     {
         Auth::logout();
 
-        return redirect(route('login'));
+        return redirect(route('cms'));
     }
 
     /**
