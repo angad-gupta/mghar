@@ -7,7 +7,7 @@
         <div class="col-lg-3 form-group-feedback form-group-feedback-right">
             <div class="input-group">
                 <span class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-phone"></i></span>
+                    <span class="input-group-text"><i class="icon-office"></i></span>
                 </span>
                 @if($is_edit)
                 {!! Form::text('company_name',$setting->company_name, ['id'=>'company_name','placeholder'=>'Enter Company Name','class'=>'form-control']) !!}
@@ -21,7 +21,7 @@
         <div class="col-lg-3 form-group-feedback form-group-feedback-right">
             <div class="input-group">
                 <span class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-phone"></i></span>
+                    <span class="input-group-text"><i class="icon-sphere3"></i></span>
                 </span>
                 @if($is_edit)
                 {!! Form::text('website',$setting->website, ['id'=>'website','placeholder'=>'Enter Company Website','class'=>'form-control']) !!}
@@ -38,7 +38,7 @@
         <div class="col-lg-3 form-group-feedback form-group-feedback-right">
             <div class="input-group">
                 <span class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-phone"></i></span>
+                    <span class="input-group-text"><i class="icon-image2"></i></span>
                 </span>
                {!! Form::file('company_logo',$value = null, ['id'=>'company_logo', 'class'=>'form-control']) !!}
                 <span class="text-danger">{{ $errors->first('company_logo') }}</span>
@@ -49,7 +49,7 @@
         <div class="col-lg-3 form-group-feedback form-group-feedback-right">
             <div class="input-group">
                 <span class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-phone"></i></span>
+                    <span class="input-group-text"><i class="icon-cc"></i></span>
                 </span>
                 @if($is_edit)
                 {!! Form::text('company_copyright',$setting->company_copyright, ['id'=>'company_copyright','placeholder'=>'Enter Company Copyright','class'=>'form-control']) !!}
@@ -69,7 +69,7 @@
                 <img id="bannerImage" src="{{asset('uploads/setting/'.$setting->company_logo)}}"
                      alt="your image" class="preview-image" style="height: 100px;width: auto;"/>
             @else
-                <img id="bannerImage" src="{{ asset('admin/default.png') }}" alt="your image"
+                <img id="bannerImage" src="{{ asset('admin/image.png') }}" alt="your image"
                      class="preview-image"
                      style="height: 100px; width: auto;"/>
             @endif
@@ -158,70 +158,6 @@
                     <span class="text-danger">{{ $errors->first('company_email') }}</span>
             </div>
         </div>
-        <label class="col-form-label col-lg-3">Account Email:</label>
-        <div class="col-lg-3 form-group-feedback form-group-feedback-right">
-            <div class="input-group">
-                <span class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-envelop5"></i></span>
-                </span>
-                @if($is_edit)
-                {!! Form::text('accounts_email',$setting->accounts_email, ['id'=>'accounts_email','placeholder'=>'Enter Account Email','class'=>'form-control']) !!}
-               @else
-                {!! Form::text('accounts_email',$value = null, ['id'=>'accounts_email','placeholder'=>'Enter Account Email','class'=>'form-control']) !!}
-               @endif
-                <span class="text-danger">{{ $errors->first('accounts_email') }}</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label class="col-form-label col-lg-3">Admission Email:</label>
-        <div class="col-lg-3 form-group-feedback form-group-feedback-right">
-            <div class="input-group">
-                <span class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-envelop5"></i></span>
-                </span>
-                @if($is_edit)
-                {!! Form::text('admission_email',$setting->admission_email, ['id'=>'admission_email','placeholder'=>'Enter Admission Email','class'=>'form-control']) !!}
-               @else
-                {!! Form::text('admission_email',$value = null, ['id'=>'admission_email','placeholder'=>'Enter Admission Email','class'=>'form-control']) !!}
-                @endif
-                    <span class="text-danger">{{ $errors->first('admission_email') }}</span>
-            </div>
-        </div>
-        <label class="col-form-label col-lg-3">Information Email:</label>
-        <div class="col-lg-3 form-group-feedback form-group-feedback-right">
-            <div class="input-group">
-                <span class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-envelop5"></i></span>
-                </span>
-                @if($is_edit)
-                {!! Form::text('information_email',$setting->information_email, ['id'=>'information_email','placeholder'=>'Enter Information Email','class'=>'form-control']) !!}
-               @else
-                {!! Form::text('information_email',$value = null, ['id'=>'information_email','placeholder'=>'Enter Information Email','class'=>'form-control']) !!}
-                @endif
-                    <span class="text-danger">{{ $errors->first('information_email') }}</span>
-            </div>
-        </div>
-    </div>
-
-
-       <div class="form-group row">
-        
-        <label class="col-form-label col-lg-3">Skype ID:</label>
-        <div class="col-lg-3 form-group-feedback form-group-feedback-right">
-            <div class="input-group">
-                <span class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-skype"></i></span>
-                </span>
-                @if($is_edit)
-                {!! Form::text('skype',$setting->skype, ['id'=>'skype','placeholder'=>'Enter Skype ID','class'=>'form-control']) !!}
-               @else
-                {!! Form::text('skype',$value = null, ['id'=>'skype','placeholder'=>'Enter Skype ID','class'=>'form-control']) !!}
-               @endif
-                <span class="text-danger">{{ $errors->first('skype') }}</span>
-            </div>
-        </div>
         <label class="col-form-label col-lg-3">Instagram URL:</label>
         <div class="col-lg-3 form-group-feedback form-group-feedback-right">
             <div class="input-group">
@@ -237,6 +173,7 @@
             </div>
         </div>
     </div>
+
 
      <div class="form-group row">
         

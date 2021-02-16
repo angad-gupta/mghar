@@ -5,7 +5,7 @@
     </div>
 
     <div class="navbar-collapse collapse" id="navbar-footer">
-		<span class="navbar-text">&copy; {{date('Y')}}. <a href="javascript:void(0)" class="text-success">Bidhee Project Management System</a> by <a href="http://bidhee.com/" target="_blank" class="text-success">Bidhee Pvt. Ltd</a></span>
+		<span class="navbar-text">&copy; {{date('Y')}}. <a href="javascript:void(0)" class="text-success">Manoranjan Ghar CRM</a> by <a href="http://bidhee.com/" target="_blank" class="text-success">Bidhee Pvt. Ltd</a></span>
     </div>
 </div>
 <!-- /footer -->

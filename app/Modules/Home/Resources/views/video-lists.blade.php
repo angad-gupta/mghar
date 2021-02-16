@@ -6,17 +6,20 @@
     <div class="featured-post-block mt-4">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12"> 
                     <div class="featured-post">
+ 
+
                         <div class="row">
                             <div class="col-12">
                                 <div class="main-title">
-                                    <h3 class="mb-0">Videos</h3>
-                                        {!! Form::open(['route' => ['videos'], 'method' => 'get','id'=>'searchGenreSubmit']) !!}
-                                        <div class="form-group mb-2">
-                                            <select class="form-control" name="genre" id="genre_select_video">
-                                                 <option value="0">--Select Any--</option>
-                                                @foreach($genre as $key =>$val)
+                                    <h3 class="mb-0"> Videos</h3>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Select Genre
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            @foreach($genre as $key =>$val)
                                                     @php 
                                                         $select ="";
                                                         if($genre_search){
@@ -25,14 +28,14 @@
                                                             }   
                                                         }
                                                     @endphp
-                                                    <option value="{{$key}}" {{$select}}>{{$val}}</option>
+                                                    <a href="{{ route('videos',['genre'=>$key]) }}" class="dropdown-item">{{$val}}</a>
                                                 @endforeach
-                                            </select>
                                         </div>
-                                        {!! Form::close() !!}
+                                    </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
+
 
                         <div class="row">
                              @if($videos->total() != 0) 
@@ -45,7 +48,7 @@
                                 <div class="featured-post-small">
                                     <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
                                         <img src="{{$coverimages}}" alt="">
-                                        <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</a>
+                                        <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist" data-toggle="tooltip" data-placement="top" title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                     </a>
                                     <div class="featured-post_content">
                                         <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{$value->video_title}}</h5></a>

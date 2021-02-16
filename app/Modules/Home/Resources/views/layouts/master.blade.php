@@ -14,7 +14,12 @@
     <link href="{{asset('home/css/style.css')}}" rel="stylesheet">
     <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 
-
+    <style>
+        .player {
+            width: 100% !important;
+            max-width: none !important;
+        }
+    </style>
      
      @yield('share_head')
      
@@ -57,6 +62,16 @@ $(document).ready(function() {
             input.attr("type", "password");
         }
     }); 
+
+     $('#seach_video').on('click',function(){
+            var seach_video = $('#search_val').val();
+            var seach_url = $('#search_url').val();
+
+            window.location.href = seach_url +"?search_val=" + seach_video;
+            return false;
+
+    });
+
 
 })
 </script>

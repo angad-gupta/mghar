@@ -4,7 +4,7 @@
     $Route = explode('.',$currentRoute);
 @endphp
 
-<div class="sidebar sidebar-dark sidebar-main sidebar-expand-md">
+<div class="sidebar sidebar-dark sidebar-main sidebar-expand-md"  @if($setting != null)) style="background-color: {{$setting->secondary_navbar_color}};" @endif>
 
     <!-- Sidebar mobile toggler -->
     <div class="sidebar-mobile-toggler text-center">
@@ -116,6 +116,20 @@
                     <li class="nav-item">
                         <a href="{{route('banner.index')}}" class="nav-link @if($Route[0]=='banner') active @endif" data-popup="tooltip" data-original-title="Banner Management"
                            data-placement="right"><i class="icon-images2"></i><span>Banner Management</span>
+                        </a>
+                    </li>
+                @endif
+                @if($menuRoles->assignedRoles('faq.index'))
+                    <li class="nav-item">
+                        <a href="{{route('faq.index')}}" class="nav-link @if($Route[0]=='faq') active @endif" data-popup="tooltip" data-original-title="FAQ Management"
+                           data-placement="right"><i class="icon-bubbles3"></i><span>FAQ Management</span>
+                        </a>
+                    </li>
+                @endif
+                @if($menuRoles->assignedRoles('page.index'))
+                    <li class="nav-item">
+                        <a href="{{route('page.index')}}" class="nav-link @if($Route[0]=='page') active @endif" data-popup="tooltip" data-original-title="Page Management"
+                           data-placement="right"><i class="icon-stack-text"></i><span>Page Management</span>
                         </a>
                     </li>
                 @endif

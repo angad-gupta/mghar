@@ -27,7 +27,6 @@
                                 <div class="featured-post-small">
                                     <a href="{{ route('khelaujuhari-detail',['juhari_id'=>$value->id]) }}" class="featured-post-small-img">
                                         <img src="{{$coverimages}}" alt="">
-                                        <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
                                     </a>
                                     <div class="featured-post_content">
                                         <a href="{{ route('khelaujuhari-detail',['juhari_id'=>$value->id]) }}"><h5>{{$value->kj_title}}</h5></a>

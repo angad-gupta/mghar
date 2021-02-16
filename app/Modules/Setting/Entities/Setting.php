@@ -23,10 +23,6 @@ class Setting extends Model
         'contact_no2',
         'address1',
         'address2',
-        'accounts_email',
-        'admission_email',
-        'information_email',
-        'skype',
 
         'facebook_link',
         'instagram_link',

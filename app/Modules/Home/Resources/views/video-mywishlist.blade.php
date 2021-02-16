@@ -28,7 +28,7 @@
                                 <div class="featured-post-small">
                                     <a href="{{ route('video-detail',['video_id'=>optional($value->videoInfo)->id]) }}" class="featured-post-small-img">
                                         <img src="{{$myimages}}" alt="">
-                                        <a href="{{ route('remove-from-wishlist',['video_id'=>optional($value->videoInfo)->id]) }}" class="add-watchlist"><i class="fas fa-times"></i> &nbsp;Remove from Watchlist</a>
+                                        <a href="{{ route('remove-from-wishlist',['video_id'=>optional($value->videoInfo)->id]) }}" class="add-watchlist" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="fas fa-times"></i></a>
                                     </a>
                                     <div class="featured-post_content">
                                         <a href="{{ route('video-detail',['video_id'=>optional($value->videoInfo)->id]) }}"><h5>{{optional($value->videoInfo)->video_title}}</h5></a>

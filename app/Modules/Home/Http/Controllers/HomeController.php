@@ -13,6 +13,7 @@ use App\Modules\Subscriber\Repositories\SubscriberInterface;
 use App\Modules\KhelauJuhari\Repositories\KhelauJuhariInterface;
 use App\Modules\Banner\Repositories\BannerInterface;
 use App\Modules\DynamicBlock\Repositories\BlockSectionInterface;
+use App\Modules\Page\Repositories\PageInterface;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +29,7 @@ class HomeController extends Controller
     protected $banner;
     protected $blocksection;
 
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner,BlockSectionInterface $blocksection)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner,BlockSectionInterface $blocksection,PageInterface $page)
     {
         $this->video = $video;
         $this->genre = $genre;
@@ -37,6 +38,7 @@ class HomeController extends Controller
         $this->khelaujuhari = $khelaujuhari;
         $this->banner = $banner;
         $this->blocksection = $blocksection;
+        $this->page = $page;
     }
 
     /**
@@ -48,6 +50,7 @@ class HomeController extends Controller
         $input = $request->all();
         
         $data['message'] = '';
+
         // $data['popular_videos'] = $this->video->getVideoByType('is_popular',$limit= 20);
         // $data['trending_videos'] = $this->video->getVideoByType('is_trending',$limit= 20);
         // $data['latest_videos'] = $this->video->findAll($limit = 20);

@@ -30,17 +30,9 @@
                 </div>
                 <div class="card-body">
                     <ul class="nav nav-tabs nav-tabs-bottom border-bottom-0" style="position: absolute;">
-                        <li class="nav-item"><a href="#bottom-divided-tab1"
-                                                class="btn alpha-pink rounded-round nav-link active show"
-                                                data-toggle="tab"><i
-                                    class="text-slate-700 icon-cog mr-2"></i><span
-                                    class="text-dark">Basic Setting</span></a>
+                        <li class="nav-item"><a href="#bottom-divided-tab1" class="btn alpha-pink rounded-round nav-link active show" data-toggle="tab"><i class="text-slate-700 icon-cog mr-2"></i><span class="text-dark">Basic Setting</span></a>
                         </li>
-                        <li class="nav-item"><a href="#bottom-divided-tab2"
-                                                class="ml-3 alpha-pink rounded-round nav-link"
-                                                data-toggle="tab"><i
-                                    class="text-primary-400 icon-bucket mr-2"></i><span
-                                    class="text-dark">Color Setting</span></a></li>
+                        <li class="nav-item"><a href="#bottom-divided-tab2" class="ml-3 alpha-pink rounded-round nav-link" data-toggle="tab"><i class="text-primary-400 icon-bucket mr-2"></i><span class="text-dark">Color Setting</span></a></li>
 
                     </ul>
                     <div class="tab-content">
@@ -48,9 +40,6 @@
 
                             <div style="margin-top: 64px;">
                                 {!! Form::model($setting,['method'=>'post','route'=>['setting.updatebasicsetting',$setting->id],'class'=>'form-horizontal','id'=>'organization_submit','role'=>'form','files'=>true]) !!}
-                                {{--<form action="{{ route('setting.updatebasicsetting',$setting->id) }}" method="POST"--}}
-                                      {{--enctype="multipart/form-data">--}}
-                                    {{--{{csrf_field()}}--}}
                                     @include('setting::setting.partial.basic')
                                     <div class="text-right">
                                         <button type="submit" class="btn bg-teal-400"><i class="icon-plus-circle2"></i>
@@ -64,9 +53,6 @@
                         <div class="tab-pane fade" id="bottom-divided-tab2">
 
                             <div style="margin-top: 64px;">
-                                {{--<form action="{{ route('setting.updatebasicsetting',$setting->id) }}" method="post"--}}
-                                      {{--enctype="multipart/form-data">--}}
-                                    {{--{{csrf_field()}}--}}
 
                                 {!! Form::model($setting,['method'=>'post','route'=>['setting.updatebasicsetting',$setting->id],'class'=>'form-horizontal','id'=>'organization_submit','role'=>'form','files'=>true]) !!}
 

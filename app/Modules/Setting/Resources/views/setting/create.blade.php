@@ -29,17 +29,9 @@
                 </div>
                 <div class="card-body">
                    <ul class="nav nav-tabs nav-tabs-bottom border-bottom-0" style="position: absolute;">
-                        <li class="nav-item"><a href="#bottom-divided-tab1"
-                                                class="btn alpha-pink rounded-round nav-link active show"
-                                                data-toggle="tab"><i
-                                    class="text-slate-700 icon-cog mr-2"></i><span
-                                    class="text-dark">Basic Setting</span></a>
+                        <li class="nav-item"><a href="#bottom-divided-tab1" class="btn alpha-pink rounded-round nav-link active show" data-toggle="tab"><i class="text-slate-700 icon-cog mr-2"></i><span class="text-dark">Basic Setting</span></a>
                         </li>
-                        <li class="nav-item"><a href="#bottom-divided-tab2"
-                                                class="ml-3 alpha-pink rounded-round nav-link"
-                                                data-toggle="tab"><i
-                                    class="text-primary-400 icon-bucket mr-2"></i><span
-                                    class="text-dark">Color Setting</span></a></li>
+                        <li class="nav-item"><a href="#bottom-divided-tab2" class="ml-3 alpha-pink rounded-round nav-link" data-toggle="tab"><i class="text-primary-400 icon-bucket mr-2"></i><span class="text-dark">Color Setting</span></a></li>
 
                     </ul>
 

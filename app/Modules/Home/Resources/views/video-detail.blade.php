@@ -33,11 +33,12 @@
                                     <span class="mr-4"><i class="fa fa-eye icon"></i>&nbsp;{{ $video_detail->total_views }} views</span>
                                     <span><i class="fa fa-clock icon"></i>&nbsp;{{ $video_detail->created_at->diffForHumans() }}</span>
                                 </div>
-                                <div class="video-share d-flex align-items-center">
+                                 <div class="video-share d-flex align-items-center">
                                     <h6 class="mb-0 mr-1"><i class="fa fa-share"></i>&nbsp;Share:</h6>
-                                     <div class="fb-share-button" data-href="{{ route('video-detail',['video_id'=>$video_detail->id]) }}" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ route('video-detail',['video_id'=>$video_detail->id]) }}%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-                                   <a href="{{ route('video-detail',['video_id'=>$video_detail->id]) }}" class="twitter-share-button" data-show-count="false">Tweet</a>
+                                    <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u={{ route('video-detail',['video_id'=>$video_detail->id]) }}%2F&amp;src=sdkpreparse"><i class="fab fa-facebook"></i></a>
+                                    <a target="_blank" class="tweet" href="http://twitter.com/share?text={{$video_detail->video_title}}&url={{ route('video-detail',['video_id'=>$video_detail->id]) }}"><i class="fab fa-twitter"></i></a>
                                 </div>
+
                             </div>
                             <hr>
                             <div class="video-desc">

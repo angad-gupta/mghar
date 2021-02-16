@@ -2,7 +2,7 @@
 @section('title')Subscriber Login @stop
 @section('content')
 
-    <div class="register-page page page--overlay" style="background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/9a818ce7-5b19-4a0a-8bec-e4a233c8661b/edf0202d-cb01-427f-bd3d-c0f8774f53a7/NP-en-20210104-popsignuptwoweeks-perspective_alpha_website_small.jpg');">
+    <div class="register-page page page--overlay" style="background-image: url('https://images.pexels.com/photos/4009409/pexels-photo-4009409.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">

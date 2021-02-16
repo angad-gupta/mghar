@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c3e69e8d-8b8e-4744-acab-c0923c16ce38" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-single.php" beforeDir="false" afterPath="$PROJECT_DIR$/video-single.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/watchlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/watchlist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,79 +18,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="639" column="30" lean-forward="true" selection-start-line="639" selection-start-column="30" selection-end-line="639" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="video-single.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/video-single.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="60" column="67" selection-start-line="60" selection-start-column="67" selection-end-line="60" selection-end-column="67" />
-              <folding>
-                <element signature="e#8309#8640#0#HTML" />
-                <element signature="e#13717#21608#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="watchlist.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/watchlist.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
-              <caret line="108" column="92" selection-start-line="108" selection-start-column="92" selection-end-line="108" selection-end-column="92" />
-              <caret line="119" column="92" selection-start-line="119" selection-start-column="92" selection-end-line="119" selection-end-column="92" />
-              <caret line="130" column="92" selection-start-line="130" selection-start-column="92" selection-end-line="130" selection-end-column="92" />
-              <caret line="141" column="92" selection-start-line="141" selection-start-column="92" selection-end-line="141" selection-end-column="92" />
-              <caret line="152" column="92" selection-start-line="152" selection-start-column="92" selection-end-line="152" selection-end-column="92" />
-              <caret line="20" column="92" selection-start-line="20" selection-start-column="92" selection-end-line="20" selection-end-column="92" />
-              <caret line="31" column="92" selection-start-line="31" selection-start-column="92" selection-end-line="31" selection-end-column="92" />
-              <caret line="42" column="92" selection-start-line="42" selection-start-column="92" selection-end-line="42" selection-end-column="92" />
-              <caret line="53" column="92" selection-start-line="53" selection-start-column="92" selection-end-line="53" selection-end-column="92" />
-              <caret line="64" column="92" selection-start-line="64" selection-start-column="92" selection-end-line="64" selection-end-column="92" />
-              <caret line="75" column="92" selection-start-line="75" selection-start-column="92" selection-end-line="75" selection-end-column="92" />
-              <caret line="86" column="92" selection-start-line="86" selection-start-column="92" selection-end-line="86" selection-end-column="92" />
-              <caret line="97" column="92" selection-start-line="97" selection-start-column="92" selection-end-line="97" selection-end-column="92" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my-account.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my-account.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="114" column="51" lean-forward="true" selection-start-line="114" selection-start-column="51" selection-end-line="114" selection-end-column="51" />
-              <folding>
-                <element signature="e#1548#1554#0#HTML" expanded="true" />
-                <element signature="e#1856#1862#0#HTML" expanded="true" />
-                <element signature="e#2169#2175#0#HTML" expanded="true" />
-                <element signature="e#2478#2484#0#HTML" expanded="true" />
-                <element signature="e#10754#14266#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/custom.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/register.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="37" column="42" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="37" selection-end-column="42" />
-              <folding>
-                <element signature="e#89#308#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="166">
+              <caret line="1214" column="18" selection-start-line="1214" selection-start-column="18" selection-end-line="1214" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -98,46 +27,10 @@
       <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-25">
-              <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="35" column="99" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="99" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="453" column="46" selection-start-line="453" selection-start-column="46" selection-end-line="453" selection-end-column="46" />
+            <state relative-caret-position="560">
+              <caret line="64" column="93" selection-start-line="64" selection-start-column="93" selection-end-line="64" selection-end-column="93" />
               <folding>
-                <element signature="e#10923#10929#0#HTML" expanded="true" />
-                <element signature="e#11783#11789#0#HTML" expanded="true" />
-                <element signature="e#12643#12649#0#HTML" expanded="true" />
-                <element signature="e#13504#13510#0#HTML" expanded="true" />
-                <element signature="e#14365#14371#0#HTML" expanded="true" />
-                <element signature="e#15226#15232#0#HTML" expanded="true" />
-                <element signature="e#16087#16093#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="category.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/category.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="45" lean-forward="true" selection-end-line="184" selection-end-column="37" />
-              <folding>
-                <element signature="e#1433#1510#0#HTML" />
+                <element signature="n#style#0;n#img#0;n#button#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,36 +40,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Videos Re</find>
-      <find>Trending</find>
-      <find>small</find>
-      <find>.posted-time</find>
-      <find>View</find>
-      <find>More Like This</find>
-      <find>featured-post-big-img</find>
-      <find>Manora</find>
-      <find>logo</find>
-      <find>reg</find>
-      <find>featured-post-small-img</find>
-      <find>posted-time</find>
-      <find>.ecm-login .tab-pane label span</find>
-      <find>.ecm-login .forget</find>
-      <find>.ecm-login .nav-tabs</find>
-      <find>featured-post_content</find>
-      <find>.video-iframe iframe</find>
-      <find>latest</find>
-      <find>Popular Videos</find>
-      <find>.mg-search input</find>
-      <find>social-login</find>
-      <find>login</find>
-      <find>page--overlay</find>
-      <find>watch</find>
-      <find>pwdModal</find>
-      <find>View All</find>
-      <find>view-all</find>
       <find>Trending Videos</find>
-      <find>.dashboard .nav .nav-link</find>
       <find>video-desc</find>
+      <find>sear</find>
+      <find>.nav-bar li a</find>
+      <find>active</find>
+      <find>.featured-post_c</find>
+      <find>banner-slider</find>
+      <find>btn {</find>
+      <find>.owl</find>
+      <find>.owl-prev</find>
+      <find>owl</find>
+      <find>add-watchlist</find>
+      <find>watchl</find>
+      <find>watch</find>
+      <find>.featured-post_content h5</find>
+      <find>main-title</find>
+      <find>.featured-post-small</find>
+      <find>.add-watchlist</find>
+      <find>New on</find>
+      <find>.table</find>
+      <find>.nnc-preloader:before</find>
+      <find>page</find>
+      <find>.panel-default&gt;.panel-heading a</find>
+      <find>Eros</find>
+      <find>.register-form</find>
+      <find>Changes</find>
+      <find>.dashboard .nav .nav-link</find>
+      <find>Change</find>
+      <find>iframe</find>
+      <find>.nav-bar li a.active</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -189,18 +82,22 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/single.php" />
-        <option value="$PROJECT_DIR$/include/footer.php" />
-        <option value="$PROJECT_DIR$/subscription.php" />
         <option value="$PROJECT_DIR$/video-detail.php" />
-        <option value="$PROJECT_DIR$/category.php" />
-        <option value="$PROJECT_DIR$/register.php" />
-        <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/js/custom.js" />
-        <option value="$PROJECT_DIR$/my-account.php" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/include/header.php" />
         <option value="$PROJECT_DIR$/video-single.php" />
+        <option value="$PROJECT_DIR$/register.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/category.php" />
         <option value="$PROJECT_DIR$/watchlist.php" />
+        <option value="$PROJECT_DIR$/subscription.php" />
+        <option value="$PROJECT_DIR$/js/custom.js" />
+        <option value="$PROJECT_DIR$/about.php" />
+        <option value="$PROJECT_DIR$/terms.php" />
+        <option value="$PROJECT_DIR$/privacy-policy.php" />
+        <option value="$PROJECT_DIR$/faq.php" />
+        <option value="$PROJECT_DIR$/include/footer.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/my-account.php" />
+        <option value="$PROJECT_DIR$/include/header.php" />
         <option value="$PROJECT_DIR$/css/style.css" />
       </list>
     </option>
@@ -277,18 +174,27 @@
       <workItem from="1610339368639" duration="2347000" />
       <workItem from="1611458915363" duration="1385000" />
       <workItem from="1611633366763" duration="288000" />
-      <workItem from="1612169646016" duration="14956000" />
+      <workItem from="1612169646016" duration="15242000" />
+      <workItem from="1612348011029" duration="6000" />
+      <workItem from="1612502714851" duration="1113000" />
+      <workItem from="1612945406772" duration="4989000" />
+      <workItem from="1613016023800" duration="8219000" />
+      <workItem from="1613042509304" duration="714000" />
+      <workItem from="1613101248512" duration="20000" />
+      <workItem from="1613388762963" duration="418000" />
+      <workItem from="1613447953508" duration="36000" />
+      <workItem from="1613451398427" duration="2034000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47220000" />
+    <option name="totallyTimeSpent" value="65055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="976" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21062271" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23260073" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -316,6 +222,20 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7701">
+          <caret line="453" column="46" selection-start-line="453" selection-start-column="46" selection-end-line="453" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="45" lean-forward="true" selection-end-line="184" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10506">
@@ -338,15 +258,6 @@
           <caret line="547" column="46" selection-start-line="547" selection-start-column="46" selection-end-line="547" selection-end-column="46" />
           <caret line="559" column="46" selection-start-line="559" selection-start-column="46" selection-end-line="559" selection-end-column="46" />
           <caret line="571" column="46" selection-start-line="571" selection-start-column="46" selection-end-line="571" selection-end-column="46" />
-          <folding>
-            <element signature="e#10923#10929#0#HTML" expanded="true" />
-            <element signature="e#11783#11789#0#HTML" expanded="true" />
-            <element signature="e#12643#12649#0#HTML" expanded="true" />
-            <element signature="e#13504#13510#0#HTML" expanded="true" />
-            <element signature="e#14365#14371#0#HTML" expanded="true" />
-            <element signature="e#15226#15232#0#HTML" expanded="true" />
-            <element signature="e#16087#16093#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -357,13 +268,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/video-detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/video-detail.php" />
     <entry file="file://$PROJECT_DIR$/include/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -403,13 +308,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/video-detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/video-detail.php" />
     <entry file="file://$PROJECT_DIR$/include/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -424,13 +323,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/video-detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/video-detail.php" />
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9350">
@@ -463,13 +356,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/video-detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/video-detail.php" />
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9044">
@@ -554,13 +441,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="74" column="42" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/single.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="802">
@@ -568,125 +448,131 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/subscription.php">
+    <entry file="file://$PROJECT_DIR$/video-detail.php" />
+    <entry file="file://$PROJECT_DIR$/register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="118" column="38" selection-start-line="114" selection-start-column="47" selection-end-line="118" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/video-detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="45" lean-forward="true" selection-end-line="184" selection-end-column="37" />
-          <folding>
-            <element signature="e#1433#1510#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="35" column="99" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="99" />
+        <state relative-caret-position="34">
+          <caret line="2" column="191" selection-start-line="2" selection-start-column="191" selection-end-line="2" selection-end-column="191" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="453" column="46" selection-start-line="453" selection-start-column="46" selection-end-line="453" selection-end-column="46" />
-          <folding>
-            <element signature="e#10923#10929#0#HTML" expanded="true" />
-            <element signature="e#11783#11789#0#HTML" expanded="true" />
-            <element signature="e#12643#12649#0#HTML" expanded="true" />
-            <element signature="e#13504#13510#0#HTML" expanded="true" />
-            <element signature="e#14365#14371#0#HTML" expanded="true" />
-            <element signature="e#15226#15232#0#HTML" expanded="true" />
-            <element signature="e#16087#16093#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25">
-          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="37" column="42" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="37" selection-end-column="42" />
-          <folding>
-            <element signature="e#89#308#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my-account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="114" column="51" lean-forward="true" selection-start-line="114" selection-start-column="51" selection-end-line="114" selection-end-column="51" />
-          <folding>
-            <element signature="e#1548#1554#0#HTML" expanded="true" />
-            <element signature="e#1856#1862#0#HTML" expanded="true" />
-            <element signature="e#2169#2175#0#HTML" expanded="true" />
-            <element signature="e#2478#2484#0#HTML" expanded="true" />
-            <element signature="e#10754#14266#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/video-single.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="60" column="67" selection-start-line="60" selection-start-column="67" selection-end-line="60" selection-end-column="67" />
-          <folding>
-            <element signature="e#8309#8640#0#HTML" />
-            <element signature="e#13717#21608#0#HTML" />
-          </folding>
+        <state relative-caret-position="302">
+          <caret line="175" column="182" lean-forward="true" selection-start-line="175" selection-start-column="48" selection-end-line="175" selection-end-column="182" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/watchlist.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="664">
+          <caret line="108" column="167" selection-start-line="108" selection-start-column="167" selection-end-line="108" selection-end-column="167" />
+          <caret line="119" column="167" selection-start-line="119" selection-start-column="167" selection-end-line="119" selection-end-column="167" />
+          <caret line="130" column="167" selection-start-line="130" selection-start-column="167" selection-end-line="130" selection-end-column="167" />
+          <caret line="141" column="167" selection-start-line="141" selection-start-column="167" selection-end-line="141" selection-end-column="167" />
+          <caret line="152" column="167" selection-start-line="152" selection-start-column="167" selection-end-line="152" selection-end-column="167" />
+          <caret line="20" column="167" selection-start-line="20" selection-start-column="167" selection-end-line="20" selection-end-column="167" />
+          <caret line="31" column="167" selection-start-line="31" selection-start-column="167" selection-end-line="31" selection-end-column="167" />
+          <caret line="42" column="167" selection-start-line="42" selection-start-column="167" selection-end-line="42" selection-end-column="167" />
+          <caret line="53" column="167" selection-start-line="53" selection-start-column="167" selection-end-line="53" selection-end-column="167" />
+          <caret line="64" column="167" selection-start-line="64" selection-start-column="167" selection-end-line="64" selection-end-column="167" />
+          <caret line="75" column="167" selection-start-line="75" selection-start-column="167" selection-end-line="75" selection-end-column="167" />
+          <caret line="86" column="167" selection-start-line="86" selection-start-column="167" selection-end-line="86" selection-end-column="167" />
+          <caret line="97" column="167" selection-start-line="97" selection-start-column="167" selection-end-line="97" selection-end-column="167" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/subscription.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="78" column="86" selection-start-line="78" selection-start-column="86" selection-end-line="78" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="54" column="24" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/category.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="764">
-          <caret line="108" column="92" selection-start-line="108" selection-start-column="92" selection-end-line="108" selection-end-column="92" />
-          <caret line="119" column="92" selection-start-line="119" selection-start-column="92" selection-end-line="119" selection-end-column="92" />
-          <caret line="130" column="92" selection-start-line="130" selection-start-column="92" selection-end-line="130" selection-end-column="92" />
-          <caret line="141" column="92" selection-start-line="141" selection-start-column="92" selection-end-line="141" selection-end-column="92" />
-          <caret line="152" column="92" selection-start-line="152" selection-start-column="92" selection-end-line="152" selection-end-column="92" />
-          <caret line="20" column="92" selection-start-line="20" selection-start-column="92" selection-end-line="20" selection-end-column="92" />
-          <caret line="31" column="92" selection-start-line="31" selection-start-column="92" selection-end-line="31" selection-end-column="92" />
-          <caret line="42" column="92" selection-start-line="42" selection-start-column="92" selection-end-line="42" selection-end-column="92" />
-          <caret line="53" column="92" selection-start-line="53" selection-start-column="92" selection-end-line="53" selection-end-column="92" />
-          <caret line="64" column="92" selection-start-line="64" selection-start-column="92" selection-end-line="64" selection-end-column="92" />
-          <caret line="75" column="92" selection-start-line="75" selection-start-column="92" selection-end-line="75" selection-end-column="92" />
-          <caret line="86" column="92" selection-start-line="86" selection-start-column="92" selection-end-line="86" selection-end-column="92" />
-          <caret line="97" column="92" selection-start-line="97" selection-start-column="92" selection-end-line="97" selection-end-column="92" />
+          <caret line="151" column="174" selection-end-line="184" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/terms.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="39" selection-end-line="37" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/privacy-policy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="29" selection-end-line="35" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="114" selection-start-line="27" selection-start-column="114" selection-end-line="27" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video-single.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faq.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="27" selection-start-line="8" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="35" column="69" selection-start-line="35" selection-start-column="63" selection-end-line="35" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/about.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="37" selection-end-line="55" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my-account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="764">
+          <caret line="193" column="92" selection-start-line="193" selection-start-column="92" selection-end-line="193" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="64" column="93" selection-start-line="64" selection-start-column="93" selection-end-line="64" selection-end-column="93" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#button#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="639" column="30" lean-forward="true" selection-start-line="639" selection-start-column="30" selection-end-line="639" selection-end-column="30" />
+        <state relative-caret-position="166">
+          <caret line="1214" column="18" selection-start-line="1214" selection-start-column="18" selection-end-line="1214" selection-end-column="18" />
         </state>
       </provider>
     </entry>

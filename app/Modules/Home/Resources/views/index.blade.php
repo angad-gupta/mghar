@@ -3,8 +3,7 @@
 @section('content')
 
     <div class="banner-slider">
-        <div class="container-fluid">
-            <div class="owl-carousel owl-theme banner">
+        <div class="owl-carousel owl-theme banner">
 
             @if($banner_info->total() != 0) 
             @foreach($banner_info as $key => $value)
@@ -12,26 +11,31 @@
                 $bannerImg = ($value->banner_image) ? asset($value->file_full_path).'/'.$value->banner_image : asset('admin/default.png');
             @endphp
 
+            <div class="item">
+                @if($value->banner_source == '1')
+                    <a target="_blank" href="{{ $value->banner_link }}" class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
+                   style="background-image: url({{ $bannerImg }});">
+                @else
+                    <a href="{{ route('video-detail',['video_id'=>$value->video_id]) }}" class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
+                   style="background-image: url({{ $bannerImg }});">
+                @endif
 
-                <div class="item">
-                    <a href="{{ route('videos') }}" class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
-                       style="background-image: url({{ $bannerImg }});">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-lg-6">
-                                    <div class="sy-banner-info">
-                                        
-                                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="sy-banner-info">
+                                    <h2>{{$value->banner_title}}</h2>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
+            </div>
 
             @endforeach
             @endif
-   
-            </div>
+ 
+
         </div>
     </div>
 
@@ -71,7 +75,7 @@
                                                 <div class="featured-post-small">
                                                     <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
                                                         <img src="{{$pimages}}" alt="">
-                                                        <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</a>
+                                                         <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist" data-toggle="tooltip" data-placement="top" title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                                     </a>
                                                     <div class="featured-post_content">
                                                         <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"><h5>{{$value->video_title}}</h5></a>
@@ -112,6 +116,8 @@
             @endforeach
     @endif
 
+   
+
     <div class="featured-post-block">
         <div class="container-fluid">
             <div class="row">
@@ -120,91 +126,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="main-title">
-                                    <h4 class="mb-0">New on Manoranjan Ghar</h4>
-                                    <a class="view-all" href="category.php"><i class="fa fa-list"></i> View All</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="owl-carousel owl-theme latest">
-                                    <div class="item">
-                                        <a href="{{ route('videos')}}" class="featured-post-big">
-                                            <div class="featured-post-big-img">
-                                                <img src="{{asset('home/images/v-img7.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="{{ route('videos')}}" class="featured-post-big">
-                                            <div class="featured-post-big-img">
-                                                <img src="{{asset('home/images/v-img1.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="{{ route('videos')}}" class="featured-post-big">
-                                            <div class="featured-post-big-img">
-                                                <img src="{{asset('home/images/v-img2.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="{{ route('videos')}}" class="featured-post-big">
-                                            <div class="featured-post-big-img">
-                                                <img src="{{asset('home/images/v-img3.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="{{ route('videos')}}" class="featured-post-big">
-                                            <div class="featured-post-big-img">
-                                                <img src="{{asset('home/images/v-img4.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="{{ route('videos')}}" class="featured-post-big">
-                                            <div class="featured-post-big-img">
-                                                <img src="{{asset('home/images/v-img5.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="{{ route('videos')}}" class="featured-post-big">
-                                            <div class="featured-post-big-img">
-                                                <img src="{{asset('home/images/v-img6.png')}}" alt="">
-                                                <button class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to Watchlist</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-<!--     <div class="featured-post-block">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="featured-post">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="main-title">
                                     <h4 class="mb-0">Latest News/Blog</h4>
-                                    <a class="view-all" href="category.php"><i class="fa fa-list"></i> View All</a>
+                                    <a class="view-all" href="#"><i class="fa fa-list"></i> View All</a>
                                 </div>
                             </div>
                         </div>
@@ -239,6 +162,6 @@
             </div>
         </div>
     </div>
- -->
+
 
 @stop

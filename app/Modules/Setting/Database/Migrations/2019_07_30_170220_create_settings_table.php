@@ -23,18 +23,12 @@ class CreateSettingsTable extends Migration
             $table->string('company_logo')->nullable();
             $table->string('website')->nullable();
             $table->string('company_copyright')->nullable();
-            
+            $table->string('company_email')->nullable();
 
             $table->string('contact_no1')->nullable();
             $table->string('contact_no2')->nullable();
             $table->string('address1')->nullable();
             $table->string('address2')->nullable();
-            $table->string('company_email')->nullable();
-            $table->string('accounts_email')->nullable();
-            $table->string('admission_email')->nullable();
-            $table->string('information_email')->nullable();
-            $table->string('skype')->nullable();
-
 
             $table->text('facebook_link')->nullable();
             $table->text('instagram_link')->nullable();
