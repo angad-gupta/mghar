@@ -15,6 +15,7 @@ use App\Modules\Banner\Repositories\BannerInterface;
 use App\Modules\DynamicBlock\Repositories\BlockSectionInterface;
 use App\Modules\Page\Repositories\PageInterface;
 use App\Modules\FAQ\Repositories\FAQInterface;
+use App\Modules\Subscription\Repositories\SubscriptionInterface;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -30,8 +31,9 @@ class HomeController extends Controller
     protected $banner;
     protected $blocksection;
     protected $faq;
+    protected $subscription;
 
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner,BlockSectionInterface $blocksection,PageInterface $page,FAQInterface $faq)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner,BlockSectionInterface $blocksection,PageInterface $page,FAQInterface $faq,SubscriptionInterface $subscription)
     {
         $this->video = $video;
         $this->genre = $genre;
@@ -42,6 +44,7 @@ class HomeController extends Controller
         $this->blocksection = $blocksection;
         $this->page = $page;
         $this->faq = $faq;
+        $this->subscription = $subscription;
     }
 
     /**
@@ -260,6 +263,13 @@ class HomeController extends Controller
 
         $data['faq_detail'] = $this->faq->findAllActiveFAQ();
         return view('home::faq', $data);
+   }
+
+   public function subscriptionPackage(){
+
+        $data['subscriptionInfo'] = $this->subscription->findAll(); 
+        $data['subscription_payment'] = $this->subscription->findPayment(); 
+        return view('home::subscription', $data);
    }
 
 

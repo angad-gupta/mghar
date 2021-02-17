@@ -32,9 +32,10 @@
                 <div class="col-md-2">
                     <div class="footer__item">
                         <ul class="footer__nav font-size-sm list-unstyled">
-                            <li><a class="text-hover--white-default" href="{{ route('home')}}">Home</a></li>
+                            <li><a class="text-hover--white-default" href="{{ route('subscription-package')}}">Subscription</a></li>
                             <li><a class="text-hover--white-default" href="{{ route('khelau')}}">Khelau Juhari</a></li>
                             <li><a class="text-hover--white-default" href="{{ route('videos')}}">Latest Videos</a></li>
+                            <li><a class="text-hover--white-default" href="{{ route('my-wishlist')}}">My Watchlist</a></li>
                             <li><a class="text-hover--white-default" href="{{ route('my-wishlist')}}">My Watchlist</a></li>
                         </ul>
                     </div>

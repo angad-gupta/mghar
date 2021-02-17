@@ -133,6 +133,13 @@
                         </a>
                     </li>
                 @endif
+                @if($menuRoles->assignedRoles('subscription.index'))
+                    <li class="nav-item">
+                        <a href="{{route('subscription.index')}}" class="nav-link @if($Route[0]=='subscription') active @endif" data-popup="tooltip" data-original-title="Subscription Management"
+                           data-placement="right"><i class="icon-stack-text"></i><span>Subscription Management</span>
+                        </a>
+                    </li>
+                @endif
 
 
 
