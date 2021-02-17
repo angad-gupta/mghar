@@ -3,7 +3,7 @@
 @section('content')
 
  @php 
-    $aboutImg = ($about_manoranjan->image) ? asset($about_manoranjan->file_full_path).'/'.$about_manoranjan->image : '');
+    $aboutImg = ($about_manoranjan->image) ? asset($about_manoranjan->file_full_path).'/'.$about_manoranjan->image : '';
 @endphp
 
     <div class="page">
