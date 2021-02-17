@@ -27,10 +27,10 @@
             <thead>
                 <tr class="bg-slate">
                     <th>#</th>
-                    <th>Question</th>
+                    <th width="20%">Question</th>
                     <th>Answer</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th width="10%">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,7 +39,7 @@
                 <tr>
                     <td>{{$faq->firstItem() +$key}}</td>
                      <td>{{ $value->question }}</td>
-                     <td>{{ $value->answer }}</td>
+                     <td>{!! $value->answer !!}</td>
                     
                     <td class="{{ ($value->status == '1') ? 'text-success font-weight-bold' :'text-danger font-weight-bold' }}">{{ ($value->status == '1') ? 'Enabled' :'Disabled' }}</td>
                     <td>

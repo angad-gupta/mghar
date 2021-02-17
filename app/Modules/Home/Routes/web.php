@@ -21,6 +21,12 @@ Route::get('khelaujuhari-detail', ['as' => 'khelaujuhari-detail', 'uses' => 'Hom
 
 Route::get('blog-detail', ['as' => 'blog-detail', 'uses' => 'HomeController@BlogDetail']);
 
+
+Route::get('about-us', ['as' => 'about-us', 'uses' => 'HomeController@aboutUs']);
+Route::get('term-use', ['as' => 'term-use', 'uses' => 'HomeController@termUse']);
+Route::get('privacy-policy', ['as' => 'privacy-policy', 'uses' => 'HomeController@privacyPolicy']);
+Route::get('faq', ['as' => 'faq', 'uses' => 'HomeController@Faq']);
+
 Route::get('subscriber-login', ['as' => 'subscriber-login', 'uses' => 'HomeController@subscriberLogin']);
 Route::get('subscriber-register', ['as' => 'subscriber-register', 'uses' => 'HomeController@subscriberRegisterForm']);
 

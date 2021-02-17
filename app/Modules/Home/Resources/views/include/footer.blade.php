@@ -22,10 +22,10 @@
                 <div class="col-md-3">
                     <div class="footer__item">
                         <ul class="footer__nav font-size-sm list-unstyled">
-                            <li><a class="text-hover--white-default" href="#">About Manoranjan Ghar</a></li>
-                            <li><a class="text-hover--white-default" href="#">Terms of Use</a></li>
-                            <li><a class="text-hover--white-default" href="#">Privacy Policy</a></li>
-                            <li><a class="text-hover--white-default" href="#">FAQ</a></li>
+                            <li><a class="text-hover--white-default" href="{{ route('about-us')}}">About Manoranjan Ghar</a></li>
+                            <li><a class="text-hover--white-default" href="{{ route('term-use')}}">Terms of Use</a></li>
+                            <li><a class="text-hover--white-default" href="{{ route('privacy-policy')}}">Privacy Policy</a></li>
+                            <li><a class="text-hover--white-default" href="{{ route('faq')}}">FAQ</a></li>
                         </ul>
                     </div>
                 </div>

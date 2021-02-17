@@ -14,6 +14,7 @@ use App\Modules\KhelauJuhari\Repositories\KhelauJuhariInterface;
 use App\Modules\Banner\Repositories\BannerInterface;
 use App\Modules\DynamicBlock\Repositories\BlockSectionInterface;
 use App\Modules\Page\Repositories\PageInterface;
+use App\Modules\FAQ\Repositories\FAQInterface;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -28,8 +29,9 @@ class HomeController extends Controller
     protected $khelaujuhari;
     protected $banner;
     protected $blocksection;
+    protected $faq;
 
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner,BlockSectionInterface $blocksection,PageInterface $page)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner,BlockSectionInterface $blocksection,PageInterface $page,FAQInterface $faq)
     {
         $this->video = $video;
         $this->genre = $genre;
@@ -39,6 +41,7 @@ class HomeController extends Controller
         $this->banner = $banner;
         $this->blocksection = $blocksection;
         $this->page = $page;
+        $this->faq = $faq;
     }
 
     /**
@@ -236,5 +239,28 @@ class HomeController extends Controller
             return redirect(route('subscriber-login'));
         }
    }
+
+
+   public function aboutUs(){
+        $data['about_manoranjan'] = $this->page->getBySlug('about_us');
+        return view('home::aboutus', $data);
+   }
+
+   public function termUse(){
+        $data['terms_use'] = $this->page->getBySlug('terms_of_use');
+        return view('home::terms_use', $data);
+   }
+
+   public function privacyPolicy(){
+        $data['policy'] = $this->page->getBySlug('privacy_policy');
+        return view('home::privacy-policy', $data);
+   }
+
+   public function Faq(){
+
+        $data['faq_detail'] = $this->faq->findAllActiveFAQ();
+        return view('home::faq', $data);
+   }
+
 
 }
