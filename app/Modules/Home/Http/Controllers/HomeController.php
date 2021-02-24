@@ -122,7 +122,7 @@ class HomeController extends Controller
         $data['artist_related'] = $this->video->getArtistRelatedVideo($video_id,$celebDatas,$limit= 20); 
 
         $data['video_id'] = $video_id;
-        $data['featured_videos'] = $this->video->getVideoByType('is_featured',$limit= 20);
+        $data['trending_videos'] = $this->video->getTrendingVideos($limit= 6);
 
         return view('home::video-detail', $data);
     }

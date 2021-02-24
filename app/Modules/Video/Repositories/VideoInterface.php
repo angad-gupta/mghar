@@ -26,4 +26,6 @@ interface VideoInterface
     public function getArtistRelatedVideo($video_id,$celebs,$limit=null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]);
 
     public function getAllBySection($block_id,$limit=null,$filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]);
+
+    public function getTrendingVideos($limit=null,$filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]);
 }

@@ -100,4 +100,13 @@ class VideoRepository implements VideoInterface
         return $result;
     }
 
+    public function getTrendingVideos($limit=null,$filter = [], $sort = ['by' => 'total_views', 'sort' => 'DESC'], $status = [0, 1]){
+         $result =Video::when(array_keys($filter, true), function ($query) use ($filter) {
+           
+        })->orderBy('total_views', $sort['sort'])->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));
+        
+        return $result;
+    }
+
+
 }

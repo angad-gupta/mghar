@@ -117,8 +117,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="main-title">
-                                        <h4 class="mb-0">Featured Videos</h4>
-                                        <a class="view-all" href="{{ route('videos',['video_type'=>'is_featured']) }}">View All <i class="fa fa-angle-right"></i></a>
+                                        <h4 class="mb-0">Trending Videos</h4>
+                                        <a class="view-all" href="{{ route('videos') }}">View All <i class="fa fa-angle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -126,8 +126,8 @@
                                 <div class="col-12">
                                     <div class="owl-carousel owl-theme latest">
 
-                                       @if($featured_videos->total() != 0) 
-                                            @foreach($featured_videos as $key => $value)
+                                       @if($trending_videos->total() != 0) 
+                                            @foreach($trending_videos as $key => $value)
                                             @php 
                                                 $fimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
                                             @endphp
