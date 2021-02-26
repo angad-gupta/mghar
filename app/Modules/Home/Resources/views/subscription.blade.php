@@ -81,16 +81,30 @@
                                             <td class="text-center">Rs.{{$subscription_payment->six_month_payment}}</td>
                                             <td class="text-center">Rs.{{$subscription_payment->one_year_payment}}</td>
                                         </tr>
+
+                                        @php  use Illuminate\Support\Facades\Auth; @endphp
+
+                                        @if(Auth::guard('subscriber')->check())
                                         <tr>
                                             <td scope="row"></td>
-                                            <td class="text-center"><a href="login.php" amount ="{{$subscription_payment->one_month_payment}}"  class="btn btn-secondary">Select</a></td>
-                                            <td class="text-center"><a href="login.php" amount ="{{$subscription_payment->three_month_payment}}" class="btn btn-warning">Select</a></td>
-                                            <td class="text-center"><a href="login.php" amount ="{{$subscription_payment->six_month_payment}}" class="btn btn-danger">Select</a></td>
-                                            <td class="text-center"><a href="login.php" amount ="{{$subscription_payment->one_year_payment}}" class="btn btn-primary">Select</a></td>
+                                            <td class="text-center"><button id="payment-button" type ="Subscription" plan="one_month" amount ="{{$subscription_payment->one_month_payment}}"  class="payment-button btn btn-secondary" value="{{$subscription_payment->one_month_payment}}">Select</button></td>
+
+                                            <td class="text-center"><button id="payment-button" type ="Subscription" plan="three_month" value="{{$subscription_payment->three_month_payment}}" amount ="{{$subscription_payment->three_month_payment}}" class="payment-button btn btn-warning">Select</button></td>
+
+                                            <td class="text-center"><button id="payment-button" type ="Subscription" plan="six_month" value="{{$subscription_payment->six_month_payment}}"  amount ="{{$subscription_payment->six_month_payment}}" class="payment-button btn btn-danger">Select</button></td>
+                                            
+                                            <td class="text-center"><button id="payment-button" type ="Subscription" plan="one_year" value="{{$subscription_payment->one_year_payment}}" amount ="{{$subscription_payment->one_year_payment}}" class="payment-button btn btn-primary">Select</button></td>
                                         </tr>
+                                        @else
+                                        <tr>
+                                        <td scope="row"></td>
+                                        <td colspan="4" class="text-warning text-center" scope="row">Are you interested any of these Package ? Please <a class="text-danger" href="{{ route('subscriber-login')}}">Login</a> and Select Your Package and Enjoy your day.</td>
+                                        </tr>
+                                        @endif
+                                        
                                         </tbody>
                                     </table>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>

@@ -16,7 +16,7 @@
     </div>
 
 
-    <div class="inner-page dashboard mb-5">
+    <div class="inner-page dashboard mb-5"> 
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-lg-3">
@@ -48,10 +48,14 @@
                                 <h4>Membership & Billing</h4>
                             </div>
                             <div class="tab-content__block">
-                                <div class="alert alert-danger" role="alert">
-                                    You have not yet subscribed. <a href="#">Subscribe Now</a> and become a member for exclusive member benefits.
-                                </div>
-                                <p class="mb-0">You are a member since 26 January, 2021.</p>
+                                @if($subscriber_plan)
+                                    <p class="mb-0">You are a member since {{date('M j, Y',strtotime($subscriber_member->date))}}.</p>  
+                                    
+                                @else
+                                   <div class="alert alert-danger" role="alert">
+                                        You have not yet subscribed. <a href="{{ route('subscription-package')}}">Subscribe Now</a> and become a member for exclusive member benefits.
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-wishlist" role="tabpanel"
@@ -60,10 +64,34 @@
                                 <h4>My Plan Details</h4>
                             </div>
                             <div class="tab-content__block">
-                                <div class="alert alert-danger" role="alert">
-                                    You have not Set Plan Yet. <a href="#">Subscribe Now</a> and become a member for exclusive member benefits.
-                                </div>
-                                <p class="mb-0">You are a member since 26 January, 2021.</p>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th width="15%">Date</th>
+                                        <th width="25%">My Plan Details</th>
+                                        <th class="text-center" width="5%">Start Date</th>
+                                        <th class="text-center" width="15%">Expiry Date</th>
+                                        <th class="text-center">Payment Method</th>
+                                        <th class="text-center">Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @if($subscriber_plan)
+                                    <tr>
+                                        <td>{{date('M j, Y',strtotime($subscriber_plan->date))}}</td>
+                                        <td class="productInfo">
+                                            <h6 class="mb-0">{{ ucfirst(str_replace('_',' ',$subscriber_plan->plan))}} Package</h6>
+                                        </td>
+                                        <td class="text-center">{{$subscriber_plan->start_date}}</td>
+                                        <td class="text-center">{{$subscriber_plan->end_date}}</td>
+                                        <td class="text-center"><img title="khalti" style="height: auto;width: 20%;"  src="{{asset('home/images/khalti.png')}}"></td>
+                                        <td class="text-center">{{ucfirst($subscriber_plan->status)}}</td>   
+                                    </tr>
+                                    @else
+                                    <tr colspan="6">You have not yet subscribed. <a href="{{ route('subscription-package')}}">Subscribe Now</a> and become a member for exclusive member benefits.</tr>
+                                    @endif
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-address" role="tabpanel"
@@ -75,34 +103,31 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>Date</th>
-                                        <th>My Plan Details</th>
-                                        <th class="text-right">Service Period</th>
-                                        <th class="text-right">Payment Method</th>
-                                        <th class="text-right">Total</th>
+                                        <th width="15%">Date</th>
+                                        <th width="15%">My Package</th>
+                                        <th class="text-center" width="5%">Start Date</th>
+                                        <th class="text-center" width="15%">Expiry Date</th>
+                                        <th class="text-center">Amount</th>
+                                        <th class="text-center">Type</th>
+                                        <th class="text-center">Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>Jan 21, 2021</td>
-                                        <td class="productInfo">
-                                            <h6 class="mb-0">Monthly: Rs. 200</h6>
-                                        </td>
-                                        <td class="text-right">4 Year</td>
-                                        <td class="text-right">Esewa</td>
-                                        <td class="text-right">Rs. 12,000</td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <td>Jan 22, 2021</td>
-                                        <td class="productInfo">
-                                            <h6 class="mb-0">Monthly: Rs. 200</h6>
-                                        </td>
-                                        <td class="text-right">4 Year</td>
-                                        <td class="text-right">Esewa</td>
-                                        <td class="text-right">Rs. 12,000</td>
-                                       
-                                    </tr>
+                                        @if($subscriber_purchase_history->total() != 0) 
+                                            @foreach($subscriber_purchase_history as $key => $value)
+                                            <tr>
+                                                <td>{{date('M j, Y',strtotime($value->payment_date))}}</td>
+                                                <td class="productInfo">
+                                                    <h6 class="mb-0">{{ ucfirst(str_replace('_',' ',$value->plan))}}</h6>
+                                                </td>
+                                                <td class="text-center">{{$value->start_date}}</td>
+                                                <td class="text-center">{{$value->end_date}}</td>
+                                                <td class="text-center">Rs. {{$value->total_amount}}</td>
+                                                <td class="text-center">{{$value->type}}</td>
+                                                <td class="text-center">{{ucfirst($value->status)}}</td>   
+                                            </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

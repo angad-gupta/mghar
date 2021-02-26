@@ -27,4 +27,15 @@ interface SubscriberInterface
     public function getWishlistById($id, $limit=null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]);
 
 
+
+    public function getSubscriberPlan($subscriberID);
+    public function getMembershipDate($subscriberID);
+    public function updatePlanStatus($id, $data);
+    public function updatePaymentStatus($id, $data);
+
+    public function insertPlanData($data);
+    public function insertPaymentData($data);
+
+    public function getSubscriberPurchase($id,$limit=null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]);
+
 }

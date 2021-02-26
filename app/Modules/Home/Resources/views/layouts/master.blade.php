@@ -33,10 +33,86 @@
 
 @include('home::include.footer')
 
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+<!-- Paste this code anywhere in you body tag -->
+<script>
+
+    var plan;
+
+    $(document).on('click','.payment-button',function(){ 
+      plan = $(this).attr('plan');
+    });
+
+    var config = {
+        // replace the publicKey with yours
+        "publicKey": "test_public_key_de9e1b2ceaa44af7861836b744dbb6b6",
+        "productUrl": "https://manoranjanghar.com/",
+        "paymentPreference": [
+            "KHALTI",
+            "EBANKING",
+            "MOBILE_BANKING",
+            "CONNECT_IPS",
+            "SCT",
+            ],
+        "eventHandler": {
+            onSuccess (payload) {
+                // hit merchant api for initiating verfication
+                console.log(payload);
+                var token = '{{csrf_token()}}';
+                // hit merchant api for initiating verfication
+                    $.ajax({
+                        url:"{{url('/subscriber/payment-verification')}}",
+                        type: 'POST',
+                        data:{
+                            amount : payload.amount,
+                            product_identity : payload.product_identity,
+                            product_name : payload.product_name,
+                            trans_token : payload.token,
+                            _token: token
+                        },
+                        success: function(res)
+                        {
+                            window.location.href = "subscriber/sdashboard";
+                            console.log("transaction succedd"); // you can return to success page
+                        },
+                        error: function(error)
+                        {
+                            console.log("transaction failed");
+                        }
+                    })
+            },
+            onError (error) {
+                console.log(error);
+            },
+            onClose () {
+                console.log('widget is closing');
+            }
+        }
+    };
+
+    var checkout = new KhaltiCheckout(config);
+    // var btn = document.getElementById("payment-button");
+    // btn.onclick = function () { alert('test')
+
+    $(document).on('click','.payment-button',function(){ 
+        var samount = $(this).val(); 
+        var plan = $(this).attr('plan');
+        var type = $(this).attr('type');
+        var amountInPaisa = samount;// * 100;
+        // minimum transaction amount must be 10, i.e 1000 in paisa.
+        checkout.show({amount: amountInPaisa,productIdentity:type,productName:plan});
+    });
+</script>
+<!-- Paste this code anywhere in you body tag -->
+
+
 </body>
 
+
+
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
