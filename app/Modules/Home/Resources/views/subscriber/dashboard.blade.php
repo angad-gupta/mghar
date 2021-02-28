@@ -49,8 +49,21 @@
                             </div>
                             <div class="tab-content__block">
                                 @if($subscriber_plan)
-                                    <p class="mb-0">You are a member since {{date('M j, Y',strtotime($subscriber_member->date))}}.</p>  
-                                    
+                                    @php
+                                     $remaining = now()->diffInDays(Carbon\Carbon::parse($subscriber_plan->end_date), false);
+                                    @endphp
+
+                                    @if($remaining >0)
+                                        <div class="alert alert-success" role="alert">
+                                            You are a member since {{date('M j, Y',strtotime($subscriber_member->date))}}. And Your Plan 
+                                            reminaing Days is {{$remaining}} day/s.If you want to renew before Time, Please <a class="btn" style="border-color: #192133;background-color: #192133;padding: 2px 2px 2px 2px;color: white;" href="{{ route('subscription-package')}}">Renew / Subscribe Now</a>
+                                        </div>
+                                    @else
+                                        <div class="alert alert-danger" role="alert">
+                                            You are Out of Subsription Time, PLease Renew Soon.<a href="{{ route('subscription-package')}}">Subscribe Now</a>. Otherwise Your Account might be Disabled.
+                                    </div>
+                                    @endif
+
                                 @else
                                    <div class="alert alert-danger" role="alert">
                                         You have not yet subscribed. <a href="{{ route('subscription-package')}}">Subscribe Now</a> and become a member for exclusive member benefits.
