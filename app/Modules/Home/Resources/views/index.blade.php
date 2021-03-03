@@ -118,6 +118,7 @@
 
    
 
+@if($blog_info->total() != 0) 
     <div class="featured-post-block">
         <div class="container-fluid">
             <div class="row">
@@ -133,7 +134,7 @@
                         </div>
                         <div class="row">
 
-                            @if($blog_info->total() != 0) 
+                            
                             @foreach($blog_info as $key => $value)
                             @php 
                                 $blogimages = ($value->blog_image) ? asset($value->file_full_path).'/'.$value->blog_image : asset('admin/default.png');
@@ -152,9 +153,7 @@
                             </div>
 
                             @endforeach
-                            @else
-                            <span>No News/Blog Added</span>
-                            @endif
+                            
 
                         </div>
                     </div>
@@ -162,6 +161,6 @@
             </div>
         </div>
     </div>
-
+@endif
 
 @stop

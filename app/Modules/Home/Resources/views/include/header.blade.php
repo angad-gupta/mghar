@@ -1,6 +1,9 @@
 @php
     use Illuminate\Support\Facades\Auth;
     $subscriberInfo = Auth::guard('subscriber')->user();
+
+    $currentRoute = Request::route()->getName();
+    $Route = explode('.',$currentRoute);
 @endphp
 
     <div class="nnc-preloader">
@@ -18,10 +21,10 @@
                         </a>
                         <div class="nav-bar d-flex ml-4">
                             <ul class="list-unstyled list-inline mb-0">
-                                 <li class="list-inline-item"><a class="active" href="{{ route('home')}}">Home</a></li>
-                                <li class="list-inline-item"><a href="{{ route('khelau')}}">Khelau Juhari</a></li>
-                                <li class="list-inline-item"><a href="{{ route('videos')}}">Latest</a></li>
-                                <li class="list-inline-item"><a href="{{ route('my-wishlist')}}">My Watchlist</a></li>
+                                 <li class="list-inline-item"><a class="@if($Route[0]=='home') active @endif" href="{{ route('home')}}">Home</a></li>
+                                <li class="list-inline-item"><a class="@if($Route[0]=='khelau') active @endif" href="{{ route('khelau')}}">Khelau Juhari</a></li>
+                                <li class="list-inline-item"><a class="@if($Route[0]=='videos') active @endif" href="{{ route('videos')}}">Latest</a></li>
+                                <li class="list-inline-item"><a class="@if($Route[0]=='my-wishlist') active @endif" href="{{ route('my-wishlist')}}">My Watchlist</a></li>
                             </ul>
                         </div>
                     </div>

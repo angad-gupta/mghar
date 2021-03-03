@@ -95,8 +95,16 @@ class HomeController extends Controller
     public function VideoDetail(Request $request)
     {
         $input = $request->all();
+
+         if(!array_key_exists('video_id', $input)){
+             alertify()->error('Video ID Missing');
+              return redirect(route('home'));
+        }
+
         $data['message'] = '';
         $video_id = $input['video_id'];
+
+       
 
         $data['video_detail'] = $videoInfo = $this->video->find($video_id);
 

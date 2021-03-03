@@ -36,17 +36,16 @@
                             <li><a class="text-hover--white-default" href="{{ route('khelau')}}">Khelau Juhari</a></li>
                             <li><a class="text-hover--white-default" href="{{ route('videos')}}">Latest Videos</a></li>
                             <li><a class="text-hover--white-default" href="{{ route('my-wishlist')}}">My Watchlist</a></li>
-                            <li><a class="text-hover--white-default" href="{{ route('my-wishlist')}}">My Watchlist</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="footer__item">
+                    <div class="footer__item"><!-- 
                         <h6>Manoranjan Ghar App</h6>
                         <div class="footer__store d-flex mb-4">
                             <a class="playstore" href="" target="_blank" rel="noopener noreferrer">&nbsp;</a>
                             <a class="playstore" href="" target="_blank" rel="noopener noreferrer">&nbsp;</a>
-                        </div>
+                        </div> -->
                         <h6>Connect with us</h6>
                         <div class="footer__social d-flex">
                             <a class="social" href="{{$setting->facebook_link}}" target="_blank" rel="noopener noreferrer">
@@ -54,6 +53,9 @@
                             </a>
                             <a class="social" href="{{$setting->twitter_link}}" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="social" href="{{$setting->youtube_link}}" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-youtube"></i>
                             </a>
                         </div>
                     </div>

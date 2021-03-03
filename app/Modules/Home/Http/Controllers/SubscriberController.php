@@ -34,7 +34,7 @@ class SubscriberController extends Controller
 
         } else {
             alertify('You have Enter Wrong Email or Password. Please Try Again !')->error();
-            return redirect(route('home'));
+            return redirect(route('subscriber-login')); 
         }
     }
 
