@@ -105,7 +105,7 @@
                                         $adsImage = ($block->ads_image) ? asset($block->file_full_path).'/'.$block->ads_image : asset('admin/default.png');
                                                 @endphp
                                      <a target="_blank" href="{{ $block->ads_url }}"><img src="{{$adsImage}}" alt=""></a>
-                                @else
+                                @elseif($block->is_scripted_ads == 'yes')
                                     {{$block->scripted_ads}}
                                 @endif
                             </div>

@@ -83,7 +83,7 @@
                                                 <span class="input-group-text"><i class="icon-hat"></i>
                                                 </span>
                                             </span>
-                                             {!! Form::select('is_scripted_ads[]',[ 'yes'=>'Yes','no'=>'No'], $value = null, ['id'=>'is_scripted_ads','class'=>'form-control']) !!}
+                                             {!! Form::select('is_scripted_ads[]',[ 'yes'=>'Yes','no'=>'No','no_ads'=>'No Ads'], $value = null, ['id'=>'is_scripted_ads','class'=>'form-control']) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -186,8 +186,11 @@
             if(is_scripted_ads == 'yes'){
                 $(this).parent().parent().parent().parent().parent().find('.scripted_ads').show();
                 $(this).parent().parent().parent().parent().parent().find('.ads_section').hide();
-            }else{
+            }else if(is_scripted_ads == 'no'){
                 $(this).parent().parent().parent().parent().parent().find('.ads_section').show();
+                $(this).parent().parent().parent().parent().parent().find('.scripted_ads').hide();
+            }else{
+                 $(this).parent().parent().parent().parent().parent().find('.ads_section').hide();
                 $(this).parent().parent().parent().parent().parent().find('.scripted_ads').hide();
             }
 
