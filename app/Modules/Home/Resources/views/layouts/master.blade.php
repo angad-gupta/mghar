@@ -14,6 +14,7 @@
     <link href="{{asset('home/css/style.css')}}" rel="stylesheet">
     <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <style>
         .player {
             width: 100% !important;
@@ -33,7 +34,7 @@
 
 @include('home::include.footer')
 
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
 <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
 <!-- Paste this code anywhere in you body tag -->
 <script>

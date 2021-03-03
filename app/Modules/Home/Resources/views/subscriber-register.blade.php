@@ -2,9 +2,7 @@
 @section('title')Subscriber Register @stop
 @section('content')
 
-@section('script')
-<script src="{{asset('home/validation/subscriber_register.js')}}"></script>
-@stop
+
 
 <style>
 .field-icon {

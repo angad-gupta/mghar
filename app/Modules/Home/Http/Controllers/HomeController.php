@@ -205,7 +205,7 @@ class HomeController extends Controller
     }
 
     public function subscriberRegister(Request $request){
-        $input = $request->all();
+        $input = $request->all();  
 
         $email = $input['email'];
 
