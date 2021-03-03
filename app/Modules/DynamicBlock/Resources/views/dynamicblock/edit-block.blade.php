@@ -245,7 +245,7 @@
                                                 <span class="input-group-text"><i class="icon-hat"></i>
                                                 </span>
                                             </span>
-                                             {!! Form::select('is_scripted_ads[]',[ 'yes'=>'Yes','no'=>'No'], $value = null, ['id'=>'is_scripted_ads','class'=>'form-control']) !!}
+                                             {!! Form::select('is_scripted_ads[]',[ 'yes'=>'Yes','no'=>'No','no_ads'=>'No Ads'], $value = null, ['id'=>'is_scripted_ads','class'=>'form-control']) !!}
                                         </div>
                                     </div>
                                 </div>
