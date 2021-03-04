@@ -25,8 +25,8 @@
                                 <div class="why-signup">
                                     <h4>Why Sign up?</h4>
                                     <ul class="list-unstyled">
-                                        <li><i class="fas fa-check"></i>Exclusive Nepali Movies, TV Shows & Songs.</li>
-                                        <li><i class="fas fa-check"></i>Access to wide range of Nepali Movies in HD Quality.</li>
+                                        <li><i class="fas fa-check"></i>Exclusive TV Shows & Songs.</li>
+                                        <li><i class="fas fa-check"></i>Access to wide range in HD Quality.</li>
                                         <li><i class="fas fa-check"></i>High Definition (HD) Video Quality.</li>
                                         <li><i class="fas fa-check"></i>No Commercial Ads.</li>
                                     </ul>

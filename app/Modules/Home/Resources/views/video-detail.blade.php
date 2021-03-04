@@ -35,8 +35,9 @@
                                 </div>
                                  <div class="video-share d-flex align-items-center">
                                     <h6 class="mb-0 mr-1"><i class="fa fa-share"></i>&nbsp;Share:</h6>
-                                    <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u={{ route('video-detail',['video_id'=>$video_detail->id]) }}%2F&amp;src=sdkpreparse"><i class="fab fa-facebook"></i></a>
-                                    <a target="_blank" class="tweet" href="http://twitter.com/share?text={{$video_detail->video_title}}&url={{ route('video-detail',['video_id'=>$video_detail->id]) }}"><i class="fab fa-twitter"></i></a>
+                                    <a class="fb js-share-facebook-link" href="https://www.facebook.com/sharer/sharer.php?u={{ route('video-detail',['video_id'=>$video_detail->id]) }}%2F&amp;src=sdkpreparse"><i class="fab fa-facebook"></i></a>
+
+                                    <a target="_blank" class="js-share-twitter-link tweet" href="http://twitter.com/share?text={{$video_detail->video_title}}&url={{ route('video-detail',['video_id'=>$video_detail->id]) }}"><i class="fab fa-twitter"></i></a>
                                 </div>
 
                             </div>
@@ -154,5 +155,23 @@
                 </div>
             </div>
         </div>
+
+
+
+<script type="text/javascript">
+(function($) {
+      $('.js-share-twitter-link').click(function(e) {
+        e.preventDefault();
+        var href = $(this).attr('href');
+        window.open(href, "Twitter", "height=285,width=550,resizable=1");
+      });
+      $('.js-share-facebook-link').click(function(e) {
+        e.preventDefault();
+        var href = $(this).attr('href');
+        window.open(href, "Facebook", "height=269,width=550,resizable=1");
+      });
+})(jQuery);
+
+</script>
 
 @stop
