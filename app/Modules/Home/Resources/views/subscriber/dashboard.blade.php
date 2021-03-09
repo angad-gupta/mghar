@@ -55,7 +55,7 @@
 
                                     @if($remaining >0)
                                         <div class="alert alert-success" role="alert">
-                                            You are a member since {{date('M j, Y',strtotime($subscriber_member['created_at']))}}. And Your Plan  
+                                            You are a member since {{date('M j, Y',strtotime($subscriber_profile->created_at))}}. And Your Plan  
                                             reminaing Days is {{$remaining}} day/s.If you want to renew before Time, Please <a class="btn" style="border-color: #192133;background-color: #192133;padding: 2px 2px 2px 2px;color: white;" href="{{ route('subscription-package')}}">Renew / Subscribe Now</a>
                                         </div>
                                     @else
