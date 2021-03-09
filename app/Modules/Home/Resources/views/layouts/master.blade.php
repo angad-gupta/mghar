@@ -100,7 +100,7 @@
         var samount = $(this).val(); 
         var plan = $(this).attr('plan');
         var type = $(this).attr('type');
-        var amountInPaisa = samount;// * 100;
+        var amountInPaisa = samount * 100;
         // minimum transaction amount must be 10, i.e 1000 in paisa.
         checkout.show({amount: amountInPaisa,productIdentity:type,productName:plan});
     });
