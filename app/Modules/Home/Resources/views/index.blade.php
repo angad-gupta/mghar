@@ -106,7 +106,7 @@
                                                 @endphp
                                      <a target="_blank" href="{{ $block->ads_url }}"><img src="{{$adsImage}}" alt=""></a>
                                 @elseif($block->is_scripted_ads == 'yes')
-                                    {{$block->scripted_ads}}
+                                    {!!$block->scripted_ads !!}
                                 @endif
                             </div>
                         </div>
