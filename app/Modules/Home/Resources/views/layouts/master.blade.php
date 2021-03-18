@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css">
@@ -15,33 +16,33 @@
     <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
     <style>
         .player {
             width: 100% !important;
             max-width: none !important;
         }
     </style>
-     
-     @yield('share_head')
-     
+
+    @yield('share_head')
+
 </head>
 
 <body>
 
-@include('home::include.header')
+    @include('home::include.header')
 
     @yield('content')
 
-@include('home::include.footer')
+    @include('home::include.footer')
 
 
-<script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
-<!-- Paste this code anywhere in you body tag -->
-<script>
+    <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+    <!-- Paste this code anywhere in you body tag -->
+    <script>
+        var plan;
 
-    var plan;
-
-    $(document).on('click','.payment-button',function(){ 
+    $(document).on('click','.payment-button',function(){
       plan = $(this).attr('plan');
     });
 
@@ -96,16 +97,16 @@
     // var btn = document.getElementById("payment-button");
     // btn.onclick = function () { alert('test')
 
-    $(document).on('click','.payment-button',function(){ 
-        var samount = $(this).val(); 
+    $(document).on('click','.payment-button',function(){
+        var samount = $(this).val();
         var plan = $(this).attr('plan');
         var type = $(this).attr('type');
         var amountInPaisa = samount * 100;
         // minimum transaction amount must be 10, i.e 1000 in paisa.
         checkout.show({amount: amountInPaisa,productIdentity:type,productName:plan});
     });
-</script>
-<!-- Paste this code anywhere in you body tag -->
+    </script>
+    <!-- Paste this code anywhere in you body tag -->
 
 
 </body>
@@ -122,13 +123,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider-min.js"></script>
 <script src="{{asset('home/js/magnific.min.js')}}"></script>
 <script src="{{asset('home/js/custom.js')}}"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
 
 @yield('script')
 
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
     $(".toggle-password").click(function() {
 
         $(this).toggleClass("fa-eye fa-eye-slash");
@@ -138,7 +138,7 @@ $(document).ready(function() {
         } else {
             input.attr("type", "password");
         }
-    }); 
+    });
 
      $('#seach_video').on('click',function(){
             var seach_video = $('#search_val').val();
@@ -154,8 +154,9 @@ $(document).ready(function() {
 </script>
 
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="wgNUvYEI"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0"
+    nonce="wgNUvYEI"></script>
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-</html>    
+</html>

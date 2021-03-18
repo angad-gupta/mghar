@@ -33,7 +33,7 @@ class HomeController extends Controller
     protected $faq;
     protected $subscription;
 
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner,BlockSectionInterface $blocksection,PageInterface $page,FAQInterface $faq,SubscriptionInterface $subscription)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner, BlockSectionInterface $blocksection, PageInterface $page, FAQInterface $faq, SubscriptionInterface $subscription)
     {
         $this->video = $video;
         $this->genre = $genre;
@@ -54,16 +54,16 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $input = $request->all();
-        
+
         $data['message'] = '';
 
         // $data['popular_videos'] = $this->video->getVideoByType('is_popular',$limit= 20);
         // $data['trending_videos'] = $this->video->getVideoByType('is_trending',$limit= 20);
         // $data['latest_videos'] = $this->video->findAll($limit = 20);
 
-        $data['dynamic_block'] = $this->blocksection->findAll($limit= 20);
-        $data['blog_info'] = $this->blog->findAllActiveBlog($limit= 20);  
-        $data['banner_info'] = $this->banner->findAllActiveBanner($limit= 20);  
+        $data['dynamic_block'] = $this->blocksection->findAll($limit = 20);
+        $data['blog_info'] = $this->blog->findAllActiveBlog($limit = 20);
+        $data['banner_info'] = $this->banner->findAllActiveBanner($limit = 20);
         $data['genre'] = $this->genre->getList();
 
         if (array_key_exists('message', $input)) {
@@ -72,15 +72,16 @@ class HomeController extends Controller
         return view('home::index', $data);
     }
 
-    public function Videos(Request $request){
+    public function Videos(Request $request)
+    {
 
         $search = $request->all();
-        $data['message'] = ''; 
-        $data['videos'] = $this->video->findAll($limit = 24,$search);
+        $data['message'] = '';
+        $data['videos'] = $this->video->findAll($limit = 24, $search);
         $data['genre'] = $this->genre->getList();
 
         if (array_key_exists('genre', $search)) {
-             $data['genre_search'] = $search;
+            $data['genre_search'] = $search;
         } else {
             $data['genre_search'] = '';
         }
@@ -88,7 +89,7 @@ class HomeController extends Controller
         return view('home::video-lists', $data);
     }
 
-     /**
+    /**
      * Show the form for creating a new resource.
      * @return Response
      */
@@ -96,15 +97,15 @@ class HomeController extends Controller
     {
         $input = $request->all();
 
-         if(!array_key_exists('video_id', $input)){
-             alertify()->error('Video ID Missing');
-              return redirect(route('home'));
+        if (!array_key_exists('video_id', $input)) {
+            alertify()->error('Video ID Missing');
+            return redirect(route('home'));
         }
 
         $data['message'] = '';
         $video_id = $input['video_id'];
 
-       
+
 
         $data['video_detail'] = $videoInfo = $this->video->find($video_id);
 
@@ -115,35 +116,36 @@ class HomeController extends Controller
             'total_views' => $newCount
         );
 
-        $this->video->update($video_id,$video_data);
+        $this->video->update($video_id, $video_data);
 
         //Artist Related
-        $celebrities = $this->video->findVideoCeleb($video_id); 
+        $celebrities = $this->video->findVideoCeleb($video_id);
 
         $celebrityIds = array();
         foreach ($celebrities as $key => $value) {
-            
+
             $cel_id = $value->celebrity_id;
             array_push($celebrityIds, $cel_id);
         }
         $celebDatas['cel_id'] = $celebrityIds;
-        $data['artist_related'] = $this->video->getArtistRelatedVideo($video_id,$celebDatas,$limit= 20); 
+        $data['artist_related'] = $this->video->getArtistRelatedVideo($video_id, $celebDatas, $limit = 20);
 
         $data['video_id'] = $video_id;
-        $data['trending_videos'] = $this->video->getTrendingVideos($limit= 6);
+        $data['trending_videos'] = $this->video->getTrendingVideos($limit = 6);
 
         return view('home::video-detail', $data);
     }
 
-    public function Khelau(Request $request){
-         $data['message'] = '';
+    public function Khelau(Request $request)
+    {
+        $data['message'] = '';
         // if (Auth::guard('subscriber')->check()) {
-            $data['khelaujuhari_info'] = $this->khelaujuhari->findAll($limit= 50);  
-            return view('home::Khelau-juhari-lists', $data);
-         // }else{
-         //     alertify('Please SignIn To Access Khelau Juhari')->error();
-         //    return redirect(route('home'));
-         // }
+        $data['khelaujuhari_info'] = $this->khelaujuhari->findAll($limit = 50);
+        return view('home::Khelau-juhari-lists', $data);
+        // }else{
+        //     alertify('Please SignIn To Access Khelau Juhari')->error();
+        //    return redirect(route('home'));
+        // }
     }
 
     /**
@@ -166,27 +168,28 @@ class HomeController extends Controller
             'total_views' => $newCount
         );
 
-        $this->khelaujuhari->update($juhari_id,$juhari_data);
+        $this->khelaujuhari->update($juhari_id, $juhari_data);
 
         return view('home::khelau-juhari-detail', $data);
     }
 
-    public function BlogDetail(Request $request){
+    public function BlogDetail(Request $request)
+    {
 
         $input = $request->all();
         $data['message'] = '';
         $blog_id = $input['blog_id'];
 
         $data['blog_detail'] = $this->blog->find($blog_id);
-        $data['related_blog'] = $this->blog->findRelatedBlog($blog_id);  
+        $data['related_blog'] = $this->blog->findRelatedBlog($blog_id);
 
         $data['blog_id'] = $blog_id;
 
         return view('home::blog-detail', $data);
-
     }
 
-    public function subscriberLogin(){
+    public function subscriberLogin()
+    {
         $data['message'] = '';
         return view('home::subscriber-login', $data);
     }
@@ -204,8 +207,16 @@ class HomeController extends Controller
         return view('home::subscriber-register', $data);
     }
 
-    public function subscriberRegister(Request $request){
-        $input = $request->all();  
+    public function subscriberRegister(Request $request)
+    {
+
+        $request->validate([
+            'mobile_no' => 'required|numeric|digits:10',
+            'email' => 'regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        $input = $request->all();
 
         $email = $input['email'];
 
@@ -218,67 +229,71 @@ class HomeController extends Controller
                 'is_external_authenticate' => '0',
                 'status' => '1',
                 'email_verified' => '1',
-                'user_type' =>'subscriber',
+                'user_type' => 'subscriber',
                 'password' => bcrypt($input['password']),
-                'registered_ip'=> \Request::ip()
+                'registered_ip' => \Request::ip()
             );
 
             $subscriberInfo = $this->subscriber->save($subscriberData);
 
             alertify('You have registered Successfully.')->success();
         } catch (\Throwable $e) {
-             alertify('Something Wrong With Message')->error();
+            alertify('Something Wrong With Message')->error();
         }
 
         return redirect(route('subscriber-login'));
     }
 
-    public function subscriberAccount(){
-
+    public function subscriberAccount()
+    {
     }
 
-   public function myWishlist(){ 
+    public function myWishlist()
+    {
 
         if (Auth::guard('subscriber')->check()) {
-             $id = Auth::guard('subscriber')->user()->id;
+            $id = Auth::guard('subscriber')->user()->id;
 
-             $data['wishlist_videos'] = $this->subscriber->getWishlistById($id);
+            $data['wishlist_videos'] = $this->subscriber->getWishlistById($id);
 
-             return view('home::video-mywishlist', $data);
-        }else{
-             alertify('Please Login Before Adding Wishlist.')->error();
+            return view('home::video-mywishlist', $data);
+        } else {
+            alertify('Please Login Before Adding Wishlist.')->error();
             return redirect(route('subscriber-login'));
         }
-   }
+    }
 
 
-   public function aboutUs(){
+    public function aboutUs()
+    {
         $data['about_manoranjan'] = $this->page->getBySlug('about_us');
         return view('home::aboutus', $data);
-   }
+    }
 
-   public function termUse(){
+    public function termUse()
+    {
         $data['terms_use'] = $this->page->getBySlug('terms_of_use');
         return view('home::terms_use', $data);
-   }
+    }
 
-   public function privacyPolicy(){
+    public function privacyPolicy()
+    {
         $data['policy'] = $this->page->getBySlug('privacy_policy');
         return view('home::privacy-policy', $data);
-   }
+    }
 
-   public function Faq(){
+    public function Faq()
+    {
 
         $data['faq_detail'] = $this->faq->findAllActiveFAQ();
         return view('home::faq', $data);
-   }
+    }
 
-   public function subscriptionPackage(){
+    public function subscriptionPackage()
+    {
 
-        $data['subscriptionInfo'] = $this->subscription->findAll(); 
-        $data['subscription_payment'] = $this->subscription->findPayment(); 
+        $data['subscriptionInfo'] = $this->subscription->findAll();
+        $data['subscription_payment'] = $this->subscription->findPayment();
         return view('home::subscription', $data);
-   }
-
-
+    }
 }
