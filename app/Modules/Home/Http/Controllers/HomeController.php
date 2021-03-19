@@ -16,7 +16,7 @@ use App\Modules\DynamicBlock\Repositories\BlockSectionInterface;
 use App\Modules\Page\Repositories\PageInterface;
 use App\Modules\FAQ\Repositories\FAQInterface;
 use App\Modules\Subscription\Repositories\SubscriptionInterface;
-
+use App\Modules\Video\Entities\Video;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -77,11 +77,15 @@ class HomeController extends Controller
 
         $search = $request->all();
         $data['message'] = '';
-        $data['videos'] = $this->video->findAll($limit = 24, $search);
+
+        $data['videos'] = $this->video->getAllBySection($request->blockId, $limit = 25);
+        // dd($data['videos']);
         $data['genre'] = $this->genre->getList();
 
+
         if (array_key_exists('genre', $search)) {
-            $data['genre_search'] = $search;
+            $data['genre_search'] = $request->only('genre');
+            $data['videos'] = $this->video->getByGenre($request->blockId, $request->genre, $limit = 25);
         } else {
             $data['genre_search'] = '';
         }
