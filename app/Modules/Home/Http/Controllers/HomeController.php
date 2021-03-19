@@ -82,6 +82,8 @@ class HomeController extends Controller
         // dd($data['videos']);
         $data['genre'] = $this->genre->getList();
 
+        $block = $this->blocksection->find($request->blockId);
+        $data['block_section_title'] = $block->block_section;
 
         if (array_key_exists('genre', $search)) {
             $data['genre_search'] = $request->only('genre');
@@ -89,7 +91,6 @@ class HomeController extends Controller
         } else {
             $data['genre_search'] = '';
         }
-
         return view('home::video-lists', $data);
     }
 

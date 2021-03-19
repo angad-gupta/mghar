@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="main-title">
-                                <h3 class="mb-0"> Videos</h3>
+                                <h3 class="mb-0"> {{ $block_section_title }}</h3>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false">

@@ -42,9 +42,6 @@
     </div>
 </div>
 
-<script data-ad-client="ca-pub-6368505889757007" async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
 @if($dynamic_block->total() != 0)
 @foreach($dynamic_block as $key => $block)
 <div class="featured-post-block">
