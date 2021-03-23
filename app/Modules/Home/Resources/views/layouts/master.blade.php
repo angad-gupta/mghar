@@ -75,7 +75,7 @@
                         },
                         success: function(res)
                         {
-                            window.location.href = "subscriber/sdashboard";
+                           // window.location.href = "subscriber/sdashboard";
                             console.log("transaction succedd"); // you can return to success page
                         },
                         error: function(error)
