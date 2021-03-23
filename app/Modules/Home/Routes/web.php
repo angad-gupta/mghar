@@ -55,9 +55,7 @@ Route::group(['prefix' => 'subscriber', 'middleware' => ['auth:subscriber']], fu
 
     Route::put('subscriber/update/{id}', ['as' => 'subscriber.update', 'uses' => 'SubscriberController@subscriberProfileUpdate'])->where('id', '[0-9]+');
 
-	Route::post('subscriber-update-password', ['as' => 'subscriber-update-password', 'uses' => 'SubscriberController@updateSubscriberPassword']);
-	
-	Route::post('payment-verification', ['as' => 'payment-verification', 'uses' => 'SubscriberController@PaymentVerification']);
+    Route::post('subscriber-update-password', ['as' => 'subscriber-update-password', 'uses' => 'SubscriberController@updateSubscriberPassword']);
 
-
+    Route::post('payment-verification', ['as' => 'payment-verification', 'uses' => 'SubscriberController@PaymentVerification']);
 });
