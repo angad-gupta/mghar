@@ -75,8 +75,12 @@
                         },
                         success: function(res)
                         {
-                           // window.location.href = "subscriber/sdashboard";
-                            console.log("transaction succedd"); // you can return to success page
+                            if(res == '1'){
+                                window.location.href = "subscriber/sdashboard";
+                                console.log("transaction succedd"); // you can return to success page
+                            }else{
+                                alert('Transaction Failed. Please Try Again.');
+                            }
                         },
                         error: function(error)
                         {
