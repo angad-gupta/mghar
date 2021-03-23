@@ -143,12 +143,13 @@ class SubscriberController extends Controller
     public function PaymentVerification(Request $request)
     {
 
-        $data = $request->all();  dd($data);
+        $data = $request->all();  
 
         $amount = $data['amount'];
+        $trans_token = $data['trans_token'];
 
         $args = http_build_query(array(
-            'token' => 'test_secret_key_921dba0f9ac44e448bd5e478ef5de594',
+            'token' => $trans_token,
             'amount'  => $amount * 100
         ));
 
