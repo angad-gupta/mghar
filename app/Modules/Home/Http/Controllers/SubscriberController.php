@@ -143,7 +143,7 @@ class SubscriberController extends Controller
     public function PaymentVerification(Request $request)
     {
 
-        $data = $request->all();
+        $data = $request->all();  dd($data);
 
         $amount = $data['amount'];
 
