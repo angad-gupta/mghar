@@ -170,7 +170,7 @@ class SubscriberController extends Controller
             $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
 
-            dd($response);
+            dd($status_code);
 
         $id = Auth::guard('subscriber')->user()->id;
 
