@@ -149,7 +149,7 @@ class SubscriberController extends Controller
 
         $args = http_build_query(array(
             'token' => 'test_secret_key_921dba0f9ac44e448bd5e478ef5de594',
-            'amount'  => $amount * 100;
+            'amount'  => $amount * 100
         ));
 
         $url = "https://khalti.com/api/v2/payment/verify/";
