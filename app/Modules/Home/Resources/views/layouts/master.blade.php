@@ -48,7 +48,7 @@
 
     var config = {
         // replace the publicKey with yours
-        "publicKey": "test_public_key_de9e1b2ceaa44af7861836b744dbb6b6",
+        "publicKey": "live_public_key_d45c85b8cf064e7286b6c4d656d62c08",
         "productUrl": "https://manoranjanghar.com/",
         "paymentPreference": [
             "KHALTI",

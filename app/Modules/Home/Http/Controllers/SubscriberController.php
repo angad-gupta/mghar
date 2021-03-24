@@ -162,7 +162,7 @@ class SubscriberController extends Controller
             curl_setopt($ch, CURLOPT_POSTFIELDS,$args);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-            $headers = ['Authorization: Key test_secret_key_921dba0f9ac44e448bd5e478ef5de594'];
+            $headers = ['Authorization: Key live_secret_key_0fdd9f4b99614d97b5126f4b4141d30b'];
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
             // Response
