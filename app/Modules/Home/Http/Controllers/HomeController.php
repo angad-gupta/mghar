@@ -77,13 +77,16 @@ class HomeController extends Controller
 
         $search = $request->all();
         $data['message'] = '';
-
-        $data['videos'] = $this->video->getAllBySection($request->blockId, $limit = 25);
-        // dd($data['videos']);
         $data['genre'] = $this->genre->getList();
 
-        $block = $this->blocksection->find($request->blockId);
-        $data['block_section_title'] = $block->block_section;
+        if (array_key_exists('blockId', $search)) {
+            $data['videos'] = $this->video->getAllBySection($request->blockId, $limit = 25);
+            $block = $this->blocksection->find($request->blockId);
+            $data['block_section_title'] = $block->block_section;
+        } else {
+            $data['block_section_title'] = '';
+            $data['videos'] = $this->video->findAll($limit = 25);
+        }
 
         if (array_key_exists('genre', $search)) {
             $data['genre_search'] = $request->only('genre');

@@ -8,8 +8,6 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="featured-post">
-
-
                     <div class="row">
                         <div class="col-12">
                             <div class="main-title">
