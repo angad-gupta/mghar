@@ -143,73 +143,103 @@ class SubscriberController extends Controller
     public function PaymentVerification(Request $request)
     {
 
-        $data = $request->all();
-
-        $id = Auth::guard('subscriber')->user()->id;
+        $data = $request->all();  
 
         $amount = $data['amount'];
-        $subscribe_type = $data['product_identity'];
-        $plan = $data['product_name'];
+        $trans_token = $data['trans_token'];
 
-        $planCheck = $this->subscriber->getSubscriberPlan($id);
+        $args = http_build_query(array(
+            'token' => $trans_token,
+            'amount'  => $amount
+        ));
 
-        $now = date('Y-m-d');
+        $url = "https://khalti.com/api/v2/payment/verify/";
 
-        if ($planCheck) {
+            # Make the call using API.
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS,$args);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-            $strtdate = strtotime($planCheck->end_date);
+            $headers = ['Authorization: Key live_secret_key_0fdd9f4b99614d97b5126f4b4141d30b'];
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-            //Main Purpose to Check Plan is: whether plan is already taken or not.. if taken. then .. all subsriber id status will expire and create new plan
-            $updatePlan = array(
-                'status' => 'expired'
+            // Response
+            $response = curl_exec($ch);
+            $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+        if($status_code == 200){
+
+            $id = Auth::guard('subscriber')->user()->id;
+
+            $amount = $data['amount'];
+            $subscribe_type = $data['product_identity'];
+            $plan = $data['product_name'];
+
+            $planCheck = $this->subscriber->getSubscriberPlan($id);
+
+            $now = date('Y-m-d');
+
+            if ($planCheck) {
+
+                $strtdate = strtotime($planCheck->end_date);
+
+                //Main Purpose to Check Plan is: whether plan is already taken or not.. if taken. then .. all subsriber id status will expire and create new plan
+                $updatePlan = array(
+                    'status' => 'expired'
+                );
+                $this->subscriber->updatePlanStatus($id, $updatePlan);
+
+                $updatePayment = array(
+                    'status' => 'expired'
+                );
+                $this->subscriber->updatePaymentStatus($id, $updatePayment);
+            } else {
+
+                $strtdate = strtotime($now);
+            }
+
+            $start_date = date('Y-m-d');
+
+            if ($plan == 'one_month') {
+                $end_date =  date("Y-m-d", strtotime("+1 month", $strtdate));
+            } else if ($plan == 'three_month') {
+                $end_date =  date("Y-m-d", strtotime("+3 months", $strtdate));
+            } else if ($plan == 'six_month') {
+                $end_date =  date("Y-m-d", strtotime("+6 months", $strtdate));
+            } else {
+                $end_date =  date("Y-m-d", strtotime("+1 year", $strtdate));
+            }
+
+            //If Plancheck is EMPTY, insert new data on plan and payment
+            $planData = array(
+                'subscriber_id' => $id,
+                'start_date' => $start_date,
+                'end_date' => $end_date,
+                'plan' => $plan,
+                'date' => date('Y-m-d'),
+                'status' => 'active'
             );
-            $this->subscriber->updatePlanStatus($id, $updatePlan);
+            $this->subscriber->insertPlanData($planData);
 
-            $updatePayment = array(
-                'status' => 'expired'
+            $paymentData = array(
+                'subscriber_id' => $id,
+                'plan' => $plan,
+                'payment_date' => date('Y-m-d'),
+                'start_date' => $start_date,
+                'end_date' => $end_date,
+                'payment_method' => 'Khalti',
+                'total_amount' => $amount,
+                'type' => $subscribe_type,
+                'status' => 'active'
             );
-            $this->subscriber->updatePaymentStatus($id, $updatePayment);
-        } else {
+            $this->subscriber->insertPaymentData($paymentData);
 
-            $strtdate = strtotime($now);
+            echo 1;
+        }else{
+            echo 0;
         }
-
-        $start_date = date('Y-m-d');
-
-        if ($plan == 'one_month') {
-            $end_date =  date("Y-m-d", strtotime("+1 month", $strtdate));
-        } else if ($plan == 'three_month') {
-            $end_date =  date("Y-m-d", strtotime("+3 months", $strtdate));
-        } else if ($plan == 'six_month') {
-            $end_date =  date("Y-m-d", strtotime("+6 months", $strtdate));
-        } else {
-            $end_date =  date("Y-m-d", strtotime("+1 year", $strtdate));
-        }
-
-        //If Plancheck is EMPTY, insert new data on plan and payment
-        $planData = array(
-            'subscriber_id' => $id,
-            'start_date' => $start_date,
-            'end_date' => $end_date,
-            'plan' => $plan,
-            'date' => date('Y-m-d'),
-            'status' => 'active'
-        );
-        $this->subscriber->insertPlanData($planData);
-
-        $paymentData = array(
-            'subscriber_id' => $id,
-            'plan' => $plan,
-            'payment_date' => date('Y-m-d'),
-            'start_date' => $start_date,
-            'end_date' => $end_date,
-            'payment_method' => 'Khalti',
-            'total_amount' => $amount,
-            'type' => $subscribe_type,
-            'status' => 'active'
-        );
-        $this->subscriber->insertPaymentData($paymentData);
-
-        echo 1;
     }
 }
