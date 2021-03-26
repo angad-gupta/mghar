@@ -16,6 +16,8 @@
     <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script data-ad-client="ca-pub-6368505889757007" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     <style>
         .player {
