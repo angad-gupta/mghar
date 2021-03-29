@@ -13,12 +13,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css">
     <link href="{{asset('home/css/magnific.css')}}" rel="stylesheet">
     <link href="{{asset('home/css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/videojs-errors@4.1.0/dist/videojs-errors.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.1.0/video-js.min.css" rel="stylesheet" />
+
     <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script data-ad-client="ca-pub-6368505889757007" async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.1.0/video.min.js"></script>
+    <script src="{{ asset('home/js/video-vimeo.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-errors@4.1.0/dist/videojs-errors.min.js"></script>
     <style>
         .player {
             width: 100% !important;
@@ -130,7 +135,6 @@
 <script src="{{asset('home/js/magnific.min.js')}}"></script>
 <script src="{{asset('home/js/custom.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-
 @yield('script')
 
 <script>
@@ -153,8 +157,7 @@
             window.location.href = seach_url +"?search_val=" + seach_video;
             return false;
 
-    });
-
+        });
 
 })
 </script>
