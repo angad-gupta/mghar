@@ -1,21 +1,28 @@
 <?php
 
-namespace App\Modules\Subscriber\Http\Controllers;
+namespace App\Modules\SearchLog\Http\Controllers;
 
-use App\Modules\Subscriber\Entities\ImeTransaction;
+use App\Modules\SearchLog\Repositories\SearchLogInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
-class SubscriberController extends Controller
+class SearchLogController extends Controller
 {
+    protected $searchLog;
+
+    public function __construct(SearchLogInterface $searchLog)
+    {
+        $this->searchLog = $searchLog;
+    }
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        return view('subscriber::index');
+        $data['search_log'] = $this->searchLog->findAll();
+        return view('searchlog::searchlog.index', $data);
     }
 
     /**
@@ -24,7 +31,7 @@ class SubscriberController extends Controller
      */
     public function create()
     {
-        return view('subscriber::create');
+        return view('searchlog::create');
     }
 
     /**
@@ -34,8 +41,7 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
-        $transaction = ImeTransaction::create($request->all());
-        return response()->json($transaction);
+        //
     }
 
     /**
@@ -45,7 +51,7 @@ class SubscriberController extends Controller
      */
     public function show($id)
     {
-        return view('subscriber::show');
+        return view('searchlog::show');
     }
 
     /**
@@ -55,7 +61,7 @@ class SubscriberController extends Controller
      */
     public function edit($id)
     {
-        return view('subscriber::edit');
+        return view('searchlog::edit');
     }
 
     /**
@@ -76,6 +82,12 @@ class SubscriberController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->searchLog->delete($id);
+            alertify()->success('Search Log Deleted Successfully');
+        } catch (\Throwable $e) {
+            alertify($e->getMessage())->error();
+        }
+        return redirect(route('search_log.index'));
     }
 }

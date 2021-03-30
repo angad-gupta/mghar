@@ -24,6 +24,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.1.0/video.min.js"></script>
     <script src="{{ asset('home/js/video-vimeo.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/videojs-errors@4.1.0/dist/videojs-errors.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CLTP093K6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-2CLTP093K6');
+    </script>
     <style>
         .player {
             width: 100% !important;
@@ -42,7 +50,6 @@
     @yield('content')
 
     @include('home::include.footer')
-
 
     <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
     <!-- Paste this code anywhere in you body tag -->

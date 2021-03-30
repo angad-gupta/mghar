@@ -15,6 +15,7 @@ use App\Modules\Banner\Repositories\BannerInterface;
 use App\Modules\DynamicBlock\Repositories\BlockSectionInterface;
 use App\Modules\Page\Repositories\PageInterface;
 use App\Modules\FAQ\Repositories\FAQInterface;
+use App\Modules\SearchLog\Repositories\SearchLogInterface;
 use App\Modules\Subscription\Repositories\SubscriptionInterface;
 use App\Modules\Video\Entities\Video;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
 
+    protected $searchLog;
     protected $video;
     protected $genre;
     protected $blog;
@@ -33,9 +35,10 @@ class HomeController extends Controller
     protected $faq;
     protected $subscription;
 
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner, BlockSectionInterface $blocksection, PageInterface $page, FAQInterface $faq, SubscriptionInterface $subscription)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner, BlockSectionInterface $blocksection, PageInterface $page, FAQInterface $faq, SubscriptionInterface $subscription, SearchLogInterface $searchLog)
     {
         $this->video = $video;
+        $this->searchLog = $searchLog;
         $this->genre = $genre;
         $this->blog = $blog;
         $this->subscriber = $subscriber;
@@ -78,6 +81,15 @@ class HomeController extends Controller
         $search = $request->all();
         $data['message'] = '';
         $data['genre'] = $this->genre->getList();
+
+        if (array_key_exists('search_val', $search)) {
+            $searchLog['keyword'] = $request->search_val;
+            $searchLog['date'] = today();
+            if (Auth::check()) {
+                $searchLog['username'] = auth()->user()->username;
+            }
+            $this->searchLog->save($searchLog);
+        }
 
         if (array_key_exists('blockId', $search)) {
             $data['videos'] = $this->video->getAllBySection($request->blockId, $limit = 25);

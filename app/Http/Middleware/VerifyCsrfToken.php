@@ -19,6 +19,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'https://stg.imepay.com.np:7979/api/Web/GetToken'
     ];
 }
