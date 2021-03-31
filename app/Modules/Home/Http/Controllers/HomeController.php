@@ -82,6 +82,8 @@ class HomeController extends Controller
         $data['message'] = '';
         $data['genre'] = $this->genre->getList();
 
+        $data['videos'] = $this->video->findAll($limit = 25);
+
         if (array_key_exists('search_val', $search)) {
             $searchLog['keyword'] = $request->search_val;
             $searchLog['date'] = today();
@@ -89,6 +91,8 @@ class HomeController extends Controller
                 $searchLog['username'] = auth()->user()->username;
             }
             $this->searchLog->save($searchLog);
+
+            $data['videos'] = $this->video->getSearchVideo($request->search_val);
         }
 
         if (array_key_exists('blockId', $search)) {
@@ -97,7 +101,6 @@ class HomeController extends Controller
             $data['block_section_title'] = $block->block_section;
         } else {
             $data['block_section_title'] = '';
-            $data['videos'] = $this->video->findAll($limit = 25);
         }
 
         if (array_key_exists('genre', $search)) {

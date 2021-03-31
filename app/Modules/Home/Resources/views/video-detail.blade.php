@@ -189,6 +189,10 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 
 <script type="text/javascript">
     (function($) {
+        $(this).bind("contextmenu", function(e) {
+            e.preventDefault();
+        });
+
       $('.js-share-twitter-link').click(function(e) {
         e.preventDefault();
         var href = $(this).attr('href');
@@ -199,6 +203,16 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
         var href = $(this).attr('href');
         window.open(href, "Facebook", "height=269,width=550,resizable=1");
       });
+
+    //   var player = videojs('video_vimeo_player', {
+    //     sourceOrder: true,
+    //     sources: [{
+    //         src: "{{$video_detail->video_embeded_url}}",
+    //         type: "video/vimeo"
+    //     }],
+    //     techOrder: ["vimeo"],
+    //     });
+    // console.log(player)
 
 })(jQuery);
 

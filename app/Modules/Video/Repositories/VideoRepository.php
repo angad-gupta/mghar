@@ -123,4 +123,9 @@ class VideoRepository implements VideoInterface
 
         return $result;
     }
+
+    public function getSearchVideo($keyword)
+    {
+        return Video::where('video_title', 'like', '%' . $keyword . '%')->paginate(50);
+    }
 }
