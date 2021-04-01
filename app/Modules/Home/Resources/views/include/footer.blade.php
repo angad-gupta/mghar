@@ -9,7 +9,7 @@ $aboutus = $page->getBySlug('about_us');
     <div class="footer__top">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-xs-12 col-md-3">
                     <div class="footer__item">
                         {!! $aboutus['short_content'] !!}
                         <ul class="footer__nav font-size-sm list-unstyled">
@@ -19,7 +19,7 @@ $aboutus = $page->getBySlug('about_us');
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-12 col-sm-6 col-md-3">
                     <div class="footer__item">
                         <ul class="footer__nav font-size-sm list-unstyled">
                             <li><a class="text-hover--white-default" href="{{ route('about-us')}}">About Manoranjan
@@ -31,7 +31,7 @@ $aboutus = $page->getBySlug('about_us');
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-12 col-sm-6 col-md-2">
                     <div class="footer__item">
                         <ul class="footer__nav font-size-sm list-unstyled">
                             <li><a class="text-hover--white-default"
@@ -43,7 +43,7 @@ $aboutus = $page->getBySlug('about_us');
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-12 col-md-4">
                     <div class="footer__item">
                         <!--
                         <h6>Manoranjan Ghar App</h6>

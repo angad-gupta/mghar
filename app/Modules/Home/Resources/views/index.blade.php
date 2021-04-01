@@ -60,7 +60,8 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="owl-carousel owl-theme latest">
+                            <div class="center latest">
+                                {{-- <div class="owl-carousel owl-theme latest"> --}}
 
                                 @inject('video', '\App\Modules\Video\Repositories\VideoRepository')
                                 @php
@@ -150,7 +151,7 @@
                         $blogimages = ($value->blog_image) ? asset($value->file_full_path).'/'.$value->blog_image :
                         asset('admin/default.png');
                         @endphp
-                        <div class="col d-flex">
+                        <div class="flexitem">
                             <div class="featured-post-small">
                                 <div class="featured-post-small-img">
                                     <img src="{{$blogimages}}" alt="">

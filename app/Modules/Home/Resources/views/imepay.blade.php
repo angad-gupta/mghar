@@ -9,8 +9,8 @@
         <input type="hidden" name="RefId" value="{{$refId}}">
         <input type="hidden" name="TranAmount" value="{{$tranAmount}}">
         <input type="hidden" name="Method" value="POST">
-        <input type="hidden" name="RespUrl" value="http://localhost:8000/subscriber/payment/ime/status">
-        <input type="hidden" name="CancelUrl" value="http://localhost:8000">
+        <input type="hidden" name="RespUrl" value="{{ env('BASE_URL').'/subscriber/payment/ime/status' }}">
+        <input type="hidden" name="CancelUrl" value="{{ env('BASE_URL').'/subscription-package' }}">
     </form>
 </body>
 <script>

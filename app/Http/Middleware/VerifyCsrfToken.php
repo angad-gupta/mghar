@@ -20,6 +20,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'https://stg.imepay.com.np:7979/api/Web/GetToken',
-        '/subscriber/payment/ime/status'
+        '/subscriber/payment/ime/status',
+        '/subscription-package'
     ];
 }
