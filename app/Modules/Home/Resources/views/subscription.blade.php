@@ -13,15 +13,6 @@
                             <h3 class="mb-0">Subscribe to get more out of Manoranjan Ghar</h3>
                         </div>
                     </div>
-                    <form id="ime-form" action="https://stg.imepay.com.np:7979/WebCheckout/Checkout" method="post">
-                        <input type="hidden" id="token-id" name="TokenId" value="">
-                        <input type="hidden" id="merchant-code" name="MerchantCode" value="">
-                        <input type="hidden" id="ref-id" name="RefId" value="">
-                        <input type="hidden" id="tran-amount" name="TranAmount" value="">
-                        <input type="hidden" name="Method" value="GET">
-                        <input type="hidden" name="RespUrl" value="">
-                        <input type="hidden" name="CancelUrl" value="">
-                    </form>
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="pricing-card">
@@ -112,7 +103,8 @@
                                                 <img src="{{ asset('home/images/ime.svg') }}" alt="ime" height="45"
                                                     style="width: 45px;transform: scale(2.3);margin-left: 27px;"
                                                     class="ime"
-                                                    data-payment="{{ $subscription_payment->one_month_payment }}">
+                                                    data-payment="{{ $subscription_payment->one_month_payment }}"
+                                                    data-plan="one_month">
                                             </td>
 
                                             <td class="text-center"><button id="payment-button" type="Subscription"
@@ -123,7 +115,8 @@
                                                 <img src="{{ asset('home/images/ime.svg') }}" alt="ime" height="45"
                                                     style="width: 45px;transform: scale(2.3);margin-left: 27px;"
                                                     class="ime"
-                                                    data-payment="{{ $subscription_payment->three_month_payment }}">
+                                                    data-payment="{{ $subscription_payment->three_month_payment }}"
+                                                    data-plan="three_month">
 
                                             </td>
 
@@ -135,7 +128,8 @@
                                                 <img src="{{ asset('home/images/ime.svg') }}" alt="ime" height="45"
                                                     style="width: 45px;transform: scale(2.3);margin-left: 27px;"
                                                     class="ime"
-                                                    data-payment="{{ $subscription_payment->six_month_payment }}">
+                                                    data-payment="{{ $subscription_payment->six_month_payment }}"
+                                                    data-plan="six_month">
                                             </td>
 
                                             <td class="text-center"><button id="payment-button" type="Subscription"
@@ -145,7 +139,8 @@
                                                 <img src="{{ asset('home/images/ime.svg') }}" alt="ime" height="45"
                                                     style="width: 45px;transform: scale(2.3);margin-left: 27px;"
                                                     class="ime"
-                                                    data-payment="{{ $subscription_payment->one_year_payment }}">
+                                                    data-payment="{{ $subscription_payment->one_year_payment }}"
+                                                    data-plan="one_year">
                                             </td>
                                         </tr>
                                         @else
@@ -176,8 +171,12 @@
     $(document).ready(function() {
         $('.ime').click(function(){
             var amount = $(this).data('payment')
-            var url = '{{ route("payment.ime", ":amount") }}';
-            url = url.replace(':amount',amount);
+            var plan = $(this).data('plan')
+
+            console.log(plan)
+            // return
+            var url = '{{ route("payment.ime", [":amount",":plan"]) }}';
+            url = url.replace(':amount',amount).replace(':plan',plan);
             window.location.href=url;
 
     })

@@ -3,13 +3,23 @@
 namespace App\Modules\Home\Http\Controllers;
 
 use App\Modules\Subscriber\Entities\ImeTransaction;
+use App\Modules\Subscriber\Repositories\SubscriberInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use GuzzleHttp\Client as GuzzleClient;
+use Illuminate\Support\Facades\Auth;
 
 class ImePaymentController extends Controller
 {
+    protected $subscriber;
+    public static $plan = '';
+
+    public function __construct(SubscriberInterface $subscriber)
+    {
+        $this->subscriber = $subscriber;
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
@@ -81,6 +91,7 @@ class ImePaymentController extends Controller
 
     public function imePay(Request $request)
     {
+        self::$plan = $request->plan;
         $data['tranAmount'] = $request->amount;
         $data['refId'] = "Ref-" . time();
         $resp = $this->getImePayToken($data['tranAmount'], $data['refId']);
@@ -167,7 +178,7 @@ class ImePaymentController extends Controller
                 $result = ImeTransaction::where('reference_id', $arr['RefId'])->first();
                 $test = $result->update($all);
 
-                return $this->verifyImePay($msisdn, $transactionId, $refId);
+                return $this->verifyImePay($msisdn, $transactionId, $refId, $result->amount);
                 break;
             case 1:
                 return redirect()->route('home');
@@ -185,7 +196,7 @@ class ImePaymentController extends Controller
     }
 
 
-    public function verifyImePay($msisdn, $transactionId, $refId)
+    public function verifyImePay($msisdn, $transactionId, $refId, $amount)
     {
         $header_apiuser = $this->getApiUser();
         $header_module = $this->getModule();
@@ -203,7 +214,7 @@ class ImePaymentController extends Controller
 
         switch ($responseCode) {
             case 0:
-                return $this->imePayVerify();
+                return $this->imePayVerify($amount);
                 break;
             case 1:
                 return redirect()->route('home');
@@ -217,8 +228,74 @@ class ImePaymentController extends Controller
         }
     }
 
-    public function imePayVerify()
+    public function imePayVerify($amount)
     {
+
+        $id = Auth::guard('subscriber')->user()->id;
+
+        $amount = $amount;
+        // $subscribe_type = $data['product_identity'];
+        // $plan = $data['product_name'];
+
+        $planCheck = $this->subscriber->getSubscriberPlan($id);
+
+        $now = date('Y-m-d');
+
+        if ($planCheck) {
+
+            $strtdate = strtotime($planCheck->end_date);
+
+            //Main Purpose to Check Plan is: whether plan is already taken or not.. if taken. then .. all subsriber id status will expire and create new plan
+            $updatePlan = array(
+                'status' => 'expired'
+            );
+            $this->subscriber->updatePlanStatus($id, $updatePlan);
+
+            $updatePayment = array(
+                'status' => 'expired'
+            );
+            $this->subscriber->updatePaymentStatus($id, $updatePayment);
+        } else {
+
+            $strtdate = strtotime($now);
+        }
+
+        $start_date = date('Y-m-d');
+
+        if (self::$plan == 'one_month') {
+            $end_date =  date("Y-m-d", strtotime("+1 month", $strtdate));
+        } else if (self::$plan == 'three_month') {
+            $end_date =  date("Y-m-d", strtotime("+3 months", $strtdate));
+        } else if (self::$plan == 'six_month') {
+            $end_date =  date("Y-m-d", strtotime("+6 months", $strtdate));
+        } else {
+            $end_date =  date("Y-m-d", strtotime("+1 year", $strtdate));
+        }
+
+        //If Plancheck is EMPTY, insert new data on plan and payment
+        $planData = array(
+            'subscriber_id' => $id,
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+            'plan' => self::$plan,
+            'date' => date('Y-m-d'),
+            'status' => 'active'
+        );
+        $this->subscriber->insertPlanData($planData);
+
+        $paymentData = array(
+            'subscriber_id' => $id,
+            'plan' => self::$plan,
+            'payment_date' => date('Y-m-d'),
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+            'payment_method' => 'Ime',
+            'total_amount' => $amount,
+            'type' => 'Subscription',
+            'status' => 'active'
+        );
+        $this->subscriber->insertPaymentData($paymentData);
+
         alertify('Package Subscribed Successfully')->success();
 
         return redirect(route('sdashboard'));
