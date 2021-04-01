@@ -34,8 +34,8 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
-        $transaction = ImeTransaction::create($request->all());
-        return response()->json($transaction);
+        // $transaction = ImeTransaction::create($request->all());
+        // return response()->json($transaction);
     }
 
     /**

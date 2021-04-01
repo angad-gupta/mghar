@@ -120,8 +120,10 @@
                                                     value="{{$subscription_payment->three_month_payment}}"
                                                     amount="{{$subscription_payment->three_month_payment}}"
                                                     class="payment-button btn btn-warning">Select</button>
-                                                <img src="{{ asset('home/images/ime.jpg') }}" alt="ime" height="45"
-                                                    style="width: 45px;">
+                                                <img src="{{ asset('home/images/ime.svg') }}" alt="ime" height="45"
+                                                    style="width: 45px;transform: scale(2.3);margin-left: 27px;"
+                                                    class="ime"
+                                                    data-payment="{{ $subscription_payment->three_month_payment }}">
 
                                             </td>
 
@@ -130,17 +132,20 @@
                                                     value="{{$subscription_payment->six_month_payment}}"
                                                     amount="{{$subscription_payment->six_month_payment}}"
                                                     class="payment-button btn btn-danger">Select</button>
-                                                <img src="{{ asset('home/images/ime.jpg') }}" alt="ime" height="45"
-                                                    style="width: 45px;">
-
+                                                <img src="{{ asset('home/images/ime.svg') }}" alt="ime" height="45"
+                                                    style="width: 45px;transform: scale(2.3);margin-left: 27px;"
+                                                    class="ime"
+                                                    data-payment="{{ $subscription_payment->six_month_payment }}">
                                             </td>
 
                                             <td class="text-center"><button id="payment-button" type="Subscription"
                                                     plan="one_year" value="{{$subscription_payment->one_year_payment}}"
                                                     amount="{{$subscription_payment->one_year_payment}}"
                                                     class="payment-button btn btn-primary">Select</button>
-                                                <img src="{{ asset('home/images/ime.jpg') }}" alt="ime" height="45"
-                                                    style="width: 45px;">
+                                                <img src="{{ asset('home/images/ime.svg') }}" alt="ime" height="45"
+                                                    style="width: 45px;transform: scale(2.3);margin-left: 27px;"
+                                                    class="ime"
+                                                    data-payment="{{ $subscription_payment->one_year_payment }}">
                                             </td>
                                         </tr>
                                         @else
@@ -170,64 +175,12 @@
 <script>
     $(document).ready(function() {
         $('.ime').click(function(){
-            var payment = $(this).data('payment')
-            var d = new Date();
-            var refId = "Ref-" + d.getTime();
-            console.log(payment)
-            console.log(refId)
-            var data ={
-                'MerchantCode': 'GHAR',
-                'RefId': refId,
-                'Amount': payment,
-            }
+            var amount = $(this).data('payment')
+            var url = '{{ route("payment.ime", ":amount") }}';
+            url = url.replace(':amount',amount);
+            window.location.href=url;
 
-            console.log(data)
-            console.log(btoa("ghar:ime@123"))
-            // return
-            $.ajax({
-                type: "POST",
-                url: "https://stg.imepay.com.np:7979/api/Web/GetToken",
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Authorization": "Basic " + btoa("ghar:ime@123"),
-                    "Module":btoa("GHAR")
-                },
-                dataType: 'json',
-                data:data,
-                success: function (res){
-                  console.log(res)
-                  return;
-                  if(res && res.data && res.data.TokenId) {
-                    let data = {
-                    merchant_code: 'MERCHANT CODE',
-                    token_id: res.data.TokenId,
-                    amount: res.data.Amount,
-                    reference_id: res.data.RefId,
-                    status: res.data.ResponseCode,
-                    };
-                    console.log(data);
-                    $.ajax({
-                        type:"POST",
-                        url:"/ime_transaction/save",
-                        data:data,
-                        success: function(res){
-                        $('#token-id').val(res.data.token_id)
-                        $('#merchant-code').val(res.data.merchant_code)
-                        $('#ref-id').val(res.data.reference_id)
-                        $('#tran-amount').val(res.data.amount)
-
-                        $('#ime-form').submit();
-                        },
-                    })
-                    }else{
-                        alert("Sorry for the incontinence, we cannot communicate with payment server at the moment. Please try again later.")
-                    }
-                },
-                error: function (xhr,ajaxOptions,throwError){
-                    //Error block
-                },
-            })
-        })
     })
+})
 </script>
 @endsection

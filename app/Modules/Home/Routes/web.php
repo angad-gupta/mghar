@@ -58,4 +58,8 @@ Route::group(['prefix' => 'subscriber', 'middleware' => ['auth:subscriber']], fu
     Route::post('subscriber-update-password', ['as' => 'subscriber-update-password', 'uses' => 'SubscriberController@updateSubscriberPassword']);
 
     Route::post('payment-verification', ['as' => 'payment-verification', 'uses' => 'SubscriberController@PaymentVerification']);
+
+    Route::get('payment/ime/{amount}', ['as' => 'payment.ime', 'uses' => 'ImePaymentController@imePay']);
+
+    Route::post('payment/ime/status', ['as' => 'payment.ime.status', 'uses' => 'ImePaymentController@imePayStatus']);
 });
