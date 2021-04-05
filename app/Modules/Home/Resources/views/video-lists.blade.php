@@ -39,13 +39,14 @@
 
 
                     <div class="row">
-                        @if($videos->total() != 0)
-                        @foreach($videos as $key => $value)
-                        @php
-                        $coverimages = ($value->video_cover_image) ?
-                        asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
-                        @endphp
                         <div class="listing">
+
+                            @if($videos->total() != 0)
+                            @foreach($videos as $key => $value)
+                            @php
+                            $coverimages = ($value->video_cover_image) ?
+                            asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                            @endphp
                             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                 <div class="featured-post-small">
                                     <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
@@ -62,14 +63,13 @@
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
-
-                        @endforeach
-                        @else
-                        <span>No Videos Added</span>
-                        @endif
-
                     </div>
+                    @else
+                    <span>No Videos Added</span>
+                    @endif
+
                 </div>
             </div>
         </div>
