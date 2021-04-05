@@ -2,6 +2,7 @@
 
 namespace App\Modules\Subscriber\Http\Controllers;
 
+use App\Modules\Subscriber\Entities\ImeTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -33,7 +34,8 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $transaction = ImeTransaction::create($request->all());
+        // return response()->json($transaction);
     }
 
     /**

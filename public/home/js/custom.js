@@ -1,24 +1,40 @@
 $('.banner').owlCarousel({
-  loop:true,
-  margin:20,
-  // autoplay:true,
-  nav:true,
-  dots:false,
-  items:1,
-  navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
-  smartSpeed: 1000,
-});
-
-$('.latest').owlCarousel({
-    loop:true,
-    items:6,
-    margin:14,
-    // autoplay:true,
-    nav:true,
-    dots:false,
-    navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+    loop: true,
+    margin: 20,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    nav: true,
+    dots: true,
+    items: 1,
+    navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
     smartSpeed: 1000,
 });
+
+// $('.latest').owlCarousel({
+//     loop:true,
+//     margin:14,
+//     // autoplay:true,
+//     center: true,
+//     nav:true,
+//     dots:false,
+//     navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+//     smartSpeed: 1000,
+//     responsive: {
+//         0: {
+//             items: 1,
+//         },
+//         640: {
+//             items: 2,
+//         },
+//         978: {
+//             items: 4,
+//         },
+//         1200: {
+//             items: 6,
+//         },
+//     },
+// });
 
 // Can also be used with $(document).ready()
 $(window).load(function () {
@@ -50,14 +66,50 @@ $(".image-popup").magnificPopup({
 });
 
 //Pre-loader
-$(window).on('load', function() {
-    if($('.nnc-preloader').length > 0) {
+$(window).on('load', function () {
+    if ($('.nnc-preloader').length > 0) {
         $('.lds-facebook').fadeOut();
         $('.nnc-preloader').delay(350).fadeOut('slow');
-        $('body').delay(350).css({'overflow':'visible'});
+        $('body').delay(350).css({ 'overflow': 'visible' });
     }
 });
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
+
+$('.center').slick({
+    centerMode: true,
+    centerPadding: '60px',
+    slidesToShow: 5,
+    arrows: false,
+    responsive: [
+        {
+            breakpoint: 993,
+            settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 4
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 3
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 1
+            }
+        }
+    ]
+});

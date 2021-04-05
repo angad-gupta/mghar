@@ -26,7 +26,7 @@ Route::get('about-us', ['as' => 'about-us', 'uses' => 'HomeController@aboutUs'])
 Route::get('term-use', ['as' => 'term-use', 'uses' => 'HomeController@termUse']);
 Route::get('privacy-policy', ['as' => 'privacy-policy', 'uses' => 'HomeController@privacyPolicy']);
 Route::get('faq', ['as' => 'faq', 'uses' => 'HomeController@Faq']);
-Route::get('subscription-package', ['as' => 'subscription-package', 'uses' => 'HomeController@subscriptionPackage']);
+Route::match(array('GET', 'POST'), 'subscription-package', ['as' => 'subscription-package', 'uses' => 'HomeController@subscriptionPackage']);
 
 Route::get('subscriber-login', ['as' => 'subscriber-login', 'uses' => 'HomeController@subscriberLogin']);
 Route::get('subscriber-register', ['as' => 'subscriber-register', 'uses' => 'HomeController@subscriberRegisterForm']);
@@ -58,4 +58,8 @@ Route::group(['prefix' => 'subscriber', 'middleware' => ['auth:subscriber']], fu
     Route::post('subscriber-update-password', ['as' => 'subscriber-update-password', 'uses' => 'SubscriberController@updateSubscriberPassword']);
 
     Route::post('payment-verification', ['as' => 'payment-verification', 'uses' => 'SubscriberController@PaymentVerification']);
+
+    Route::get('payment/ime/{amount}/{plan}', ['as' => 'payment.ime', 'uses' => 'ImePaymentController@imePay']);
+
+    Route::post('payment/ime/status', ['as' => 'payment.ime.status', 'uses' => 'ImePaymentController@imePayStatus']);
 });

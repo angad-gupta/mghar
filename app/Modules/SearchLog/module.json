@@ -1,0 +1,14 @@
+{
+    "name": "SearchLog",
+    "alias": "searchlog",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "App\\Modules\\SearchLog\\Providers\\SearchLogServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

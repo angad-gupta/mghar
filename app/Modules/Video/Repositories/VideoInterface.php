@@ -30,4 +30,6 @@ interface VideoInterface
     public function getByGenre($block_id, $genre_id, $limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]);
 
     public function getTrendingVideos($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]);
+
+    public function getSearchVideo($keyword);
 }
