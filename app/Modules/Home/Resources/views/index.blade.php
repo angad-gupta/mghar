@@ -51,7 +51,7 @@
                         <div class="col-12">
                             <div class="main-title">
                                 <h4 class="mb-0">Latest Videos</h4>
-                                <a class="view-all" href="#">View All <i class="fa fa-angle-right"></i></a>
+                                <a class="view-all" href="{{ route('videos') }}">View All <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                                                 <img src="{{$coverimages}}" alt="">
                                                 <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist" data-toggle="tooltip" data-placement="top" title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a> 
-                                            
+
                                             <div class="featured-post_content">
                                                 <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
                                                     <h5>{{$value->video_title}}</h5>
@@ -99,7 +99,7 @@
                         <div class="col-12">
                             <div class="main-title">
                                 <h4 class="mb-0">Trending Videos</h4>
-                                <a class="view-all" href="#">View All <i class="fa fa-angle-right"></i></a>
+                                <a class="view-all" href="{{ route('videos') }}">View All <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,6 @@
                                         </div>
                                     </div>
                                    @endforeach
-                       
                                 @endif
 
                             </div>
@@ -141,6 +140,7 @@
     </div>
 </div>
 
+
 <div class="featured-post-block">
     <div class="container-fluid">
         <div class="row">
@@ -150,7 +150,7 @@
                         <div class="col-12">
                             <div class="main-title">
                                 <h4 class="mb-0">Most Popular Videos</h4>
-                                <a class="view-all" href="#">View All <i class="fa fa-angle-right"></i></a>
+                                <a class="view-all" href="{{ route('videos') }}">View All <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
