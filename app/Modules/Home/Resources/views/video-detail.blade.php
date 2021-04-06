@@ -46,14 +46,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                                         class="fa fa-clock icon"></i>&nbsp;{{ $video_detail->created_at->diffForHumans() }}</span>
                             </div>
                             <div class="video-share d-flex align-items-center">
-                                <h6 class="mb-0 mr-1"><i class="fa fa-share"></i>&nbsp;Share:</h6>
-                                <a class="fb js-share-facebook-link"
-                                    href="https://www.facebook.com/sharer/sharer.php?u={{ route('video-detail',['video_id'=>$video_detail->id]) }}%2F&amp;src=sdkpreparse"><i
-                                        class="fab fa-facebook"></i></a>
-
-                                <a target="_blank" class="js-share-twitter-link tweet"
-                                    href="https://twitter.com/intent/tweet?url={{ route('video-detail',['video_id'=>$video_detail->id]) }}"><i
-                                        class="fab fa-twitter"></i></a>
+                                <div class="sharethis-inline-share-buttons"></div>
                             </div>
 
                         </div>

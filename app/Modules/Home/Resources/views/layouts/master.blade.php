@@ -39,6 +39,8 @@
 
     @yield('share_head')
 
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=606c31f26f7ab900129ced84&product=inline-share-buttons" async="async"></script>
+
 </head>
 
 <body>
