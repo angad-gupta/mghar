@@ -62,9 +62,7 @@
                                     @if($latest_videos->total() != 0)
                                     @foreach($latest_videos as $key => $value)
                                     @php
-                                    dd($value);
-                                    $coverimages = ($value->video_cover_image) ?
-                                    asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                    $coverimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
                                     @endphp
                                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                         <div class="featured-post-small">
@@ -111,8 +109,7 @@
                                 @if(sizeof($trending_videos) > 0)
                                 @foreach($trending_videos as $key => $value)
                                     @php
-                                    $coverimages = ($value->video_cover_image) ?
-                                    asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                    $coverimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
                                     @endphp
                                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                         <div class="featured-post-small">
@@ -163,8 +160,7 @@
                                 @if(sizeof($popular_vidoes) > 0)
                                 @foreach($popular_vidoes as $key => $value)
                                     @php
-                                    $coverimages = ($value->video_cover_image) ?
-                                    asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                    $coverimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
                                     @endphp
                                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                         <div class="featured-post-small">
