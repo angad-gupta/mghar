@@ -136,7 +136,8 @@ class HomeController extends Controller
         $newCount = $videoView + 1;
 
         $video_data = array(
-            'total_views' => $newCount
+            'total_views' => $newCount,
+            'updated_at' => date('Y-m-d H:i:s')
         );
 
         $this->video->update($video_id, $video_data);

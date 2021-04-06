@@ -34,7 +34,7 @@ class VideoRepository implements VideoInterface
             $start = $now->startOfWeek();
             $end = $now->endOfWeek();
 
-            return Video::whereBetween('created_at', [$start,$end])->orderBy('total_views','DESC')->get();
+            return Video::whereBetween('updated_at', [$start,$end])->orderBy('total_views','DESC')->get();
    }
 
     public function getPopularVideo($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]){
