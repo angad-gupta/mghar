@@ -57,7 +57,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="owl-carousel owl-theme latest">
+                            <div class="center latest">
 
                                     @if($latest_videos->total() != 0)
                                     @foreach($latest_videos as $key => $value)
@@ -71,11 +71,11 @@
                                                 <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist" data-toggle="tooltip" data-placement="top" title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a> 
                                             
-                                           <!--  <div class="featured-post_content">
+                                            <div class="featured-post_content">
                                                 <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
                                                     <h5>{{$value->video_title}}</h5>
                                                 </a>
-                                            </div> -->
+                                            </div>
                                         </div>
                                     </div>
                                     @endforeach
@@ -105,7 +105,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="owl-carousel owl-theme latest">
+                            <div class="center latest">
 
                                 @if(sizeof($trending_videos) > 0)
                                 @foreach($trending_videos as $key => $value)
@@ -156,7 +156,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="owl-carousel owl-theme latest">
+                            <div class="center latest">
 
                                 @if(sizeof($popular_vidoes) > 0)
                                 @foreach($popular_vidoes as $key => $value)
