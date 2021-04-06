@@ -142,20 +142,9 @@ class HomeController extends Controller
 
         $this->video->update($video_id, $video_data);
 
-        //Artist Related
-        $celebrities = $this->video->findVideoCeleb($video_id);
 
-        $celebrityIds = array();
-        foreach ($celebrities as $key => $value) {
-
-            $cel_id = $value->celebrity_id;
-            array_push($celebrityIds, $cel_id);
-        }
-        $celebDatas['cel_id'] = $celebrityIds;
-        $data['artist_related'] = $this->video->getArtistRelatedVideo($video_id, $celebDatas, $limit = 20);
-
-        $data['video_id'] = $video_id;
-        $data['trending_videos'] = $this->video->getTrendingVideos($limit = 6);
+        $data['trending_videos'] = $this->video->getTrendingVideo($limit= 20);
+        $data['popular_vidoes'] = $this->video->getPopularVideo($limit= 20);
 
         return view('home::video-detail', $data);
     }
