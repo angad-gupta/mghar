@@ -20,6 +20,7 @@ class Video extends Model
         'video_embeded_url',
         'description',
         'status',
+        'date',
         'total_views',
         'display_block_section',
         'is_popular',
