@@ -62,17 +62,15 @@
                                     @if($latest_videos->total() != 0)
                                     @foreach($latest_videos as $key => $value)
                                     @php
+                                    dd($value);
                                     $coverimages = ($value->video_cover_image) ?
                                     asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
                                     @endphp
                                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                         <div class="featured-post-small">
-                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
-                                                class="featured-post-small-img">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
                                                 <img src="{{$coverimages}}" alt="">
-                                                <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
-                                                    class="add-watchlist" data-toggle="tooltip" data-placement="top"
-                                                    title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
+                                                <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist" data-toggle="tooltip" data-placement="top" title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
                                             <div class="featured-post_content">
                                                 <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">

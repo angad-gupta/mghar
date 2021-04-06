@@ -40,7 +40,7 @@ class VideoRepository implements VideoInterface
     public function getPopularVideo($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]){
          $result = Video::when(array_keys($filter, true), function ($query) use ($filter) {
         
-         })->orderBy('total_views','DESC')->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));
+         })->orderBy('total_views','DESC')->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));  
 
         return $result;
     }
