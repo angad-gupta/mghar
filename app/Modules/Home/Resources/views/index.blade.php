@@ -61,7 +61,7 @@
 
                                 @if(sizeof($latest_videos) > 0)
                                 @foreach($latest_videos as $key => $lvideo)
-                                @php
+                                @php dd($lvideo);
                                 $lvideo = App\Modules\Video\Entities\Video::findByVidId($lvideo->video_id);
                                 $raimages = ($lvideo->video_cover_image) ? asset($lvideo->file_full_path).'/'.$lvideo->video_cover_image : asset('admin/default.png');
                                 @endphp
