@@ -60,29 +60,29 @@
                             <div class="owl-carousel owl-theme latest">
 
                                 @if(sizeof($latest_videos) > 0)
-                                @foreach($latest_videos as $key => $lvideo)
-                                @php dd($lvideo);
-                                $lvideo = App\Modules\Video\Entities\Video::findByVidId($lvideo->video_id);
-                                $raimages = ($lvideo->video_cover_image) ? asset($lvideo->file_full_path).'/'.$lvideo->video_cover_image : asset('admin/default.png');
-                                @endphp
 
-                                <div class="item">
-                                    <div class="featured-post-small">
-                                        <a href="{{ route('video-detail',['video_id'=>$lvideo->id]) }}"
-                                            class="featured-post-small-img">
-                                            <img src="{{$raimages}}" alt="">
-                                            <a href="{{ route('add-to-wishlist',['video_id'=>$lvideo->id]) }}"
-                                                class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
-                                                Watchlist</a>
-                                        </a>
-                                        <div class="featured-post_content">
-                                            <a href="{{ route('video-detail',['video_id'=>$lvideo->id]) }}">
-                                                <h5>{{$lvideo->video_title}}</h5>
+                                    @foreach($latest_videos as $key => $value)
+                                    @php
+                                    $coverimages = ($value->video_cover_image) ?
+                                    asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                    @endphp
+                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
+                                        <div class="featured-post-small">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
+                                                class="featured-post-small-img">
+                                                <img src="{{$coverimages}}" alt="">
+                                                <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
+                                                    class="add-watchlist" data-toggle="tooltip" data-placement="top"
+                                                    title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
+                                            <div class="featured-post_content">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                                    <h5>{{$value->video_title}}</h5>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
 
                             </div>
@@ -112,29 +112,29 @@
                             <div class="owl-carousel owl-theme latest">
 
                                 @if(sizeof($trending_videos) > 0)
-                                @foreach($trending_videos as $key => $tvideo)
-                                @php
-                                $tvideo = App\Modules\Video\Entities\Video::findByVidId($tvideo->video_id);
-                                $raimages = ($tvideo->video_cover_image) ? asset($tvideo->file_full_path).'/'.$tvideo->video_cover_image : asset('admin/default.png');
-                                @endphp
-
-                                <div class="item">
-                                    <div class="featured-post-small">
-                                        <a href="{{ route('video-detail',['video_id'=>$tvideo->id]) }}"
-                                            class="featured-post-small-img">
-                                            <img src="{{$raimages}}" alt="">
-                                            <a href="{{ route('add-to-wishlist',['video_id'=>$tvideo->id]) }}"
-                                                class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
-                                                Watchlist</a>
-                                        </a>
-                                        <div class="featured-post_content">
-                                            <a href="{{ route('video-detail',['video_id'=>$tvideo->id]) }}">
-                                                <h5>{{$tvideo->video_title}}</h5>
+                                @foreach($trending_videos as $key => $value)
+                                    @php
+                                    $coverimages = ($value->video_cover_image) ?
+                                    asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                    @endphp
+                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
+                                        <div class="featured-post-small">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
+                                                class="featured-post-small-img">
+                                                <img src="{{$coverimages}}" alt="">
+                                                <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
+                                                    class="add-watchlist" data-toggle="tooltip" data-placement="top"
+                                                    title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
+                                            <div class="featured-post_content">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                                    <h5>{{$value->video_title}}</h5>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach
+                                   @endforeach
+                       
                                 @endif
 
                             </div>
@@ -164,29 +164,28 @@
                             <div class="owl-carousel owl-theme latest">
 
                                 @if(sizeof($popular_vidoes) > 0)
-                                @foreach($popular_vidoes as $key => $pvideo)
-                                @php
-                                $pvideo = App\Modules\Video\Entities\Video::findByVidId($pvideo->video_id);
-                                $raimages = ($pvideo->video_cover_image) ? asset($pvideo->file_full_path).'/'.$pvideo->video_cover_image : asset('admin/default.png');
-                                @endphp
-
-                                <div class="item">
-                                    <div class="featured-post-small">
-                                        <a href="{{ route('video-detail',['video_id'=>$pvideo->id]) }}"
-                                            class="featured-post-small-img">
-                                            <img src="{{$raimages}}" alt="">
-                                            <a href="{{ route('add-to-wishlist',['video_id'=>$pvideo->id]) }}"
-                                                class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
-                                                Watchlist</a>
-                                        </a>
-                                        <div class="featured-post_content">
-                                            <a href="{{ route('video-detail',['video_id'=>$pvideo->id]) }}">
-                                                <h5>{{$pvideo->video_title}}</h5>
+                                @foreach($popular_vidoes as $key => $value)
+                                    @php
+                                    $coverimages = ($value->video_cover_image) ?
+                                    asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                    @endphp
+                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
+                                        <div class="featured-post-small">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
+                                                class="featured-post-small-img">
+                                                <img src="{{$coverimages}}" alt="">
+                                                <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
+                                                    class="add-watchlist" data-toggle="tooltip" data-placement="top"
+                                                    title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
+                                            <div class="featured-post_content">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                                    <h5>{{$value->video_title}}</h5>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach
+                                   @endforeach
                                 @endif
 
                             </div>
