@@ -31,10 +31,10 @@ class VideoRepository implements VideoInterface
 
     public function getTrendingVideo($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]){
             $now = Carbon::now();
-            $start = $now->startOfWeek();
-            $end = $now->endOfWeek();
+            $start = $now->startOfWeek()->format('Y-m-d');  
+            $end = $now->endOfWeek()->format('Y-m-d');
 
-            return Video::whereBetween('date', [$start,$end])->orderBy('total_views','DESC')->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));  
+            return Video::where('date','>=',$start)->where('date','<=',$end)->orderBy('total_views','DESC')->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));  
    }
 
     public function getPopularVideo($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]){
