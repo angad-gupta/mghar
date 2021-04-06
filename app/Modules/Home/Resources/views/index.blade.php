@@ -70,12 +70,12 @@
                                                 <img src="{{$coverimages}}" alt="">
                                                 <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist" data-toggle="tooltip" data-placement="top" title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a> 
-                                            @dd($value->video_title);
-                                            <div class="featured-post_content">
+                                            
+                                           <!--  <div class="featured-post_content">
                                                 <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
                                                     <h5>{{$value->video_title}}</h5>
                                                 </a>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     @endforeach
