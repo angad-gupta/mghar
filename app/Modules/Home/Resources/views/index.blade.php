@@ -42,6 +42,168 @@
     </div>
 </div>
 
+<div class="featured-post-block">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="featured-post">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="main-title">
+                                <h4 class="mb-0">Latest Videos</h4>
+                                <a class="view-all" href="#">View All <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="owl-carousel owl-theme latest">
+
+                                @if(sizeof($latest_videos) > 0)
+                                @foreach($latest_videos as $key => $val)
+                                @php
+                                $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
+                                $raimages = ($videoInfo->video_cover_image) ?
+                                asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image :
+                                asset('admin/default.png');
+                                @endphp
+
+                                <div class="item">
+                                    <div class="featured-post-small">
+                                        <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}"
+                                            class="featured-post-small-img">
+                                            <img src="{{$raimages}}" alt="">
+                                            <a href="{{ route('add-to-wishlist',['video_id'=>$videoInfo->id]) }}"
+                                                class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
+                                                Watchlist</a>
+                                        </a>
+                                        <div class="featured-post_content">
+                                            <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}">
+                                                <h5>{{$videoInfo->video_title}}</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                @endif
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="featured-post-block">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="featured-post">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="main-title">
+                                <h4 class="mb-0">Trending Videos</h4>
+                                <a class="view-all" href="#">View All <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="owl-carousel owl-theme latest">
+
+                                @if(sizeof($trending_videos) > 0)
+                                @foreach($trending_videos as $key => $val)
+                                @php
+                                $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
+                                $raimages = ($videoInfo->video_cover_image) ?
+                                asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image :
+                                asset('admin/default.png');
+                                @endphp
+
+                                <div class="item">
+                                    <div class="featured-post-small">
+                                        <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}"
+                                            class="featured-post-small-img">
+                                            <img src="{{$raimages}}" alt="">
+                                            <a href="{{ route('add-to-wishlist',['video_id'=>$videoInfo->id]) }}"
+                                                class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
+                                                Watchlist</a>
+                                        </a>
+                                        <div class="featured-post_content">
+                                            <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}">
+                                                <h5>{{$videoInfo->video_title}}</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                @endif
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="featured-post-block">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="featured-post">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="main-title">
+                                <h4 class="mb-0">Most Popular Videos</h4>
+                                <a class="view-all" href="#">View All <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="owl-carousel owl-theme latest">
+
+                                @if(sizeof($popular_vidoes) > 0)
+                                @foreach($popular_vidoes as $key => $val)
+                                @php
+                                $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
+                                $raimages = ($videoInfo->video_cover_image) ?
+                                asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image :
+                                asset('admin/default.png');
+                                @endphp
+
+                                <div class="item">
+                                    <div class="featured-post-small">
+                                        <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}"
+                                            class="featured-post-small-img">
+                                            <img src="{{$raimages}}" alt="">
+                                            <a href="{{ route('add-to-wishlist',['video_id'=>$videoInfo->id]) }}"
+                                                class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
+                                                Watchlist</a>
+                                        </a>
+                                        <div class="featured-post_content">
+                                            <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}">
+                                                <h5>{{$videoInfo->video_title}}</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                @endif
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @if($dynamic_block->total() != 0)
 @foreach($dynamic_block as $key => $block)
 <div class="featured-post-block">

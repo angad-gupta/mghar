@@ -4,6 +4,7 @@ namespace App\Modules\Video\Repositories;
 
 use App\Modules\Video\Entities\Video;
 use App\Modules\Video\Entities\VideoCeleb;
+use Carbon\Carbon;
 
 class VideoRepository implements VideoInterface
 {
@@ -24,6 +25,22 @@ class VideoRepository implements VideoInterface
                 $query->where('genre_id', '=', $filter['genre']);
             }
         })->orderBy('id', $sort['sort'])->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));
+
+        return $result;
+    }
+
+    public function getTrendingVideo($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]){
+            $now = Carbon::now();
+            $start = $now->startOfWeek();
+            $end = $now->endOfWeek();
+
+            return Video::whereBetween('created_at', [$start,$end])->orderBy('total_views','DESC')->get();
+   }
+
+    public function getPopularVideo($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]){
+         $result = Video::when(array_keys($filter, true), function ($query) use ($filter) {
+        
+         })->orderBy('total_views','DESC')->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));
 
         return $result;
     }

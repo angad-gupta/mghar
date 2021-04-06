@@ -60,9 +60,9 @@ class HomeController extends Controller
 
         $data['message'] = '';
 
-        // $data['popular_videos'] = $this->video->getVideoByType('is_popular',$limit= 20);
-        // $data['trending_videos'] = $this->video->getVideoByType('is_trending',$limit= 20);
-        // $data['latest_videos'] = $this->video->findAll($limit = 20);
+         $data['latest_videos'] = $this->video->findAll($limit = 20);
+         $data['trending_videos'] = $this->video->getTrendingVideo($limit= 20);
+         $data['popular_vidoes'] = $this->video->getPopularVideo($limit= 20);
 
         $data['dynamic_block'] = $this->blocksection->findAll($limit = 20);
         $data['blog_info'] = $this->blog->findAllActiveBlog($limit = 20);

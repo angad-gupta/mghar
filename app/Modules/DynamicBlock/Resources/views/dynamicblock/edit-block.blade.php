@@ -260,7 +260,7 @@
                                                 <span class="input-group-text"><i class="icon-puzzle4"></i>
                                                 </span>
                                             </span>
-                                           {!! Form::text('scripted_ads[]', $value = null, ['id'=>'scripted_ads','placeholder'=>'Enter Scripted Ads','class'=>'form-control','required']) !!}
+                                           {!! Form::text('scripted_ads[]', $value = null, ['id'=>'scripted_ads','placeholder'=>'Enter Scripted Ads','class'=>'form-control']) !!}
 
                                              {!! Form::hidden('edit_ads_image[]',null, ['id' => 'ads_image'] ) !!}
 
