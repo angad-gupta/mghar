@@ -60,7 +60,7 @@ class HomeController extends Controller
 
         $data['message'] = '';
 
-         $data['latest_videos'] = $this->video->findAll($limit = 20);  dd($data);
+         $data['latest_videos'] = $this->video->findAll($limit = 20);  
          $data['trending_videos'] = $this->video->getTrendingVideo($limit= 20);
          $data['popular_vidoes'] = $this->video->getPopularVideo($limit= 20);
 

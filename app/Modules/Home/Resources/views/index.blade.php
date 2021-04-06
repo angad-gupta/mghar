@@ -59,8 +59,7 @@
                         <div class="col-12">
                             <div class="owl-carousel owl-theme latest">
 
-                                @if(sizeof($latest_videos) > 0)
-
+                                    @if($latest_videos->total() != 0)
                                     @foreach($latest_videos as $key => $value)
                                     @php
                                     $coverimages = ($value->video_cover_image) ?
