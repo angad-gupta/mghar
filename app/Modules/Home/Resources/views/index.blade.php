@@ -63,9 +63,7 @@
                                 @foreach($latest_videos as $key => $val)
                                 @php
                                 $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
-                                $raimages = ($videoInfo->video_cover_image) ?
-                                asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image :
-                                asset('admin/default.png');
+                                $raimages = ($videoInfo->video_cover_image) ? asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image : asset('admin/default.png');
                                 @endphp
 
                                 <div class="item">
@@ -117,9 +115,7 @@
                                 @foreach($trending_videos as $key => $val)
                                 @php
                                 $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
-                                $raimages = ($videoInfo->video_cover_image) ?
-                                asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image :
-                                asset('admin/default.png');
+                                $raimages = ($videoInfo->video_cover_image) ? asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image : asset('admin/default.png');
                                 @endphp
 
                                 <div class="item">
@@ -171,9 +167,7 @@
                                 @foreach($popular_vidoes as $key => $val)
                                 @php
                                 $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
-                                $raimages = ($videoInfo->video_cover_image) ?
-                                asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image :
-                                asset('admin/default.png');
+                                $raimages = ($videoInfo->video_cover_image) ? asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image : asset('admin/default.png');
                                 @endphp
 
                                 <div class="item">
