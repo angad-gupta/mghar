@@ -60,24 +60,24 @@
                             <div class="owl-carousel owl-theme latest">
 
                                 @if(sizeof($latest_videos) > 0)
-                                @foreach($latest_videos as $key => $val)
+                                @foreach($latest_videos as $key => $lvideo)
                                 @php
-                                $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
-                                $raimages = ($videoInfo->video_cover_image) ? asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image : asset('admin/default.png');
+                                $lvideo = App\Modules\Video\Entities\Video::findByVidId($lvideo->video_id);
+                                $raimages = ($lvideo->video_cover_image) ? asset($lvideo->file_full_path).'/'.$lvideo->video_cover_image : asset('admin/default.png');
                                 @endphp
 
                                 <div class="item">
                                     <div class="featured-post-small">
-                                        <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}"
+                                        <a href="{{ route('video-detail',['video_id'=>$lvideo->id]) }}"
                                             class="featured-post-small-img">
                                             <img src="{{$raimages}}" alt="">
-                                            <a href="{{ route('add-to-wishlist',['video_id'=>$videoInfo->id]) }}"
+                                            <a href="{{ route('add-to-wishlist',['video_id'=>$lvideo->id]) }}"
                                                 class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
                                                 Watchlist</a>
                                         </a>
                                         <div class="featured-post_content">
-                                            <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}">
-                                                <h5>{{$videoInfo->video_title}}</h5>
+                                            <a href="{{ route('video-detail',['video_id'=>$lvideo->id]) }}">
+                                                <h5>{{$lvideo->video_title}}</h5>
                                             </a>
                                         </div>
                                     </div>
@@ -112,24 +112,24 @@
                             <div class="owl-carousel owl-theme latest">
 
                                 @if(sizeof($trending_videos) > 0)
-                                @foreach($trending_videos as $key => $val)
+                                @foreach($trending_videos as $key => $tvideo)
                                 @php
-                                $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
-                                $raimages = ($videoInfo->video_cover_image) ? asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image : asset('admin/default.png');
+                                $tvideo = App\Modules\Video\Entities\Video::findByVidId($tvideo->video_id);
+                                $raimages = ($tvideo->video_cover_image) ? asset($tvideo->file_full_path).'/'.$tvideo->video_cover_image : asset('admin/default.png');
                                 @endphp
 
                                 <div class="item">
                                     <div class="featured-post-small">
-                                        <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}"
+                                        <a href="{{ route('video-detail',['video_id'=>$tvideo->id]) }}"
                                             class="featured-post-small-img">
                                             <img src="{{$raimages}}" alt="">
-                                            <a href="{{ route('add-to-wishlist',['video_id'=>$videoInfo->id]) }}"
+                                            <a href="{{ route('add-to-wishlist',['video_id'=>$tvideo->id]) }}"
                                                 class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
                                                 Watchlist</a>
                                         </a>
                                         <div class="featured-post_content">
-                                            <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}">
-                                                <h5>{{$videoInfo->video_title}}</h5>
+                                            <a href="{{ route('video-detail',['video_id'=>$tvideo->id]) }}">
+                                                <h5>{{$tvideo->video_title}}</h5>
                                             </a>
                                         </div>
                                     </div>
@@ -164,24 +164,24 @@
                             <div class="owl-carousel owl-theme latest">
 
                                 @if(sizeof($popular_vidoes) > 0)
-                                @foreach($popular_vidoes as $key => $val)
+                                @foreach($popular_vidoes as $key => $pvideo)
                                 @php
-                                $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
-                                $raimages = ($videoInfo->video_cover_image) ? asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image : asset('admin/default.png');
+                                $pvideo = App\Modules\Video\Entities\Video::findByVidId($pvideo->video_id);
+                                $raimages = ($pvideo->video_cover_image) ? asset($pvideo->file_full_path).'/'.$pvideo->video_cover_image : asset('admin/default.png');
                                 @endphp
 
                                 <div class="item">
                                     <div class="featured-post-small">
-                                        <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}"
+                                        <a href="{{ route('video-detail',['video_id'=>$pvideo->id]) }}"
                                             class="featured-post-small-img">
                                             <img src="{{$raimages}}" alt="">
-                                            <a href="{{ route('add-to-wishlist',['video_id'=>$videoInfo->id]) }}"
+                                            <a href="{{ route('add-to-wishlist',['video_id'=>$pvideo->id]) }}"
                                                 class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
                                                 Watchlist</a>
                                         </a>
                                         <div class="featured-post_content">
-                                            <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}">
-                                                <h5>{{$videoInfo->video_title}}</h5>
+                                            <a href="{{ route('video-detail',['video_id'=>$pvideo->id]) }}">
+                                                <h5>{{$pvideo->video_title}}</h5>
                                             </a>
                                         </div>
                                     </div>
@@ -227,9 +227,7 @@
                                 @if($videoBySection->total() != 0)
                                 @foreach($videoBySection as $key => $value)
                                 @php
-                                $pimages = ($value->video_cover_image) ?
-                                asset($value->file_full_path).'/'.$value->video_cover_image :
-                                asset('admin/default.png');
+                                $pimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
                                 @endphp
 
                                 <div class="item">
