@@ -147,7 +147,7 @@ class HomeController extends Controller
 
         $video_data = array(
             'total_views' => $newCount,
-            'date' => date('Y-m-d')
+            'updated_at' => date('Y-m-d H:i:s')
         );
 
         $this->video->update($video_id, $video_data);
@@ -157,7 +157,7 @@ class HomeController extends Controller
         $data['Above_Video_Detail']= $this->ads->getAdsByCategory('Above_Video_Detail');
         $data['Below_Trending_Video_Detail']= $this->ads->getAdsByCategory('Below_Trending_Video_Detail');
         $data['Below_Popular_Video_Detail']= $this->ads->getAdsByCategory('Below_Popular_Video_Detail');
-        
+
         $data['trending_videos'] = $this->video->getTrendingVideo($limit= 20);
         $data['popular_vidoes'] = $this->video->getPopularVideo($limit= 20);
 
