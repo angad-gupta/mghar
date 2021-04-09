@@ -34,6 +34,25 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                             </p>
                         </video>
                     </div>
+
+                    <br>
+                    @if(!is_null($Above_Video_Detail))
+                        <div class="full-width mb-4">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        @php  
+                                        $adsImage = ($Above_Video_Detail->ads_image) ? asset($Above_Video_Detail->file_full_path).'/'.$Above_Video_Detail->ads_image :
+                                        asset('admin/default.png');
+                                        @endphp
+                                        <a target="_blank" href="{{ $Above_Video_Detail->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Above_Video_Detail->ads_title }}"></a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+
                     <div class="video-content mt-4">
                         <h4>{{ $video_detail->video_title }}</h4>
                         <div class="d-flex justify-content-between">
@@ -60,6 +79,23 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
         </div>
     </div>
 </div>
+
+@if(!is_null($Below_Video_Detail))
+    <div class="full-width mb-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    @php  
+                    $adsImage = ($Below_Video_Detail->ads_image) ? asset($Below_Video_Detail->file_full_path).'/'.$Below_Video_Detail->ads_image :
+                    asset('admin/default.png');
+                    @endphp
+                    <a target="_blank" href="{{ $Below_Video_Detail->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Below_Video_Detail->ads_title }}"></a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
 
 <div class="featured-post-block">
     <div class="container-fluid">
@@ -111,16 +147,23 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
     </div>
 </div>
 
-<div class="full-width mb-4">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <img src="https://www.onlinekhabar.com/wp-content/uploads/2020/10/1230x100_Online-Khabar-Banner.jpg"
-                    alt="">
+@if(!is_null($Below_Trending_Video_Detail))
+    <div class="full-width mb-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    @php  
+                    $adsImage = ($Below_Trending_Video_Detail->ads_image) ? asset($Below_Trending_Video_Detail->file_full_path).'/'.$Below_Trending_Video_Detail->ads_image :
+                    asset('admin/default.png');
+                    @endphp
+                    <a target="_blank" href="{{ $Below_Trending_Video_Detail->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Below_Trending_Video_Detail->ads_title }}"></a>
+                    
+                </div>
             </div>
         </div>
     </div>
-</div>
+@endif
+
 
 <div class="featured-post-block">
     <div class="container-fluid">
@@ -171,6 +214,23 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
         </div>
     </div>
 </div>
+
+@if(!is_null($Below_Popular_Video_Detail))
+    <div class="full-width mb-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    @php  
+                    $adsImage = ($Below_Popular_Video_Detail->ads_image) ? asset($Below_Popular_Video_Detail->file_full_path).'/'.$Below_Popular_Video_Detail->ads_image :
+                    asset('admin/default.png');
+                    @endphp
+                    <a target="_blank" href="{{ $Below_Popular_Video_Detail->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Below_Popular_Video_Detail->ads_title }}"></a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
 
 <script type="text/javascript">
     (function($) {

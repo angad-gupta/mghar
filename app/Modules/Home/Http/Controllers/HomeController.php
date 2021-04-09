@@ -18,6 +18,8 @@ use App\Modules\FAQ\Repositories\FAQInterface;
 use App\Modules\SearchLog\Repositories\SearchLogInterface;
 use App\Modules\Subscription\Repositories\SubscriptionInterface;
 use App\Modules\Video\Entities\Video;
+use App\Modules\Ads\Repositories\AdsInterface;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -34,8 +36,9 @@ class HomeController extends Controller
     protected $blocksection;
     protected $faq;
     protected $subscription;
+    protected $ads;
 
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner, BlockSectionInterface $blocksection, PageInterface $page, FAQInterface $faq, SubscriptionInterface $subscription, SearchLogInterface $searchLog)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner, BlockSectionInterface $blocksection, PageInterface $page, FAQInterface $faq, SubscriptionInterface $subscription, SearchLogInterface $searchLog, AdsInterface $ads)
     {
         $this->video = $video;
         $this->searchLog = $searchLog;
@@ -48,6 +51,7 @@ class HomeController extends Controller
         $this->page = $page;
         $this->faq = $faq;
         $this->subscription = $subscription;
+        $this->ads = $ads;
     }
 
     /**
@@ -60,6 +64,12 @@ class HomeController extends Controller
 
         $data['message'] = '';
 
+        //Ads Section
+        $data['Below_Banner']= $this->ads->getAdsByCategory('Below_Banner');
+        $data['Below_Latest_Video']= $this->ads->getAdsByCategory('Below_Latest_Video');
+        $data['Below_Trending_Video']= $this->ads->getAdsByCategory('Below_Trending_Video');
+        $data['Below_Popular_Video']= $this->ads->getAdsByCategory('Below_Popular_Video');
+        
          $data['latest_videos'] = $this->video->findAll($limit = 20);  
          $data['trending_videos'] = $this->video->getTrendingVideo($limit= 20);
          $data['popular_vidoes'] = $this->video->getPopularVideo($limit= 20);
@@ -143,6 +153,11 @@ class HomeController extends Controller
         $this->video->update($video_id, $video_data);
 
 
+        $data['Below_Video_Detail']= $this->ads->getAdsByCategory('Below_Video_Detail');
+        $data['Above_Video_Detail']= $this->ads->getAdsByCategory('Above_Video_Detail');
+        $data['Below_Trending_Video_Detail']= $this->ads->getAdsByCategory('Below_Trending_Video_Detail');
+        $data['Below_Popular_Video_Detail']= $this->ads->getAdsByCategory('Below_Popular_Video_Detail');
+        
         $data['trending_videos'] = $this->video->getTrendingVideo($limit= 20);
         $data['popular_vidoes'] = $this->video->getPopularVideo($limit= 20);
 

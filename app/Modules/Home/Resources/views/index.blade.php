@@ -12,35 +12,50 @@
         asset('admin/default.png');
         @endphp
 
-        <div class="item">
-            @if($value->banner_source == '1')
-            <a target="_blank" href="{{ $value->banner_link }}"
-                class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
-                style="background-image: url({{ $bannerImg }});">
-                @else
-                <a href="{{ route('video-detail',['video_id'=>$value->video_id]) }}"
+            <div class="item">
+                @if($value->banner_source == '1')
+                <a target="_blank" href="{{ $value->banner_link }}"
                     class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
                     style="background-image: url({{ $bannerImg }});">
-                    @endif
+                    @else
+                    <a href="{{ route('video-detail',['video_id'=>$value->video_id]) }}"
+                        class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
+                        style="background-image: url({{ $bannerImg }});">
+                        @endif
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-6">
-                                <div class="sy-banner-info">
-                                    <h2>{{$value->banner_title}}</h2>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="sy-banner-info">
+                                        <h2>{{$value->banner_title}}</h2>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-        </div>
-
+                    </a>
+            </div>
         @endforeach
         @endif
 
-
     </div>
 </div>
+
+@if(!is_null($Below_Banner))
+<div class="full-width mb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @php  
+                $adsImage = ($Below_Banner->ads_image) ? asset($Below_Banner->file_full_path).'/'.$Below_Banner->ads_image :
+                asset('admin/default.png');
+                @endphp
+                <a target="_blank" href="{{ $Below_Banner->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Below_Banner->ads_title }}"></a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
 <div class="featured-post-block">
     <div class="container-fluid">
@@ -89,6 +104,23 @@
         </div>
     </div>
 </div>
+
+@if(!is_null($Below_Latest_Video))
+<div class="full-width mb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @php  
+                $adsImage = ($Below_Latest_Video->ads_image) ? asset($Below_Latest_Video->file_full_path).'/'.$Below_Latest_Video->ads_image :
+                asset('admin/default.png');
+                @endphp
+                <a target="_blank" href="{{ $Below_Latest_Video->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Below_Latest_Video->ads_title }}"></a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
 <div class="featured-post-block">
     <div class="container-fluid">
@@ -140,6 +172,22 @@
     </div>
 </div>
 
+@if(!is_null($Below_Trending_Video))
+<div class="full-width mb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @php  
+                $adsImage = ($Below_Trending_Video->ads_image) ? asset($Below_Trending_Video->file_full_path).'/'.$Below_Trending_Video->ads_image :
+                asset('admin/default.png');
+                @endphp
+                <a target="_blank" href="{{ $Below_Trending_Video->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Below_Trending_Video->ads_title }}"></a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
 <div class="featured-post-block">
     <div class="container-fluid">
@@ -190,6 +238,24 @@
         </div>
     </div>
 </div>
+
+@if(!is_null($Below_Popular_Video))
+<div class="full-width mb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @php  
+                $adsImage = ($Below_Popular_Video->ads_image) ? asset($Below_Popular_Video->file_full_path).'/'.$Below_Popular_Video->ads_image :
+                asset('admin/default.png');
+                @endphp
+                <a target="_blank" href="{{ $Below_Popular_Video->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Below_Popular_Video->ads_title }}"></a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
 
 @if($dynamic_block->total() != 0)
 @foreach($dynamic_block as $key => $block)
@@ -262,7 +328,7 @@
                 $adsImage = ($block->ads_image) ? asset($block->file_full_path).'/'.$block->ads_image :
                 asset('admin/default.png');
                 @endphp
-                <a target="_blank" href="{{ $block->ads_url }}"><img src="{{$adsImage}}" alt=""></a>
+                <a target="_blank" href="{{ $block->ads_url }}"><img src="{{$adsImage}}" alt="{{ $block->ads_title }}"></a>
                 @elseif($block->is_scripted_ads == 'yes')
                 {!!$block->scripted_ads !!}
                 @endif
