@@ -268,7 +268,7 @@
     </div>
 </div>
 
-<div class="full-width mb-4">
+<div class="full-width mb-2">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">

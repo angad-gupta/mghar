@@ -393,13 +393,14 @@ a:hover,a:active,a:focus {
   top: 0;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
   z-index: 999;
+  padding-top: 10px;
 }
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   .header {
     padding: 10px 0;
   }
-}
+} */
 
 .main-title {
   align-items: center;
@@ -492,11 +493,11 @@ span.posted-time {
   transition: all 800ms ease-in-out;
 }
 
-.featured-post-small:hover img,
+/* .featured-post-small:hover img,
 .featured-post-big:hover img{
   transform: scale(1.4);
   transition: all 800ms ease-in-out;
-}
+} */
 
 .featured-post-big {
   border-radius: 8px;
@@ -1690,5 +1691,87 @@ span.posted-time {
   }
   .profile{
     position: static;
+  }
+}
+
+/***********SURAJ CSS UPDATE*************/
+.loginBtn{
+  padding: 9px 10px;
+  width: 100px;
+  margin-left: 10px;
+}
+
+.banner-slider{
+  margin-bottom: 0;
+}
+
+.main-title{
+  margin-bottom: 10px;
+}
+.main-title h4{
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.view-all{
+  font-size: 12px;
+}
+
+.featured-post_content h5{
+  font-size: 15px;
+  font-weight: 400;
+  height: 40px;
+}
+
+.featured-post-block{
+  margin-bottom: 0;
+}
+.featured-post-small{
+  margin-bottom: 20px;
+}
+
+.video-content h4{
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+
+
+#st-1 .st-btn {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px!important;
+  padding: 5px 0 0 0!important;
+  margin-right: 5px!important;
+}
+
+#st-1 .st-btn > img{
+  position: static;
+}
+
+.entry-meta {
+  padding-bottom: 10px;
+}
+
+.descWrapper{
+  height: 50px;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .video-content h4{
+    font-size: 1.2rem;
+  }
+
+  .viewShare{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1024px) {
+  .video-content h4{
+    font-size: 1.5rem;
   }
 }
