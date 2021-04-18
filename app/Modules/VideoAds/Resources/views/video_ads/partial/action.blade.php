@@ -148,10 +148,15 @@
                             <div class="mt-3">
                             @if($is_edit)
                             @php
-                                 $image = ($video_ads_info->video_ads_upload) ? asset($video_ads_info->file_full_path).'/'.$video_ads_info->video_ads_upload : asset('admin/image.png');
+                                 $video = ($video_ads_info->video_ads_upload) ? asset($video_ads_info->file_full_path).'/'.$video_ads_info->video_ads_upload : asset('admin/image.png');
                             @endphp
 
-                            <img id="ads_image" src="{{$image}}" alt="your image" class="preview-image" style="height: 100px;width: auto;" />
+                            <video width="320" height="240" controls>
+                                <source src="{{$video}}" type="video/mp4">
+                                <source src="movie.ogg" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                            
                             @else
                             <img id="ads_image" src="{{ asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJxkdnLGeMGw_ZRf3VRIHqnTYzNB8dlq3cSo6dxDBDuUgxMuiNCuJmb6cBG6ayvSpddj4&usqp=CAU') }}" alt="your image" class="preview-image" style="height: 100px; width: auto;" />
                             @endif

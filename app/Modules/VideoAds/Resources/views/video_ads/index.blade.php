@@ -39,7 +39,7 @@
                 @foreach($ads_info as $key => $value)
 
                 @php
-                $image = ($value->video_ads_upload) ? asset($value->file_full_path).'/'.$value->video_ads_upload : asset('admin/default.png');
+                $video = ($value->video_ads_upload) ? asset($value->file_full_path).'/'.$value->video_ads_upload : asset('admin/default.png');
                 @endphp
                 <tr>
                     <td>{{$ads_info->firstItem() +$key}}</td>
@@ -63,7 +63,16 @@
                             @endif
                          @endforeach
                     </td>
-                    <td><a target="_blank" href="{{ $image }}"><img src="{{ $image }}" style="width: 50px;"></a></td>
+                    <td><a target="_blank" href="{{ $video }}">
+                        <video width="50" height="50" controls>
+                            <source src="{{$video}}" type="video/mp4">
+                            <source src="movie.ogg" type="video/ogg">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                    
+                    </a>
+                    </td>
                     <td class="{{ ($value->status == '1') ? 'text-success font-weight-bold' :'text-danger font-weight-bold' }}">{{ ($value->status == '1') ? 'Enabled' :'Disabled' }}</td>
                     <td>
                         <a class="btn bg-teal-400 btn-icon rounded-round" href="{{route('video_ads.edit',$value->id)}}" data-popup="tooltip" data-original-title="Edit" data-placement="bottom"><i class="icon-pencil6"></i></a>
