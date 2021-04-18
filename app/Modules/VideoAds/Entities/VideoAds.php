@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class VideoAds extends Model
 {
+	const FILE_PATH = '/uploads/video_ads/';
+
     protected $fillable = [
 
     	'vidoe_ads_title',
@@ -16,6 +18,12 @@ class VideoAds extends Model
     	'status'
 
 
-    ];
+	];
+	
+	public function getFileFullPathAttribute()
+    {
+        return self::FILE_PATH . $this->file_name;
+    }
+
 }
 

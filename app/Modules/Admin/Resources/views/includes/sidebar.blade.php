@@ -150,6 +150,13 @@ $Route = explode('.',$currentRoute);
                 </li>
                 @endif
 
+                @if($menuRoles->assignedRoles('video_ads.index'))
+                <li class="nav-item">
+                    <a href="{{route('video_ads.index')}}" class="nav-link @if($Route[0]=='video_ads') active @endif" data-popup="tooltip" data-original-title="Video Ads" data-placement="right"><i class="icon-images3"></i><span>Video Ads</span>
+                    </a>
+                </li>
+                @endif
+
             </ul>
         </div>
         <!-- /main navigation -->

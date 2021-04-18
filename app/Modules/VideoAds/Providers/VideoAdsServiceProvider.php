@@ -5,6 +5,9 @@ namespace App\Modules\VideoAds\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
+use App\Modules\VideoAds\Repositories\VideoAdsInterface;
+use App\Modules\VideoAds\Repositories\VideoAdsRepository;
+
 class VideoAdsServiceProvider extends ServiceProvider
 {
     /**
@@ -33,9 +36,19 @@ class VideoAdsServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->videoAdsRegister();
+    }
+
+
+    public function videoAdsRegister(){
+        $this->app->bind(
+            VideoAdsInterface::class,
+            VideoAdsRepository::class
+        );
     }
 
     /**
