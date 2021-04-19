@@ -55,7 +55,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 
                     <div class="video-content mt-4">
                         <h4>{{ $video_detail->video_title }}</h4>
-                        <div class="d-flex justify-content-between">
+                        <div class="viewShare">
                             <div class="entry-meta">
                                 <span class="mr-4"><i
                                         class="fa fa-user icon"></i>&nbsp;{{ optional($video_detail->Celebrity)->first_name .' '.optional($video_detail->Celebrity)->last_name }}</span>
@@ -70,9 +70,14 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 
                         </div>
                         <hr>
-                        <div class="video-desc">
+                        <div class="descWrapper">
+                            <div class="video-desc">
+                            
                             {!! $video_detail->description !!}
+                            </div>
+                            
                         </div>
+                        <a href="javascript:void(0);" class="showmore">Show More</a>
                     </div>
                 </div>
             </div>
@@ -258,6 +263,19 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
     //     techOrder: ["vimeo"],
     //     });
     // console.log(player)
+
+    $(".showmore").click(function(){
+        if($(this).hasClass('showless')){
+            $('.descWrapper').animate({'height':60},200);
+            $(this).text('Show More')
+            $(this).removeClass('showless')
+        }else{
+            $('.descWrapper').animate({'height':$('.video-desc').height()},200);
+            $(this).text('Show Less')
+            $(this).addClass('showless')
+        }
+    });
+
 
 })(jQuery);
 
