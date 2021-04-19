@@ -67,8 +67,9 @@ $Route = explode('.',$currentRoute);
                             </div>
                         </div>
                         @else
-                        <a href="{{ route('subscriber-login')}}" class="btn btn-danger btn-sm text-uppercase loginBtn"><i
+                            <a href="{{ route('subscriber-login')}}" class="btn btn-danger btn-sm text-uppercase loginBtn"><i
                                 class="fa fa-user"></i> Login</a>
+                            <a class="btn btn-info subs" href="{{ route('subscription-package')}}">Subscription</a>
                         @endif
     </form>
   </div>

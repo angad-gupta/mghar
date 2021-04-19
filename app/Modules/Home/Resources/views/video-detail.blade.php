@@ -266,7 +266,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 
     $(".showmore").click(function(){
         if($(this).hasClass('showless')){
-            $('.descWrapper').animate({'height':60},200);
+            $('.descWrapper').animate({'height':70},200);
             $(this).text('Show More')
             $(this).removeClass('showless')
         }else{
