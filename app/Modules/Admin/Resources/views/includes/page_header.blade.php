@@ -6,7 +6,7 @@
 					<div class="page-title">
 						<h5>
 							<i class="icon-arrow-left52 mr-2"></i>
-							<span class="font-weight-semibold">Welcome To Bidhee Project Management System</span> - @yield('title')
+							<span class="font-weight-semibold">Welcome To Manoranjan Ghar CMS</span> - @yield('title')
 						</h5>
 					</div>
 
