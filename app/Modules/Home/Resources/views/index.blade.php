@@ -12,35 +12,50 @@
         asset('admin/default.png');
         @endphp
 
-        <div class="item">
-            @if($value->banner_source == '1')
-            <a target="_blank" href="{{ $value->banner_link }}"
-                class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
-                style="background-image: url({{ $bannerImg }});">
-                @else
-                <a href="{{ route('video-detail',['video_id'=>$value->video_id]) }}"
+            <div class="item">
+                @if($value->banner_source == '1')
+                <a target="_blank" href="{{ $value->banner_link }}"
                     class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
                     style="background-image: url({{ $bannerImg }});">
-                    @endif
+                    @else
+                    <a href="{{ route('video-detail',['video_id'=>$value->video_id]) }}"
+                        class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
+                        style="background-image: url({{ $bannerImg }});">
+                        @endif
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-6">
-                                <div class="sy-banner-info">
-                                    <h2>{{$value->banner_title}}</h2>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="sy-banner-info">
+                                        <h2>{{$value->banner_title}}</h2>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-        </div>
-
+                    </a>
+            </div>
         @endforeach
         @endif
 
-
     </div>
 </div>
+
+@if(!is_null($Below_Banner))
+<div class="full-width mb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @php  
+                $adsImage = ($Below_Banner->ads_image) ? asset($Below_Banner->file_full_path).'/'.$Below_Banner->ads_image :
+                asset('admin/default.png');
+                @endphp
+                <a target="_blank" href="{{ $Below_Banner->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Below_Banner->ads_title }}"></a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
 <div class="featured-post-block">
     <div class="container-fluid">
@@ -51,40 +66,34 @@
                         <div class="col-12">
                             <div class="main-title">
                                 <h4 class="mb-0">Latest Videos</h4>
-                                <a class="view-all" href="#">View All <i class="fa fa-angle-right"></i></a>
+                                <a class="view-all" href="{{ route('videos') }}">View All <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="owl-carousel owl-theme latest">
+                            <div class="center latest">
 
-                                @if(sizeof($latest_videos) > 0)
-                                @foreach($latest_videos as $key => $val)
-                                @php
-                                $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
-                                $raimages = ($videoInfo->video_cover_image) ?
-                                asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image :
-                                asset('admin/default.png');
-                                @endphp
+                                    @if($latest_videos->total() != 0)
+                                    @foreach($latest_videos as $key => $value)
+                                    @php 
+                                    $coverimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                    @endphp
+                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
+                                        <div class="featured-post-small">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
+                                                <img src="{{$coverimages}}" alt="">
+                                                <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist" data-toggle="tooltip" data-placement="top" title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
+                                            </a> 
 
-                                <div class="item">
-                                    <div class="featured-post-small">
-                                        <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}"
-                                            class="featured-post-small-img">
-                                            <img src="{{$raimages}}" alt="">
-                                            <a href="{{ route('add-to-wishlist',['video_id'=>$videoInfo->id]) }}"
-                                                class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
-                                                Watchlist</a>
-                                        </a>
-                                        <div class="featured-post_content">
-                                            <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}">
-                                                <h5>{{$videoInfo->video_title}}</h5>
-                                            </a>
+                                            <div class="featured-post_content">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                                    <h5>{{$value->video_title}}</h5>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
 
                             </div>
@@ -95,6 +104,23 @@
         </div>
     </div>
 </div>
+
+@if(!is_null($Below_Latest_Video))
+<div class="full-width mb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @php  
+                $adsImage = ($Below_Latest_Video->ads_image) ? asset($Below_Latest_Video->file_full_path).'/'.$Below_Latest_Video->ads_image :
+                asset('admin/default.png');
+                @endphp
+                <a target="_blank" href="{{ $Below_Latest_Video->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Below_Latest_Video->ads_title }}"></a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
 <div class="featured-post-block">
     <div class="container-fluid">
@@ -105,40 +131,36 @@
                         <div class="col-12">
                             <div class="main-title">
                                 <h4 class="mb-0">Trending Videos</h4>
-                                <a class="view-all" href="#">View All <i class="fa fa-angle-right"></i></a>
+                                <a class="view-all" href="{{ route('videos') }}">View All <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="owl-carousel owl-theme latest">
+                            <div class="center latest">
 
                                 @if(sizeof($trending_videos) > 0)
-                                @foreach($trending_videos as $key => $val)
-                                @php
-                                $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
-                                $raimages = ($videoInfo->video_cover_image) ?
-                                asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image :
-                                asset('admin/default.png');
-                                @endphp
-
-                                <div class="item">
-                                    <div class="featured-post-small">
-                                        <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}"
-                                            class="featured-post-small-img">
-                                            <img src="{{$raimages}}" alt="">
-                                            <a href="{{ route('add-to-wishlist',['video_id'=>$videoInfo->id]) }}"
-                                                class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
-                                                Watchlist</a>
-                                        </a>
-                                        <div class="featured-post_content">
-                                            <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}">
-                                                <h5>{{$videoInfo->video_title}}</h5>
+                                @foreach($trending_videos as $key => $value)
+                                    @php
+                                    $coverimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                    @endphp
+                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
+                                        <div class="featured-post-small">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
+                                                class="featured-post-small-img">
+                                                <img src="{{$coverimages}}" alt="">
+                                                <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
+                                                    class="add-watchlist" data-toggle="tooltip" data-placement="top"
+                                                    title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
+                                            <div class="featured-post_content">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                                    <h5>{{$value->video_title}}</h5>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach
+                                   @endforeach
                                 @endif
 
                             </div>
@@ -149,6 +171,23 @@
         </div>
     </div>
 </div>
+
+@if(!is_null($Below_Trending_Video))
+<div class="full-width mb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @php  
+                $adsImage = ($Below_Trending_Video->ads_image) ? asset($Below_Trending_Video->file_full_path).'/'.$Below_Trending_Video->ads_image :
+                asset('admin/default.png');
+                @endphp
+                <a target="_blank" href="{{ $Below_Trending_Video->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Below_Trending_Video->ads_title }}"></a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
 <div class="featured-post-block">
     <div class="container-fluid">
@@ -159,40 +198,36 @@
                         <div class="col-12">
                             <div class="main-title">
                                 <h4 class="mb-0">Most Popular Videos</h4>
-                                <a class="view-all" href="#">View All <i class="fa fa-angle-right"></i></a>
+                                <a class="view-all" href="{{ route('videos') }}">View All <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="owl-carousel owl-theme latest">
+                            <div class="center latest">
 
                                 @if(sizeof($popular_vidoes) > 0)
-                                @foreach($popular_vidoes as $key => $val)
-                                @php
-                                $videoInfo = App\Modules\Video\Entities\Video::findByVidId($val->video_id);
-                                $raimages = ($videoInfo->video_cover_image) ?
-                                asset($videoInfo->file_full_path).'/'.$videoInfo->video_cover_image :
-                                asset('admin/default.png');
-                                @endphp
-
-                                <div class="item">
-                                    <div class="featured-post-small">
-                                        <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}"
-                                            class="featured-post-small-img">
-                                            <img src="{{$raimages}}" alt="">
-                                            <a href="{{ route('add-to-wishlist',['video_id'=>$videoInfo->id]) }}"
-                                                class="add-watchlist"><i class="fas fa-plus"></i> &nbsp;Add to
-                                                Watchlist</a>
-                                        </a>
-                                        <div class="featured-post_content">
-                                            <a href="{{ route('video-detail',['video_id'=>$videoInfo->id]) }}">
-                                                <h5>{{$videoInfo->video_title}}</h5>
+                                @foreach($popular_vidoes as $key => $value)
+                                    @php
+                                    $coverimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                    @endphp
+                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
+                                        <div class="featured-post-small">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
+                                                class="featured-post-small-img">
+                                                <img src="{{$coverimages}}" alt="">
+                                                <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
+                                                    class="add-watchlist" data-toggle="tooltip" data-placement="top"
+                                                    title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
+                                            <div class="featured-post_content">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                                    <h5>{{$value->video_title}}</h5>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach
+                                   @endforeach
                                 @endif
 
                             </div>
@@ -203,6 +238,24 @@
         </div>
     </div>
 </div>
+
+@if(!is_null($Below_Popular_Video))
+<div class="full-width mb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @php  
+                $adsImage = ($Below_Popular_Video->ads_image) ? asset($Below_Popular_Video->file_full_path).'/'.$Below_Popular_Video->ads_image :
+                asset('admin/default.png');
+                @endphp
+                <a target="_blank" href="{{ $Below_Popular_Video->ads_url }}"><img src="{{$adsImage}}" alt="{{ $Below_Popular_Video->ads_title }}"></a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
 
 @if($dynamic_block->total() != 0)
 @foreach($dynamic_block as $key => $block)
@@ -233,9 +286,7 @@
                                 @if($videoBySection->total() != 0)
                                 @foreach($videoBySection as $key => $value)
                                 @php
-                                $pimages = ($value->video_cover_image) ?
-                                asset($value->file_full_path).'/'.$value->video_cover_image :
-                                asset('admin/default.png');
+                                $pimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
                                 @endphp
 
                                 <div class="item">
@@ -268,7 +319,7 @@
     </div>
 </div>
 
-<div class="full-width mb-2">
+<div class="full-width mb-4">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -277,7 +328,7 @@
                 $adsImage = ($block->ads_image) ? asset($block->file_full_path).'/'.$block->ads_image :
                 asset('admin/default.png');
                 @endphp
-                <a target="_blank" href="{{ $block->ads_url }}"><img src="{{$adsImage}}" alt=""></a>
+                <a target="_blank" href="{{ $block->ads_url }}"><img src="{{$adsImage}}" alt="{{ $block->ads_title }}"></a>
                 @elseif($block->is_scripted_ads == 'yes')
                 {!!$block->scripted_ads !!}
                 @endif

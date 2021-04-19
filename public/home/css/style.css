@@ -1695,6 +1695,51 @@ span.posted-time {
 }
 
 /***********SURAJ CSS UPDATE*************/
+.header{
+  padding-top: 0;
+}
+
+.manoranjan{
+  height: 50px;
+  display: inline-block;
+}
+.manoranjan img{
+  max-height: 50px;
+  width:auto;
+}
+.navbar-nav a{
+    color:#fff;
+    padding:10px;
+  
+}
+.navbar-nav a:hover, .navbar-nav a.active{
+  color:#ccc;
+}
+
+.navbar-light .navbar-toggler {
+  background: #777;
+  padding: 5px 10px;
+}
+
+nav button:focus{
+  outline:none;
+}
+
+.nav-item{
+  padding:5px 0;
+  border-bottom:1px solid #333;
+}
+
+.list-inline-item:not(:last-child){
+  margin-right: 1rem;
+}
+.list-inline-item a{
+  padding-top: 5px;
+  font-size: 15px;
+}
+.searchForm{
+  flex-wrap: nowrap;
+}
 .loginBtn{
   padding: 9px 10px;
   width: 100px;
@@ -1736,7 +1781,9 @@ span.posted-time {
   font-weight: 400;
 }
 
-
+#st-1{
+  z-index: 1!important;
+}
 
 #st-1 .st-btn {
   border-radius: 50%;
@@ -1747,7 +1794,7 @@ span.posted-time {
 }
 
 #st-1 .st-btn > img{
-  position: static;
+  position: static!important;
 }
 
 .entry-meta {
@@ -1755,8 +1802,28 @@ span.posted-time {
 }
 
 .descWrapper{
-  height: 50px;
+  height: 60px;
   overflow: hidden;
+}
+
+.showmore{
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 7px 15px;
+    background: #bbb;
+    color:#000;
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.showmore:focus{
+  color:#fff;
+}
+
+.showmore:hover{
+  background: #333;
+  color:#fff;
 }
 
 @media (min-width: 640px) {
@@ -1773,5 +1840,8 @@ span.posted-time {
 @media (min-width: 1024px) {
   .video-content h4{
     font-size: 1.5rem;
+  }
+  .nav-item{
+    border-bottom:0;
   }
 }
