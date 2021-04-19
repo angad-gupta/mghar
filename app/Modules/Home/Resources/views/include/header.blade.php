@@ -5,8 +5,8 @@ $subscriberInfo = Auth::guard('subscriber')->user();
 $currentRoute = Request::route()->getName();
 $Route = explode('.',$currentRoute);
 @endphp
-
-{{-- <div class="nnc-preloader">
+{{-- 
+<div class="nnc-preloader">
     <div class="lds-facebook">
         <div></div>
         <div></div>
