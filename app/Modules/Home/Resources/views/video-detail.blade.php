@@ -6,7 +6,6 @@ $coverimage = ($video_detail->video_cover_image) ?
 asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asset('admin/default.png');
 @endphp
 
-
 @section('share_head')
 
 <meta property="og:url" content="{{ route('video-detail',['video_id'=>$video_detail->id]) }}" />
@@ -16,6 +15,37 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 <meta property="og:image" content="{{ $coverimage }}" />
 @stop
 @section('content')
+
+<style>
+    @media (min-width: 576px)
+    {
+        .modal-dialog {
+            max-width: 100%;
+            margin: 1.75 rem auto;
+        }
+    }
+    #vid{
+        height:85vh;
+        width:100%;
+    }
+    .modal-content{
+        background: transparent;
+    }
+</style>
+
+@php
+    $show_video_ads = false;
+   if(!is_null($video_ads)){
+    $show_video_ads = true;
+   }
+    
+@endphp
+
+@if($show_video_ads)
+<button id="video_ads" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" hidden >
+    Video Ads 
+</button>
+ @endif
 
 <div class="page">
     <div class="container-fluid">
@@ -126,7 +156,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                                     @endphp
                                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                         <div class="featured-post-small">
-                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'trending']) }}"
                                                 class="featured-post-small-img">
                                                 <img src="{{$coverimages}}" alt="">
                                                 <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
@@ -134,7 +164,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                                                     title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
                                             <div class="featured-post_content">
-                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'trending']) }}">
                                                     <h5>{{$value->video_title}}</h5>
                                                 </a>
                                             </div>
@@ -194,7 +224,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                                     @endphp
                                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                         <div class="featured-post-small">
-                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'most_popular']) }}"
                                                 class="featured-post-small-img">
                                                 <img src="{{$coverimages}}" alt="">
                                                 <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
@@ -202,7 +232,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                                                     title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
                                             <div class="featured-post_content">
-                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'most_popular']) }}">
                                                     <h5>{{$value->video_title}}</h5>
                                                 </a>
                                             </div>
@@ -219,6 +249,35 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
         </div>
     </div>
 </div>
+
+
+
+
+  <!-- Modal -->
+  @if($show_video_ads)
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" >
+      <div class="modal-content" >
+        <div class="modal-body" >
+            @php
+                $video = ($video_ads->video_ads_upload) ? asset($video_ads->file_full_path).'/'.$video_ads->video_ads_upload : asset('admin/image.png');
+            @endphp
+
+        <video autoplay="autoplay" id="vid" loop="true"  muted>
+            <source src="https://manoranjanghar.com/uploads/video_ads/2021-04-19-11-44-36-Pexels-Videos-2235742.mp4" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+            </video>
+        <div class="text-center">
+            <button type="button" class="btn btn-success " data-dismiss="modal" id="close_video_ads" style="display: none;">>> SKIP</button>
+        </div>
+    </div>
+  
+      </div>
+    </div>
+  </div>
+  @endif
+
 
 @if(!is_null($Below_Popular_Video_Detail))
     <div class="full-width mb-4">
@@ -279,6 +338,22 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 
 })(jQuery);
 
+</script>
+
+<script>
+    jQuery(function(){
+        setTimeout(function() {
+       jQuery('#video_ads').click();
+        },2000);
+    });
+</script>
+
+<script>
+ $(document).ready(function() {
+  setTimeout(function() {
+    $("#close_video_ads").show();
+  }, 5000);
+});
 </script>
 
 @stop

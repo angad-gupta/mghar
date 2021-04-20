@@ -19,6 +19,7 @@ use App\Modules\SearchLog\Repositories\SearchLogInterface;
 use App\Modules\Subscription\Repositories\SubscriptionInterface;
 use App\Modules\Video\Entities\Video;
 use App\Modules\Ads\Repositories\AdsInterface;
+use App\Modules\VideoAds\Repositories\VideoAdsInterface;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -37,8 +38,9 @@ class HomeController extends Controller
     protected $faq;
     protected $subscription;
     protected $ads;
+    protected $video_ads;
 
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner, BlockSectionInterface $blocksection, PageInterface $page, FAQInterface $faq, SubscriptionInterface $subscription, SearchLogInterface $searchLog, AdsInterface $ads)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner, BlockSectionInterface $blocksection, PageInterface $page, FAQInterface $faq, SubscriptionInterface $subscription, SearchLogInterface $searchLog, AdsInterface $ads,VideoAdsInterface $video_ads)
     {
         $this->video = $video;
         $this->searchLog = $searchLog;
@@ -52,6 +54,7 @@ class HomeController extends Controller
         $this->faq = $faq;
         $this->subscription = $subscription;
         $this->ads = $ads;
+        $this->video_ads = $video_ads;
     }
 
     /**
@@ -128,6 +131,7 @@ class HomeController extends Controller
      */
     public function VideoDetail(Request $request)
     {
+    
         $input = $request->all();
 
         if (!array_key_exists('video_id', $input)) {
@@ -137,10 +141,12 @@ class HomeController extends Controller
 
         $data['message'] = '';
         $video_id = $input['video_id'];
-
-
-
+     
+     
         $data['video_detail'] = $videoInfo = $this->video->find($video_id);
+
+        $data['video_ads'] = $this->video_ads->findVideoAdsCategory($input['category']);
+
 
         $videoView = $videoInfo->total_views;
         $newCount = $videoView + 1;

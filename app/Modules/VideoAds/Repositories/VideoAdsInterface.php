@@ -8,6 +8,8 @@ interface VideoAdsInterface
     
     public function findAllActiveVideoAds($limit=null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]);
 
+    public function findVideoAdsCategory($category);
+    
     public function find($id);
     
     public function getList();

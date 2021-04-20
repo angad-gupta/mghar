@@ -29,7 +29,7 @@
                     <th>#</th>
                     <th>Video Ads Title</th>
                     <th>Video Ads Position</th>
-                    <th>Image</th>
+                    <th>Video</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>

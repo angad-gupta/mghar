@@ -2,6 +2,9 @@
 @section('title')Manoranjan Ghar @stop
 @section('content')
 
+
+
+
 <div class="banner-slider">
     <div class="owl-carousel owl-theme banner">
 
@@ -81,13 +84,13 @@
                                     @endphp
                                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                         <div class="featured-post-small">
-                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}" class="featured-post-small-img">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'latest']) }}" class="featured-post-small-img">
                                                 <img src="{{$coverimages}}" alt="">
                                                 <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}" class="add-watchlist" data-toggle="tooltip" data-placement="top" title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a> 
 
                                             <div class="featured-post_content">
-                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'latest']) }}">
                                                     <h5>{{$value->video_title}}</h5>
                                                 </a>
                                             </div>
@@ -146,7 +149,7 @@
                                     @endphp
                                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                         <div class="featured-post-small">
-                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'trending']) }}"
                                                 class="featured-post-small-img">
                                                 <img src="{{$coverimages}}" alt="">
                                                 <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
@@ -154,7 +157,7 @@
                                                     title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
                                             <div class="featured-post_content">
-                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'trending']) }}">
                                                     <h5>{{$value->video_title}}</h5>
                                                 </a>
                                             </div>
@@ -213,7 +216,7 @@
                                     @endphp
                                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                         <div class="featured-post-small">
-                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'most_popular']) }}"
                                                 class="featured-post-small-img">
                                                 <img src="{{$coverimages}}" alt="">
                                                 <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
@@ -221,7 +224,7 @@
                                                     title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
                                             <div class="featured-post_content">
-                                                <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'most_popular']) }}">
                                                     <h5>{{$value->video_title}}</h5>
                                                 </a>
                                             </div>
@@ -291,7 +294,7 @@
 
                                 <div class="item">
                                     <div class="featured-post-small">
-                                        <a href="{{ route('video-detail',['video_id'=>$value->id]) }}"
+                                        <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>$value->id]) }}"
                                             class="featured-post-small-img">
                                             <img src="{{$pimages}}" alt="">
                                             <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
@@ -299,7 +302,7 @@
                                                 title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                         </a>
                                         <div class="featured-post_content">
-                                            <a href="{{ route('video-detail',['video_id'=>$value->id]) }}">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>$value->id]) }}">
                                                 <h5>{{$value->video_title}}</h5>
                                             </a>
                                         </div>

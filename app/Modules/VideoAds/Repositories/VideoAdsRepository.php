@@ -23,6 +23,14 @@ class VideoAdsRepository implements VideoAdsInterface
         return $result; 
         
     }
+
+    public function findVideoAdsCategory($category){
+
+        $result = VideoAds::where('ads_category', 'LIKE', '%'.$category.'%')->where('status','=',1)->first();
+        return $result;
+    }
+
+
     
     public function find($id){
         return VideoAds::find($id);
