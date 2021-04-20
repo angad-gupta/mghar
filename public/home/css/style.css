@@ -1737,13 +1737,16 @@ nav button:focus{
   padding-top: 5px;
   font-size: 15px;
 }
-.searchForm{
-  flex-wrap: nowrap;
-}
+
 .loginBtn{
   padding: 9px 10px;
   width: 100px;
-  margin-left: 10px;
+  margin: 0 10px;
+}
+
+.subs{
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
 .banner-slider{
@@ -1802,7 +1805,7 @@ nav button:focus{
 }
 
 .descWrapper{
-  height: 60px;
+  height: 70px;
   overflow: hidden;
 }
 
@@ -1827,6 +1830,14 @@ nav button:focus{
 }
 
 @media (min-width: 640px) {
+  .searchForm{
+    flex-wrap: nowrap;
+  }
+  .loginBtn{
+    width: 150px;
+   
+  }
+
   .video-content h4{
     font-size: 1.2rem;
   }
