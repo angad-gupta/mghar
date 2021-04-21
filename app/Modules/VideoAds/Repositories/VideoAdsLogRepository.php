@@ -22,7 +22,7 @@ class VideoAdsLogRepository implements VideoAdsLogInterface
         
     }
     
-    public function findVideoAds($id){
+    public function findVideoAdsLog($id){
         return VideoAdsLog::where('video_id','=',$id)->first();
     }
     

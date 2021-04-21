@@ -159,7 +159,7 @@ class HomeController extends Controller
         $this->video->update($video_id, $video_data);
 
 
-        $videoAdsLogInfo = $this->video_ads_log->findVideoAds($video_id);
+        $videoAdsLogInfo = $this->video_ads_log->findVideoAdsLog($video_id);
 
         if($data['video_ads'] != null){
             if($videoAdsLogInfo != null ){
