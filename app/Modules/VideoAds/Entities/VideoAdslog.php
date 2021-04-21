@@ -15,3 +15,4 @@ class VideoAdsLog extends Model
 
     ];
 }
+
