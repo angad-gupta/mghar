@@ -27,7 +27,7 @@ class VideoAdsRepository implements VideoAdsInterface
     public function findVideoAdsCategory($category)
     {
         $now = date('Y-m-d');
-        $result = VideoAds::where('ads_category', 'LIKE', '%'.'"'.$category.'"'.'%')->where('status','=',1)->where('start_date','<=',$now)->where('end_date','>=',$now)->inRandomOrder()->first();
+        $result = VideoAds::where('ads_category', 'LIKE', '%' . '"' . $category . '"' .'%')->where('status','=',1)->where('start_date','<=',$now)->where('end_date','>=',$now)->inRandomOrder()->first();
         return $result;
     }
 
