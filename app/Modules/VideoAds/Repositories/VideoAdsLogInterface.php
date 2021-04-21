@@ -8,7 +8,7 @@ interface VideoAdsLogInterface
     
     public function find($id);
 
-    public function findVideoAds($id);
+    public function findVideoAdsLog($id);
     
     public function save($data);
 
