@@ -107,16 +107,6 @@
                                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#paymentThreeMonthModal">
                                                     Select
                                                 </button>
-                                                {{-- <button id="payment-button" type="Subscription"
-                                                    plan="three_month"
-                                                    value="{{$subscription_payment->three_month_payment}}"
-                                                    amount="{{$subscription_payment->three_month_payment}}"
-                                                    class="payment-button btn btn-warning">Select</button>
-                                                <img src="{{ asset('home/images/ime.svg') }}" alt="ime" height="45"
-                                                    style="width: 45px;transform: scale(2.3);margin-left: 27px;"
-                                                    class="ime"
-                                                    data-payment="{{ $subscription_payment->three_month_payment }}"
-                                                    data-plan="three_month"> --}}
 
                                             </td>
 
@@ -124,31 +114,12 @@
                                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#paymentSixMonthModal">
                                                     Select
                                                 </button>
-                                                {{-- <button id="payment-button" type="Subscription"
-                                                    plan="six_month"
-                                                    value="{{$subscription_payment->six_month_payment}}"
-                                                    amount="{{$subscription_payment->six_month_payment}}"
-                                                    class="payment-button btn btn-danger">Select</button>
-                                                <img src="{{ asset('home/images/ime.svg') }}" alt="ime" height="45"
-                                                    style="width: 45px;transform: scale(2.3);margin-left: 27px;"
-                                                    class="ime"
-                                                    data-payment="{{ $subscription_payment->six_month_payment }}"
-                                                    data-plan="six_month"> --}}
                                             </td>
 
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymentOneYearModal">
                                                     Select
                                                 </button>
-                                                {{-- <button id="payment-button" type="Subscription"
-                                                    plan="one_year" value="{{$subscription_payment->one_year_payment}}"
-                                                    amount="{{$subscription_payment->one_year_payment}}"
-                                                    class="payment-button btn btn-primary">Select</button>
-                                                <img src="{{ asset('home/images/ime.svg') }}" alt="ime" height="45"
-                                                    style="width: 45px;transform: scale(2.3);margin-left: 27px;"
-                                                    class="ime"
-                                                    data-payment="{{ $subscription_payment->one_year_payment }}"
-                                                    data-plan="one_year"> --}}
                                             </td>
                                         </tr>
                                         @else
