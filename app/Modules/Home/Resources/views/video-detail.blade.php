@@ -278,7 +278,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 
 
         <video autoplay="autoplay" id="vid" loop="true" controls muted>
-            <source src="https://www.11zon.com/html/video.mp4" type="video/mp4">
+            <source src="{{$video}}" type="video/mp4">
             <source src="movie.ogg" type="video/ogg">
             Your browser does not support the video tag.
         </video>
