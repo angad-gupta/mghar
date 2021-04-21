@@ -4,9 +4,8 @@ namespace App\Modules\VideoAds\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VideoAdslog extends Model
+class VideoAdsLog extends Model
 {
-    protected $table = 'video_ads_logs';
     protected $fillable = [
 
         'video_ads_id',
