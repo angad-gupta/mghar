@@ -20,16 +20,29 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
     @media (min-width: 576px)
     {
         .modal-dialog {
-            max-width: 100%;
+            max-width: 80%;
             margin: 1.75 rem auto;
         }
     }
     #vid{
-        height:85vh;
+        height:auto;
         width:100%;
+        border-radius:10px;
+        border:5px solid #ca3718;
     }
     .modal-content{
         background: transparent;
+    }
+    .modal-open .container-fluid, .modal-open  .container {
+    -webkit-filter: blur(5px) grayscale(100%);
+    }
+    .modal-content{
+        border:0px;
+    }
+    #close_video_ads{
+        position: absolute;
+        top: 10px;
+        right: 10px;
     }
 </style>
 
@@ -42,7 +55,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 @endphp
 
 @if($show_video_ads)
-<button id="video_ads" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" hidden >
+<button id="video_ads" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false" hidden>
     Video Ads 
 </button>
  @endif
@@ -258,20 +271,23 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" >
       <div class="modal-content" >
-        <div class="modal-body" >
+        <div class="" >
             @php
                 $video = ($video_ads->video_ads_upload) ? asset($video_ads->file_full_path).'/'.$video_ads->video_ads_upload : asset('admin/image.png');
             @endphp
 
-        <video autoplay="autoplay" id="vid" loop="true"  muted>
-            <source src="https://manoranjanghar.com/uploads/video_ads/2021-04-19-11-44-36-Pexels-Videos-2235742.mp4" type="video/mp4">
+
+        <video autoplay="autoplay" id="vid" loop="true" controls muted>
+            <source src="https://www.11zon.com/html/video.mp4" type="video/mp4">
             <source src="movie.ogg" type="video/ogg">
             Your browser does not support the video tag.
-            </video>
+        </video>
+
         <div class="text-center">
-            <button type="button" class="btn btn-success " data-dismiss="modal" id="close_video_ads" style="display: none;">>> SKIP</button>
+            <button class="btn btn-success" data-dismiss="modal" id="close_video_ads" disabled> <span id="skip">SKIP </span> <span id="count"></span></button>
         </div>
     </div>
+    
   
       </div>
     </div>
@@ -352,8 +368,36 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
  $(document).ready(function() {
   setTimeout(function() {
     $("#close_video_ads").show();
-  }, 5000);
+  }, 1000);
 });
+</script>
+
+<script>
+    // Get refreence to span and button
+var spn = document.getElementById("count");
+var btn = document.getElementById("close_video_ads");
+
+var count = 10;     // Set count
+var timer = null;  // For referencing the timer
+
+(function countDown(){
+    $("#skip").hide();
+    document.getElementById("close_video_ads").classList.add('btn-warning')
+  // Display counter and start counting down
+  spn.textContent = count;
+  
+  // Run the function again every second if the count is not zero
+  if(count !== 0){
+    timer = setTimeout(countDown, 1000);
+    count--; // decrease the timer
+  } else {
+    // Enable the button
+    document.getElementById("close_video_ads").classList.remove('btn-warning')
+    btn.removeAttribute("disabled");
+    $("#skip").show();
+    $("#count").hide();
+  }
+}());
 </script>
 
 @stop

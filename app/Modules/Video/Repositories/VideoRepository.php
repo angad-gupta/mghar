@@ -32,7 +32,7 @@ class VideoRepository implements VideoInterface
     public function getTrendingVideo($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]){
 
             $date = \Carbon\Carbon::today()->subDays(7);
-            return Video::where('updated_at','>=', $date)->orderBy('total_views','DESC')->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999)); 
+            return Video::where('video_update','>=', $date)->orderBy('total_views','DESC')->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999)); 
    }
 
     public function getPopularVideo($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]){

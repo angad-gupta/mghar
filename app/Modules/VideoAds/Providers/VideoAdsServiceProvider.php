@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factory;
 
 use App\Modules\VideoAds\Repositories\VideoAdsInterface;
 use App\Modules\VideoAds\Repositories\VideoAdsRepository;
+use App\Modules\VideoAds\Repositories\VideoAdsLogInterface;
+use App\Modules\VideoAds\Repositories\VideoAdsLogRepository;
 
 class VideoAdsServiceProvider extends ServiceProvider
 {
@@ -41,6 +43,7 @@ class VideoAdsServiceProvider extends ServiceProvider
     {
         $this->app->register(RouteServiceProvider::class);
         $this->videoAdsRegister();
+        $this->videoAdsLogRegister();
     }
 
 
@@ -48,6 +51,13 @@ class VideoAdsServiceProvider extends ServiceProvider
         $this->app->bind(
             VideoAdsInterface::class,
             VideoAdsRepository::class
+        );
+    }
+
+    public function videoAdsLogRegister(){
+        $this->app->bind(
+            VideoAdsLogInterface::class,
+            VideoAdsLogRepository::class
         );
     }
 

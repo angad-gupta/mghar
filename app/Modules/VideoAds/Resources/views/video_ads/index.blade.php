@@ -28,6 +28,7 @@
                 <tr class="bg-slate">
                     <th>#</th>
                     <th>Video Ads Title</th>
+                    <th>Active Date</th>
                     <th>Video Ads Position</th>
                     <th>Video</th>
                     <th>Status</th>
@@ -44,6 +45,7 @@
                 <tr>
                     <td>{{$ads_info->firstItem() +$key}}</td>
                      <td>{{ $value->vidoe_ads_title }}</td>
+                     <td>{{ $value->start_date }} --- {{ $value->end_date }}</td>
                      <td>
                          @php
                              $categories = json_decode($value->ads_category, true);

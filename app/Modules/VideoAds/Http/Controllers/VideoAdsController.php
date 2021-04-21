@@ -8,18 +8,21 @@ use Illuminate\Routing\Controller;
 use App\Modules\VideoAds\Http\Requests\VideoAdsRequest;
 
 use App\Modules\VideoAds\Repositories\VideoAdsInterface;
+use App\Modules\VideoAds\Repositories\VideoAdsLogInterface;
 use App\Modules\DynamicBlock\Repositories\BlockSectionInterface;
 
 class VideoAdsController extends Controller
 {
 
     protected $video_ads;
+    protected $video_ads_log;
     protected $dynamic_block;
 
-    public function __construct(VideoAdsInterface $video_ads, BlockSectionInterface $dynamic_block) 
+    public function __construct(VideoAdsInterface $video_ads, BlockSectionInterface $dynamic_block, VideoAdsLogInterface $video_ads_log) 
     {
         $this->video_ads = $video_ads;
         $this->dynamic_block = $dynamic_block;
+        $this->video_ads_log = $video_ads_log;
     }
 
     /**
@@ -160,5 +163,23 @@ class VideoAdsController extends Controller
             alertify($e->getMessage())->error();
         }
       return redirect(route('video_ads.index'));
+    }
+
+    public function videoAdsLogIndex(Request $request)
+    {
+        $search = $request->all();
+        $data['video_ads_log'] = $this->video_ads_log->findAll($limit= 50,$search);  
+        return view('videoads::video_ads_log.index',$data);
+    }
+
+    public function videoAdsLogDestroy($id)
+    {
+        try{
+            $this->video_ads_log->delete($id);
+             alertify()->success('Video Ads Log Deleted Successfully');
+        }catch(\Throwable $e){
+            alertify($e->getMessage())->error();
+        }
+      return redirect(route('video_ads_log.index'));
     }
 }

@@ -24,6 +24,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','permission']], funct
     Route::put('video_ads/update/{id}', ['as' => 'video_ads.update', 'uses' => 'VideoAdsController@update'])->where('id','[0-9]+');
 
     Route::get('video_ads/delete/{id}', ['as' => 'video_ads.delete', 'uses' => 'VideoAdsController@destroy'])->where('id','[0-9]+');
-        
-         
+    
+    Route::get('video_ads_log', ['as' => 'video_ads_log.index', 'uses' => 'VideoAdsController@videoAdsLogIndex']);
+    Route::get('video_ads_log/delete/{id}', ['as' => 'video_ads_log.delete', 'uses' => 'VideoAdsController@videoAdsLogDestroy'])->where('id','[0-9]+');   
 });

@@ -25,7 +25,8 @@ class Video extends Model
         'display_block_section',
         'is_popular',
         'is_trending',
-        'is_featured'
+        'is_featured',
+        'video_update'
 
     ];
 

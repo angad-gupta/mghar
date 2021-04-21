@@ -24,21 +24,19 @@ class VideoAdsRepository implements VideoAdsInterface
         
     }
 
-    public function findVideoAdsCategory($category){
-
-        $result = VideoAds::where('ads_category', 'LIKE', '%'.$category.'%')->where('status','=',1)->first();
+    public function findVideoAdsCategory($category)
+    {
+        $now = date('Y-m-d');
+        $result = VideoAds::where('ads_category', 'LIKE', '%'.$category.'%')->where('status','=',1)->where('start_date','<=',$now)->where('end_date','>=',$now)->inRandomOrder()->first();
         return $result;
     }
 
-
-    
     public function find($id){
         return VideoAds::find($id);
     }
     
    public function getList(){  
        $result = VideoAds::pluck('ads_title', 'id');
-      
        return $result;
    }
     

@@ -20,7 +20,7 @@ use App\Modules\Subscription\Repositories\SubscriptionInterface;
 use App\Modules\Video\Entities\Video;
 use App\Modules\Ads\Repositories\AdsInterface;
 use App\Modules\VideoAds\Repositories\VideoAdsInterface;
-
+use App\Modules\VideoAds\Repositories\VideoAdsLogInterface;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -39,8 +39,9 @@ class HomeController extends Controller
     protected $subscription;
     protected $ads;
     protected $video_ads;
+    protected $video_ads_log;
 
-    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner, BlockSectionInterface $blocksection, PageInterface $page, FAQInterface $faq, SubscriptionInterface $subscription, SearchLogInterface $searchLog, AdsInterface $ads,VideoAdsInterface $video_ads)
+    public function __construct(VideoInterface $video, GenreInterface $genre, BlogInterface $blog, SubscriberInterface $subscriber, KhelauJuhariInterface $khelaujuhari, BannerInterface $banner, BlockSectionInterface $blocksection, PageInterface $page, FAQInterface $faq, SubscriptionInterface $subscription, SearchLogInterface $searchLog, AdsInterface $ads,VideoAdsInterface $video_ads, VideoAdsLogInterface $video_ads_log)
     {
         $this->video = $video;
         $this->searchLog = $searchLog;
@@ -55,6 +56,7 @@ class HomeController extends Controller
         $this->subscription = $subscription;
         $this->ads = $ads;
         $this->video_ads = $video_ads;
+        $this->video_ads_log = $video_ads_log;
     }
 
     /**
@@ -131,7 +133,6 @@ class HomeController extends Controller
      */
     public function VideoDetail(Request $request)
     {
-    
         $input = $request->all();
 
         if (!array_key_exists('video_id', $input)) {
@@ -153,11 +154,31 @@ class HomeController extends Controller
 
         $video_data = array(
             'total_views' => $newCount,
-            'updated_at' => date('Y-m-d H:i:s')
+            'video_update' => date('Y-m-d H:i:s')
         );
-
         $this->video->update($video_id, $video_data);
 
+
+        $videoAdsLogInfo = $this->video_ads_log->findVideoAds($video_id);
+
+        if($data['video_ads'] != null){
+            if($videoAdsLogInfo != null ){
+                $video_ads_log_update = array(
+                    'video_id' => $video_id,
+                    'video_ads_id' =>  $data['video_ads']->id,
+                    'total_views' => $videoAdsLogInfo->total_views + 1
+                );
+                $this->video_ads_log->update($videoAdsLogInfo->id, $video_ads_log_update);
+            }else{
+                $video_ads_log_new = array(
+                    'video_id' => $video_id,
+                    'video_ads_id' =>  $data['video_ads']->id,
+                    'total_views' => 1
+                );
+                $this->video_ads_log->save($video_ads_log_new);
+            }
+        }
+  
 
         $data['Below_Video_Detail']= $this->ads->getAdsByCategory('Below_Video_Detail');
         $data['Above_Video_Detail']= $this->ads->getAdsByCategory('Above_Video_Detail');
