@@ -48,8 +48,10 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 
 @php
     $show_video_ads = false;
+    $video_autoplay = true;
    if(!is_null($video_ads)){
     $show_video_ads = true;
+    $video_autoplay = false;
    }
     
 @endphp
@@ -66,7 +68,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
             <div class="col-md-12">
                 <div class="video-block">
                     <div class="video-iframe">
-                        <video id="video_vimeo_player" class="video-js vjs-default-skin vjs-fluid" controls
+                        <video id="video_vimeo_player" class="video-js vjs-default-skin vjs-fluid" 
                             preload="auto"
                             data-setup='{"techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src":"{{$video_detail->video_embeded_url}}"}], "vimeo": { "color": "#fbc51b"} }'>
                             <p class="vjs-no-js">
@@ -277,14 +279,14 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
             @endphp
 
 
-        <video autoplay="autoplay" id="vid" loop="true" controls muted>
+        <video autoplay="autoplay" id="vid" controls muted>
             <source src="{{$video}}" type="video/mp4">
             <source src="movie.ogg" type="video/ogg">
             Your browser does not support the video tag.
         </video>
 
         <div class="text-center">
-            <button class="btn btn-success" data-dismiss="modal" id="close_video_ads" disabled> <span id="skip">SKIP </span> <span id="count"></span></button>
+            <button class="btn btn-success" data-dismiss="modal" id="close_video_ads" onClick="pauseAds()" disabled> <span id="skip">SKIP </span> <span id="count"></span></button>
         </div>
     </div>
     
@@ -360,7 +362,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
     jQuery(function(){
         setTimeout(function() {
        jQuery('#video_ads').click();
-        },2000);
+        },3000);
     });
 </script>
 
@@ -377,7 +379,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 var spn = document.getElementById("count");
 var btn = document.getElementById("close_video_ads");
 
-var count = 10;     // Set count
+var count = 13;     // Set count
 var timer = null;  // For referencing the timer
 
 (function countDown(){
@@ -397,7 +399,28 @@ var timer = null;  // For referencing the timer
     $("#skip").show();
     $("#count").hide();
   }
+
 }());
+
 </script>
+
+<script>
+    var vid = document.getElementById("vid"); 
+    var video_vimeo_player = videojs("#video_vimeo_player"); 
+    function pauseAds()
+    { 
+        vid.pause();
+        video_vimeo_player.play();
+    } 
+</script>
+
+@if($video_autoplay)
+<script>
+    $(window).on('load', function() {
+        var video_vimeo_player = videojs("#video_vimeo_player"); 
+    video_vimeo_player.play();
+    })
+</script>
+@endif
 
 @stop
