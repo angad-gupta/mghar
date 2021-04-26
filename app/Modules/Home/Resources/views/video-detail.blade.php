@@ -288,7 +288,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 
             <video id="vid" class="video-js vjs-default-skin vjs-fluid" 
             preload="auto"
-            data-setup='{"techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src":"98451708"}], "vimeo": { "color": "#fbc51b"} }'>
+            data-setup='{"techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src":"530959345"}], "vimeo": { "color": "#fbc51b"} }'>
             <p class="vjs-no-js">
                 To view this video please enable JavaScript, and consider upgrading to a
                 web browser that
