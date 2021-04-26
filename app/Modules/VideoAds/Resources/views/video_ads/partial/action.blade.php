@@ -137,7 +137,25 @@
 
                 <div class="col-lg-6">
                     <div class="row">
-                        <label class="col-form-label col-lg-3">Video Ads:</label>
+                        <label class="col-form-label col-lg-3">Video Embedded URL :<span class="text-danger"></span></label>
+                        <div class="col-lg-9 form-group-feedback form-group-feedback-right">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-hat"></i>
+                                    </span>
+                                </span>
+                                {!! Form::text('video_embeded_url', $value = null, ['id'=>'ads_title','placeholder'=>'Video Embedded URL ','class'=>'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+
+            {{-- <div class="form-group row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <label class="col-form-label col-lg-3">Video Cover Image :</label>
                         <div class="col-lg-9 form-group-feedback form-group-feedback-right">
                             <div class="input-group">
                                 <span class="input-group-prepend">
@@ -145,17 +163,14 @@
                                 </span>
                                 {!! Form::file('video_ads_upload', ['id'=>'video_ads_upload','class'=>'form-control']) !!}
                             </div>
+
                             <div class="mt-3">
                             @if($is_edit)
                             @php
                                  $video = ($video_ads_info->video_ads_upload) ? asset($video_ads_info->file_full_path).'/'.$video_ads_info->video_ads_upload : asset('admin/image.png');
                             @endphp
 
-                            <video width="320" height="240" controls>
-                                <source src="{{$video}}" type="video/mp4">
-                                <source src="movie.ogg" type="video/ogg">
-                                Your browser does not support the video tag.
-                            </video>
+                            <img id="ads_image" src="{{ $video}}" alt="your image" class="preview-image" style="height: 100px; width: auto;">
                             
                             @else
                             <img id="ads_image" src="{{ asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJxkdnLGeMGw_ZRf3VRIHqnTYzNB8dlq3cSo6dxDBDuUgxMuiNCuJmb6cBG6ayvSpddj4&usqp=CAU') }}" alt="your image" class="preview-image" style="height: 100px; width: auto;" />
@@ -164,7 +179,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
 
             <div class="form-group row">

@@ -30,7 +30,7 @@
                     <th>Video Ads Title</th>
                     <th>Active Date</th>
                     <th>Video Ads Position</th>
-                    <th>Video</th>
+                    {{-- <th>Video</th> --}}
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -65,16 +65,12 @@
                             @endif
                          @endforeach
                     </td>
-                    <td><a target="_blank" href="{{ $video }}">
-                        <video width="50" height="50" controls>
-                            <source src="{{$video}}" type="video/mp4">
-                            <source src="movie.ogg" type="video/ogg">
-                            Your browser does not support the video tag.
-                        </video>
+                    {{-- <td><a target="_blank" href="{{ $video }}">
+                        <img id="ads_image" src="{{ $video}}" alt="video cover image" class="preview-image" style="height: 50px; width: 80px;;">
                         
                     
                     </a>
-                    </td>
+                    </td> --}}
                     <td class="{{ ($value->status == '1') ? 'text-success font-weight-bold' :'text-danger font-weight-bold' }}">{{ ($value->status == '1') ? 'Enabled' :'Disabled' }}</td>
                     <td>
                         <a class="btn bg-teal-400 btn-icon rounded-round" href="{{route('video_ads.edit',$value->id)}}" data-popup="tooltip" data-original-title="Edit" data-placement="bottom"><i class="icon-pencil6"></i></a>

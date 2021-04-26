@@ -15,7 +15,8 @@ class VideoAds extends Model
     	'video_ads_upload',
     	'start_date',
     	'end_date',
-    	'status'
+		'status',
+		'video_embeded_url'
 
 
 	];

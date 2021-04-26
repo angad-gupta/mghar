@@ -275,30 +275,25 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
       <div class="modal-content" >
         <div class="" >
             @php
-                $video = ($video_ads->video_ads_upload) ? asset($video_ads->file_full_path).'/'.$video_ads->video_ads_upload : asset('admin/image.png');
+                $poster = ($video_ads->video_ads_upload) ? asset($video_ads->file_full_path).'/'.$video_ads->video_ads_upload : asset('admin/image.png');
+                // dd($poster);
             @endphp
 
-            <button class="play_ads" onclick="enableAutoplay()" type="button" hidden>Enable autoplay</button>
+            {{-- <button class="play_ads" onclick="enableAutoplay()" type="button" hidden>Enable autoplay</button> --}}
             {{-- <button class="play_sound" onclick="enableSound()" type="button" hidden>Click to Unmute</button> --}}
-            {{-- <video id="vid" class="video-js vjs-default-skin vjs-fluid" controls >
-                <source src="https://www.w3schools.com/tags/mov_bbb.mp4" type="video/mp4">
-                <source src="movie.ogg" type="video/ogg">
-                Your browser does not support the video tag.
-            </video> --}}
+            <video id="vid" class="video-js vjs-default-skin vjs-fluid" 
+                preload="auto" 
+                data-setup='{"techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src":"{{$video_ads->video_embeded_url}}"}], "vimeo": { "color": "#fbc51b"} }'>
+                <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a
+                    web browser that
+                    <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5
+                        video</a>
+                </p>
+            </video>
 
-            <video id="vid" class="video-js vjs-default-skin vjs-fluid" 
-            preload="auto"
-            data-setup='{"techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src":"530959345"}], "vimeo": { "color": "#fbc51b"} }'>
-            <p class="vjs-no-js">
-                To view this video please enable JavaScript, and consider upgrading to a
-                web browser that
-                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5
-                    video</a>
-            </p>
-        </video>
-{{-- 
-            <video id="vid" class="video-js vjs-default-skin vjs-fluid" 
-            preload="auto" controls> <source src="{{$video}}" type="video/mp4">
+            {{-- <video id="vid" class="video-js vjs-default-skin vjs-fluid" 
+            preload="auto"  controls> <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
             <p class="vjs-no-js">
                 To view this video please enable JavaScript, and consider upgrading to a
                 web browser that
@@ -403,42 +398,51 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 </script>
 
 <script>
-    // Get refreence to span and button
-var spn = document.getElementById("count");
-var btn = document.getElementById("close_video_ads");
+
+var sec = 15;
+var myTimer = document.getElementById('count');
+var myBtn = document.getElementById('close_video_ads');
+
+
 
 
 setTimeout(function() {
-   
-    // $('.play_ads').trigger('click');
-       // Set count
-    var count = 10;  
-    var timer = null;  // For referencing the timer
-
-    (function countDown(){
-        $("#skip").hide();
-        document.getElementById("close_video_ads").classList.add('btn-warning')
-    // Display counter and start counting down
-    spn.textContent = count;
-    
-    // Run the function again every second if the count is not zero
-    if(count !== 0){
-        timer = setTimeout(countDown, 1000);
-        count--; // decrease the timer
-    } else {
-        // Enable the button
-        document.getElementById("close_video_ads").classList.remove('btn-warning')
-        btn.removeAttribute("disabled");
-        $("#skip").show();
-        $("#count").hide();
-    }
-
-}());
-
-
+    var is_played = 0;
     var video_ads = videojs("#vid"); 
     video_ads.play();
-}, 3000);
+    var is_played = 1;
+    countDown();
+    
+}, 5000);
+
+if(is_played == 1){
+    console.log('fsadfas');
+    countDown();
+
+}
+
+
+function countDown() {
+    $("#skip").hide();
+    document.getElementById("close_video_ads").classList.add('btn-warning')
+
+  if (sec < 10) {
+    myTimer.innerHTML = "0" + sec;
+  
+  } else {
+    myTimer.innerHTML = sec;
+  }
+
+  if (sec <= 0) {
+        document.getElementById("close_video_ads").classList.remove('btn-warning')
+        myBtn.removeAttribute("disabled");
+        $("#skip").show();
+        $("#count").hide();
+    return;
+  }
+  sec -= 1;
+  window.setTimeout(countDown, 1000);
+}
 
 
 </script>
