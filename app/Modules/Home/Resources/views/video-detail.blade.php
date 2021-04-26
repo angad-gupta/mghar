@@ -278,12 +278,36 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                 $video = ($video_ads->video_ads_upload) ? asset($video_ads->file_full_path).'/'.$video_ads->video_ads_upload : asset('admin/image.png');
             @endphp
 
+            <button class="play_ads" onclick="enableAutoplay()" type="button" hidden>Enable autoplay</button>
+            {{-- <button class="play_sound" onclick="enableSound()" type="button" hidden>Click to Unmute</button> --}}
+            {{-- <video id="vid" class="video-js vjs-default-skin vjs-fluid" controls >
+                <source src="https://www.w3schools.com/tags/mov_bbb.mp4" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+            </video> --}}
 
-        <video autoplay="autoplay" id="vid" controls muted>
-            <source src="{{$video}}" type="video/mp4">
-            <source src="movie.ogg" type="video/ogg">
-            Your browser does not support the video tag.
+            <video id="vid" class="video-js vjs-default-skin vjs-fluid" 
+            preload="auto"
+            data-setup='{"techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src":"98451708"}], "vimeo": { "color": "#fbc51b"} }'>
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5
+                    video</a>
+            </p>
         </video>
+{{-- 
+            <video id="vid" class="video-js vjs-default-skin vjs-fluid" 
+            preload="auto" controls> <source src="{{$video}}" type="video/mp4">
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5
+                    video</a>
+            </p>
+        </video> --}}
+
+        
 
         <div class="text-center">
             <button class="btn btn-success" data-dismiss="modal" id="close_video_ads" onClick="pauseAds()" disabled> <span id="skip">SKIP </span> <span id="count"></span></button>
@@ -331,15 +355,15 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
         window.open(href, "Facebook", "height=269,width=550,resizable=1");
       });
 
-    //   var player = videojs('video_vimeo_player', {
-    //     sourceOrder: true,
-    //     sources: [{
-    //         src: "{{$video_detail->video_embeded_url}}",
-    //         type: "video/vimeo"
-    //     }],
-    //     techOrder: ["vimeo"],
-    //     });
-    // console.log(player)
+      var player = videojs('video_vimeo_player', {
+        sourceOrder: true,
+        sources: [{
+            src: "{{$video_detail->video_embeded_url}}",
+            type: "video/vimeo"
+        }],
+        techOrder: ["vimeo"],
+        });
+    console.log(player)
 
     $(".showmore").click(function(){
         if($(this).hasClass('showless')){
@@ -362,9 +386,13 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
     jQuery(function(){
         setTimeout(function() {
        jQuery('#video_ads').click();
-        },3000);
+        },1000);
     });
 </script>
+
+
+
+
 
 <script>
  $(document).ready(function() {
@@ -379,28 +407,39 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 var spn = document.getElementById("count");
 var btn = document.getElementById("close_video_ads");
 
-var count = 13;     // Set count
-var timer = null;  // For referencing the timer
 
-(function countDown(){
-    $("#skip").hide();
-    document.getElementById("close_video_ads").classList.add('btn-warning')
-  // Display counter and start counting down
-  spn.textContent = count;
-  
-  // Run the function again every second if the count is not zero
-  if(count !== 0){
-    timer = setTimeout(countDown, 1000);
-    count--; // decrease the timer
-  } else {
-    // Enable the button
-    document.getElementById("close_video_ads").classList.remove('btn-warning')
-    btn.removeAttribute("disabled");
-    $("#skip").show();
-    $("#count").hide();
-  }
+setTimeout(function() {
+   
+    // $('.play_ads').trigger('click');
+       // Set count
+    var count = 10;  
+    var timer = null;  // For referencing the timer
+
+    (function countDown(){
+        $("#skip").hide();
+        document.getElementById("close_video_ads").classList.add('btn-warning')
+    // Display counter and start counting down
+    spn.textContent = count;
+    
+    // Run the function again every second if the count is not zero
+    if(count !== 0){
+        timer = setTimeout(countDown, 1000);
+        count--; // decrease the timer
+    } else {
+        // Enable the button
+        document.getElementById("close_video_ads").classList.remove('btn-warning')
+        btn.removeAttribute("disabled");
+        $("#skip").show();
+        $("#count").hide();
+    }
 
 }());
+
+
+    var video_ads = videojs("#vid"); 
+    video_ads.play();
+}, 3000);
+
 
 </script>
 
@@ -418,9 +457,26 @@ var timer = null;  // For referencing the timer
 <script>
     $(window).on('load', function() {
         var video_vimeo_player = videojs("#video_vimeo_player"); 
-    video_vimeo_player.play();
+        video_vimeo_player.play();
     })
 </script>
 @endif
+
+<script>
+
+    var vid = document.getElementById("vid");
+    function enableAutoplay() { 
+    vid.muted = true;
+    vid.autoplay = true;
+    vid.load();
+    }
+
+    function enableSound() { 
+    vid.muted = false;
+    }
+    
+</script>
+
+
 
 @stop
