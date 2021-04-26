@@ -445,10 +445,11 @@ setTimeout(function() {
 
 <script>
     var vid = document.getElementById("vid"); 
+    var video_ads = videojs("#vid"); 
     var video_vimeo_player = videojs("#video_vimeo_player"); 
     function pauseAds()
     { 
-        vid.pause();
+        video_ads.pause();
         video_vimeo_player.play();
     } 
 </script>
