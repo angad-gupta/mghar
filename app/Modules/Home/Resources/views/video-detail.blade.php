@@ -279,10 +279,10 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                 // dd($poster);
             @endphp
 
-            {{-- <button class="play_ads" onclick="enableAutoplay()" type="button" hidden>Enable autoplay</button> --}}
+           
             {{-- <button class="play_sound" onclick="enableSound()" type="button" hidden>Click to Unmute</button> --}}
             <video id="vid" class="video-js vjs-default-skin vjs-fluid" 
-                preload="auto" 
+                preload="auto"
                 data-setup='{"techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src":"{{$video_ads->video_embeded_url}}"}], "vimeo": { "color": "#fbc51b"} }'>
                 <p class="vjs-no-js">
                     To view this video please enable JavaScript, and consider upgrading to a
@@ -291,7 +291,9 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                         video</a>
                 </p>
             </video>
-
+            <div class="text-center mt-3">
+                <button id="play_ads" class="btn btn-success text-center" onclick="enableAutoplay()" type="button" style="display: none;">Play To Skip Ads</button>
+            </div>
             {{-- <video id="vid" class="video-js vjs-default-skin vjs-fluid" 
             preload="auto"  controls> <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
             <p class="vjs-no-js">
@@ -332,6 +334,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
         </div>
     </div>
 @endif
+
 
 <script type="text/javascript">
     (function($) {
@@ -392,10 +395,12 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 <script>
  $(document).ready(function() {
   setTimeout(function() {
-    $("#close_video_ads").show();
+    $("#close_video_ads").hide();
   }, 1000);
 });
 </script>
+
+
 
 <script>
 
@@ -405,24 +410,32 @@ var myBtn = document.getElementById('close_video_ads');
 
 
 
-
 setTimeout(function() {
     var is_played = 0;
     var video_ads = videojs("#vid"); 
     video_ads.play();
-    var is_played = 1;
-    countDown();
+
+   
+
+    video_ads.on("pause", function () {
     
-}, 5000);
+        $('#play_ads').fadeIn(1000); 
+    });
 
-if(is_played == 1){
-    console.log('fsadfas');
-    countDown();
+    video_ads.on("play", function () {
+        $('#play_ads').fadeOut(1000); 
+        countDown();
+    });
 
-}
+    video_ads.on("ended", function(){ 
+        $("#close_video_ads").click();
+    });
+
+}, 3000);
 
 
 function countDown() {
+    $("#close_video_ads").show();
     $("#skip").hide();
     document.getElementById("close_video_ads").classList.add('btn-warning')
 
@@ -471,9 +484,9 @@ function countDown() {
 
     var vid = document.getElementById("vid");
     function enableAutoplay() { 
-    vid.muted = true;
-    vid.autoplay = true;
-    vid.load();
+        var video_ads = videojs("#vid");
+        video_ads.play();
+        $('#play_ads').fadeOut(1000); 
     }
 
     function enableSound() { 
@@ -481,6 +494,7 @@ function countDown() {
     }
     
 </script>
+
 
 
 
