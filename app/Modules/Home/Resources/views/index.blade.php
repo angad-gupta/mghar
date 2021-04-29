@@ -4,7 +4,6 @@
 
 
 
-
 <div class="banner-slider">
     <div class="owl-carousel owl-theme banner">
 
@@ -16,13 +15,14 @@
         @endphp
 
             <div class="item">
+                {{-- sy-bg--overlay-dark  ! Removed !--}}
                 @if($value->banner_source == '1')
                 <a target="_blank" href="{{ $value->banner_link }}"
-                    class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
+                    class="sy-banner sy-bg sy-bg--overlay text-white"
                     style="background-image: url({{ $bannerImg }});">
                     @else
                     <a href="{{ route('video-detail',['video_id'=>$value->video_id]) }}"
-                        class="sy-banner sy-bg sy-bg--overlay sy-bg--overlay-dark text-white"
+                        class="sy-banner sy-bg sy-bg--overlay text-white"
                         style="background-image: url({{ $bannerImg }});">
                         @endif
 
@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="col-12 col-lg-6">
                                     <div class="sy-banner-info">
-                                        <h2>{{$value->banner_title}}</h2>
+                                        {{-- <h2>{{$value->banner_title}}</h2> --}}
                                     </div>
                                 </div>
                             </div>
@@ -156,6 +156,7 @@
                                                     class="add-watchlist" data-toggle="tooltip" data-placement="top"
                                                     title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
+                                            {{-- <span class="badge badge-warning" style="position: absolute;top:5px;left:5px;">#{{$trending_videos->firstItem() +$key}}</span> --}}
                                             <div class="featured-post_content">
                                                 <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'trending']) }}">
                                                     <h5>{{$value->video_title}}</h5>

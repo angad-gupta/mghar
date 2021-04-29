@@ -25,7 +25,30 @@ $Route = explode('.',$currentRoute);
   </button>
   <a class="navbar-brand manoranjan" href="{{ route('home')}}"><img src="{{asset('home/images/logo.png')}}" alt="Manoranjan Ghar"></a>
  
-                            
+               
+               
+<style>
+    .search-box-container {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    border: 1px solid #333;
+    height: 260px;
+    overflow: auto;
+    z-index: 9;
+    padding: 15px;
+    display: none;
+    border-radius: 5px;
+}
+.search-box-container a{
+    color:white;
+}
+.search-box-container a:hover{
+    color:#54d4e7;
+}
+</style>                       
  
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -44,10 +67,23 @@ $Route = explode('.',$currentRoute);
     </ul>
     <form class="form-inline my-2 my-lg-0 searchForm">
     <div class="mg-search">
-                            <input type="text" id="search_val" name="search_val" placeholder="Search...">
-                            <input type="hidden" id="search_url" value="{{ route('videos')}}">
-                            <a href="javascript:void(0);" id="seach_video"><i class="fa fa-search"></i>
-                        </div>
+        <input type="text" id="search_val" name="search_val" placeholder="Search..." autocomplete="off">
+        <input type="hidden" id="search_url" value="{{ route('videos')}}">
+        <a href="javascript:void(0);" id="seach_video"><i class="fa fa-search"></i></a>
+            <div class="search-box-container">
+                <h6 style="color: #fd8555">Trending Searches</h6>
+                @inject('search', '\App\Modules\SearchLog\Repositories\SearchLogRepository')
+                @php
+                    $most_searched = $search->most_searched();
+                @endphp
+                <ul class="list-unstyled mb-0">
+                    @foreach($most_searched as $ms)
+                        <li><a href="{{route('videos',['search_val'=>$ms->keyword])}}" style="text-transform: capitalize;">{{$ms->keyword}}</a></li>
+                    @endforeach
+                    
+                </ul>
+            </div>
+    </div>
       @if($subscriberInfo)
                         <div class="d-none d-md-block ml-3">
                             <div class="btn-group profile">
@@ -91,3 +127,19 @@ $Route = explode('.',$currentRoute);
         bottom:10px;
     }
 </style>
+
+{{-- @section('scripts') --}}
+<script>
+     $(document).ready(function(){
+      $("#search_val").mouseenter(function() {
+          $('.search-box-container').show();
+      });
+      
+      $("#search_val, .search-box-container").mouseleave(function() {
+        if(!$('.search-box-container').is(':hover')){
+          $('.search-box-container').hide();
+        };
+      });
+});
+</script>
+    {{-- @endsection --}}

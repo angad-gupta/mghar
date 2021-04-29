@@ -76,7 +76,7 @@ class HomeController extends Controller
         $data['Below_Popular_Video']= $this->ads->getAdsByCategory('Below_Popular_Video');
         
          $data['latest_videos'] = $this->video->findAll($limit = 20);  
-         $data['trending_videos'] = $this->video->getTrendingVideo($limit= 20);
+         $data['trending_videos'] = $this->video->getTrendingVideo($limit= 10);
          $data['popular_vidoes'] = $this->video->getPopularVideo($limit= 20);
 
         $data['dynamic_block'] = $this->blocksection->findAll($limit = 20);
@@ -185,7 +185,7 @@ class HomeController extends Controller
         $data['Below_Trending_Video_Detail']= $this->ads->getAdsByCategory('Below_Trending_Video_Detail');
         $data['Below_Popular_Video_Detail']= $this->ads->getAdsByCategory('Below_Popular_Video_Detail');
 
-        $data['trending_videos'] = $this->video->getTrendingVideo($limit= 20);
+        $data['trending_videos'] = $this->video->getTrendingVideo($limit= 10);
         $data['popular_vidoes'] = $this->video->getPopularVideo($limit= 20);
 
         return view('home::video-detail', $data);

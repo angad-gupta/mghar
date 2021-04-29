@@ -15,6 +15,12 @@ class SearchLogRepository implements SearchLogInterface
         return $result;
     }
 
+    public function most_searched()
+    {
+        $result = SearchLog::select('keyword')->selectRaw('COUNT(*) AS count')->groupBy('keyword')->orderByDesc('count')->limit(10)->get();
+        return $result;
+    }
+
     public function find($id)
     {
         return SearchLog::find($id);

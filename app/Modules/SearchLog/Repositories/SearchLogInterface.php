@@ -6,6 +6,7 @@ interface SearchLogInterface
 {
     public function findAll($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]);
 
+    public function most_searched();
 
     public function find($id);
 
