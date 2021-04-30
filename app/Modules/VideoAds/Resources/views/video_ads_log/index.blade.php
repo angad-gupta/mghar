@@ -37,7 +37,7 @@
                     $video_ads_name = $video_ads->find($value->video_ads_id);
                     $video_name = $video->find($value->video_id);
                 @endphp
-           
+                @if(!empty($video_ads_name))
                 <tr>
                     <td>{{$video_ads_log->firstItem() +$key}}</td>
                      <td>{{ $video_ads_name->vidoe_ads_title }}</td>
@@ -47,12 +47,14 @@
                         <a data-toggle="modal" data-target="#modal_theme_warning" class="btn bg-danger-400 btn-icon rounded-round delete_ads" link="{{route('video_ads_log.delete',$value->id)}}" data-popup="tooltip" data-original-title="Delete" data-placement="bottom"><i class="icon-bin"></i></a>
                     </td>
                 </tr>
+                @endif
                 @endforeach
                 @else
                 <tr>
                     <td colspan="6">No Video Ads Log Found !!!</td>
                 </tr>
                 @endif
+
             </tbody>
 
         </table>
