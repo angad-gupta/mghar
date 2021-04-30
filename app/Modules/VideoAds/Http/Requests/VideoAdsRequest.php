@@ -15,7 +15,7 @@ class VideoAdsRequest extends FormRequest
     {
         return [
             // 'video_ads_upload' => 'required|mimes:mpeg,3gp,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts,jpeg,jpg,png|nullable|max:100040'
-           'video_embeded_url' => 'required'
+            // 'video_embeded_url' => 'required'
         ];
     }
 
@@ -32,7 +32,7 @@ class VideoAdsRequest extends FormRequest
     public function messages()
     {
         return [
-            'video_ads_upload.required' => 'Video Ads is required',
+            // 'video_ads_upload.required' => 'Video Ads is required',
         ];
     }
 }

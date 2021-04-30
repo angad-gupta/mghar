@@ -140,6 +140,8 @@ class HomeController extends Controller
             return redirect(route('home'));
         }
 
+   
+
         $data['message'] = '';
         $video_id = $input['video_id'];
      
@@ -178,12 +180,20 @@ class HomeController extends Controller
                 $this->video_ads_log->save($video_ads_log_new);
             }
         }
-  
+
+        $vid_id = (int)$video_id;
+        $trending_videos = $this->video->getTrendingVideo($limit=10)->pluck('id')->toArray();
+        $new_arr = array_unshift($trending_videos,9999999);
+        $trending_number = array_search($vid_id, $trending_videos, true);
+        if($trending_number == true){
+            $data['trending_number'] = $trending_number;
+        }
 
         $data['Below_Video_Detail']= $this->ads->getAdsByCategory('Below_Video_Detail');
         $data['Above_Video_Detail']= $this->ads->getAdsByCategory('Above_Video_Detail');
         $data['Below_Trending_Video_Detail']= $this->ads->getAdsByCategory('Below_Trending_Video_Detail');
         $data['Below_Popular_Video_Detail']= $this->ads->getAdsByCategory('Below_Popular_Video_Detail');
+    
 
         $data['trending_videos'] = $this->video->getTrendingVideo($limit= 10);
         $data['popular_vidoes'] = $this->video->getPopularVideo($limit= 20);

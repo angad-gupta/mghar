@@ -99,6 +99,10 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                         @endif
 
                     <div class="video-content mt-4">
+                        @if(isset($trending_number))
+                            <h6 style="color: rgb(9, 117, 160)"> #{{$trending_number}} ON TRENDING</h6>
+                        @endif
+
                         <h4>{{ $video_detail->video_title }}</h4>
                         <div class="viewShare">
                             <div class="entry-meta">
@@ -178,7 +182,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                                                     class="add-watchlist" data-toggle="tooltip" data-placement="top"
                                                     title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                             </a>
-                                            <span class="badge badge-warning" style="position: absolute;top:5px;left:5px;">#{{$trending_videos->firstItem() +$key}}</span>
+
                                             <div class="featured-post_content">
                                                 <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'trending']) }}">
                                                     <h5>{{$value->video_title}}</h5>
