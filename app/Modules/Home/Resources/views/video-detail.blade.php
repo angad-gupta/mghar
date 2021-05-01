@@ -8,7 +8,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 
 @section('share_head')
 
-<meta property="og:url" content="{{ route('video-detail',['video_id'=>$video_detail->id]) }}" />
+<meta property="og:url" content="{{ route('video-detail',['video_id'=>$video_detail->id,'category'=>$category]) }}" />
 <meta property="og:type" content="Manoranjan Ghar Website" />
 <meta property="og:title" content="{{ $video_detail->video_title }}" />
 <meta property="og:description" content="{{ $video_detail->video_title }}" />

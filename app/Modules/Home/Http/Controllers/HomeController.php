@@ -197,6 +197,7 @@ class HomeController extends Controller
 
         $data['trending_videos'] = $this->video->getTrendingVideo($limit= 10);
         $data['popular_vidoes'] = $this->video->getPopularVideo($limit= 20);
+        $data['category'] = $input['category'];
 
         return view('home::video-detail', $data);
     }
