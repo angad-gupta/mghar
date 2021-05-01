@@ -38,7 +38,8 @@
     </style>
 
     @yield('share_head')
-    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=608a7224a99fbf0011743e97&product=inline-share-buttons" async="async"></script>
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=608ce98830ef9700113f6f61&product=sop' async='async'></script>
+    {{-- <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=608a7224a99fbf0011743e97&product=inline-share-buttons" async="async"></script> --}}
     {{-- <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=606c31f26f7ab900129ced84&product=inline-share-buttons" async="async"></script> --}}
 </head>
 
