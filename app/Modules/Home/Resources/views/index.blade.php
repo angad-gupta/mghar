@@ -295,7 +295,7 @@
 
                                 <div class="item">
                                     <div class="featured-post-small">
-                                        <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>$value->id]) }}"
+                                        <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>$value->display_block_section]) }}"
                                             class="featured-post-small-img">
                                             <img src="{{$pimages}}" alt="">
                                             <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
@@ -303,7 +303,7 @@
                                                 title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
                                         </a>
                                         <div class="featured-post_content">
-                                            <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>$value->id]) }}">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>$value->display_block_section]) }}">
                                                 <h5>{{$value->video_title}}</h5>
                                             </a>
                                         </div>

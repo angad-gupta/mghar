@@ -284,7 +284,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
                 // dd($poster);
             @endphp
 
-           
+{{-- <div id="count"></div> --}}
             {{-- <button class="play_sound" onclick="enableSound()" type="button" hidden>Click to Unmute</button> --}}
             <video id="vid" class="video-js vjs-default-skin vjs-fluid" style="pointer-events: none;"
                 preload="auto" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" data-ready="true"
@@ -344,31 +344,31 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 
 
 <script type="text/javascript">
-    (function($) {
-        $(this).bind("contextmenu", function(e) {
-            e.preventDefault();
-        });
+    // (function($) {
+    //     $(this).bind("contextmenu", function(e) {
+    //         e.preventDefault();
+    //     });
 
-      $('.js-share-twitter-link').click(function(e) {
-        e.preventDefault();
-        var href = $(this).attr('href');
-        window.open(href, "Twitter", "height=285,width=550,resizable=1");
-      });
-      $('.js-share-facebook-link').click(function(e) {
-        e.preventDefault();
-        var href = $(this).attr('href');
-        window.open(href, "Facebook", "height=269,width=550,resizable=1");
-      });
+    //   $('.js-share-twitter-link').click(function(e) {
+    //     e.preventDefault();
+    //     var href = $(this).attr('href');
+    //     window.open(href, "Twitter", "height=285,width=550,resizable=1");
+    //   });
+    //   $('.js-share-facebook-link').click(function(e) {
+    //     e.preventDefault();
+    //     var href = $(this).attr('href');
+    //     window.open(href, "Facebook", "height=269,width=550,resizable=1");
+    //   });
 
-      var player = videojs('video_vimeo_player', {
-        sourceOrder: true,
-        sources: [{
-            src: "{{$video_detail->video_embeded_url}}",
-            type: "video/vimeo"
-        }],
-        techOrder: ["vimeo"],
-        });
-    console.log(player)
+    //   var player = videojs('video_vimeo_player', {
+    //     sourceOrder: true,
+    //     sources: [{
+    //         src: "{{$video_detail->video_embeded_url}}",
+    //         type: "video/vimeo"
+    //     }],
+    //     techOrder: ["vimeo"],
+    //     });
+    // console.log(player)
 
     $(".showmore").click(function(){
         if($(this).hasClass('showless')){
@@ -411,7 +411,7 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
 
 <script>
 
-var sec = 15;
+// var sec = 15;
 var myTimer = document.getElementById('count');
 var myBtn = document.getElementById('close_video_ads');
 
@@ -431,38 +431,79 @@ setTimeout(function() {
 
     video_ads.on("play", function () {
         $('#play_ads').fadeOut(1000); 
-        countDown();
+        var video_ads_sec = video_ads.duration();
+        var timer = 15;
+        if (video_ads_sec  < 15){
+            timer = video_ads_sec;
+        }
+        countdown(timer);
     });
 
     video_ads.on("ended", function(){ 
-        $("#close_video_ads").click();
+        setTimeout(function() {
+            $("#close_video_ads").click();
+        }, 1000);
     });
 
 }, 3000);
 
 
-function countDown() {
+
+
+// function countDown(duration) {
+ 
+//     var sec = duration;
+//     $("#close_video_ads").show();
+//     $("#skip").hide();
+//     document.getElementById("close_video_ads").classList.add('btn-warning')
+
+//     if (sec < 10) {
+//         myTimer.innerHTML = "0" + sec;
+    
+//     } else {
+//         myTimer.innerHTML = sec;
+//     }
+
+//     if (sec <= 0) {
+//             document.getElementById("close_video_ads").classList.remove('btn-warning')
+//             myBtn.removeAttribute("disabled");
+//             $("#skip").show();
+//             $("#count").hide();
+//         return;
+//     }
+//     sec -= 1;
+//     window.setTimeout(countDown, 1000);
+// }
+
+var countdown = function(s){
     $("#close_video_ads").show();
     $("#skip").hide();
     document.getElementById("close_video_ads").classList.add('btn-warning')
-
-  if (sec < 10) {
-    myTimer.innerHTML = "0" + sec;
   
-  } else {
-    myTimer.innerHTML = sec;
-  }
+    var c = document.getElementById("count");
 
-  if (sec <= 0) {
-        document.getElementById("close_video_ads").classList.remove('btn-warning')
+    var tick = function(){    
+        c.innerText = s;
+    };
+    
+    var ready = function(){
+    clearInterval(i);
+    c.innerText = "ready";
+    document.getElementById("close_video_ads").classList.remove('btn-warning')
         myBtn.removeAttribute("disabled");
         $("#skip").show();
         $("#count").hide();
-    return;
-  }
-  sec -= 1;
-  window.setTimeout(countDown, 1000);
+    };
+    
+    tick();
+    
+    var i = setInterval(function(){
+        (s>1) ? function(){ s--;tick(); }() : ready();
+    }, 1000);
+ 
 }
+
+
 
 
 </script>

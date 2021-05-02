@@ -28,6 +28,7 @@ class VideoAdsRepository implements VideoAdsInterface
     {
         $now = date('Y-m-d');
         $result = VideoAds::where('ads_category', 'like', '%"' .$category .'"%' )->where('status','=',1)->where('start_date','<=',$now)->where('end_date','>=',$now)->inRandomOrder()->first();
+        // dd($result);
         return $result;
     }
 
