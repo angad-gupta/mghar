@@ -129,7 +129,7 @@
                                         $daterange = implode('---',$arr);
                                     }
                                 @endphp
-                                {!! Form::text('date_range', $value = $daterange ?? null, ['id'=>'date_range','placeholder'=>'Enter Ads Start Date','class'=>'form-control daterange-buttons','readonly','required']) !!}
+                                {!! Form::text('date_range', $value = $daterange ?? null, ['id'=>'date_range','placeholder'=>'Enter Ads Range Date','class'=>'form-control daterange-buttons','readonly','required']) !!}
                             </div>
                         </div>
                     </div>

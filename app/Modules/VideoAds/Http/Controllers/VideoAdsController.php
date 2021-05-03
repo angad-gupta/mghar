@@ -116,7 +116,7 @@ class VideoAdsController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(VideoAdsRequest $request, $id)
     {
        $data = $request->all();
 
@@ -168,7 +168,18 @@ class VideoAdsController extends Controller
     public function videoAdsLogIndex(Request $request)
     {
         $search = $request->all();
-        $data['video_ads_log'] = $this->video_ads_log->findAll($limit= 50,$search);  
+
+        if (isset($search['date_range'])){
+            $date = explode('-', $search['date_range']);
+            $start_date_arr = array($date[0],$date[1],$date[2]);
+            $search['start_date'] = implode('-', $start_date_arr);
+            $end_date_arr = array($date[5],$date[6],$date[7]);
+            $search['end_date'] = implode('-', $end_date_arr);
+        }
+
+        $sort_by = ['by' => 'id', 'sort' => 'DESC'];
+        
+        $data['video_ads_log'] = $this->video_ads_log->findAll($limit= 50,$search,$sort_by);  
         return view('videoads::video_ads_log.index',$data);
     }
 

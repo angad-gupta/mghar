@@ -11,6 +11,8 @@ use App\Modules\Genre\Repositories\GenreInterface;
 use App\Modules\Celebrity\Repositories\CelebrityInterface;
 use App\Modules\DynamicBlock\Repositories\BlockSectionInterface;
 
+use App\Modules\Video\Http\Requests\VideoRequest;
+
 
 class VideoController extends Controller
 {
@@ -57,7 +59,7 @@ class VideoController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(VideoRequest $request)
     {
         $data = $request->all();
     
@@ -122,7 +124,7 @@ class VideoController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(VideoRequest $request, $id)
     {
        $data = $request->all();
         

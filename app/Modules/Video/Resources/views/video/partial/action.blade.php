@@ -3,6 +3,20 @@
 <fieldset class="mb-3">
     <legend class="text-uppercase font-size-sm font-weight-bold"></legend>
 
+            @if(count($errors) > 0)
+            <div class="mt-3">
+                <div class="col-md-12">
+                    <div class="alert alert-warning alert-dismissable" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            @endif
 
             <div class="form-group row">
                 <div class="col-lg-6">
@@ -50,6 +64,7 @@
                         </div>
                     </div>
                 </div>
+              
 
                 <div class="col-lg-6">
                     <div class="row">
@@ -68,11 +83,14 @@
                                 <br>
                                 <br>
                                 <span class="text-success font-weight-bold font-italic">Note :: The recommended dimensions is 450 X 450. </span>
+                                <p class="text-warning font-weight-bold font-italic">Note :: The MAX cover image size is 300KB. </p>
                         </div>
 
                     </div>
                 </div>
             </div>
+
+    
 
 
             <div class="form-group row">

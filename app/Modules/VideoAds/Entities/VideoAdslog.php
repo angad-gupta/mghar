@@ -8,9 +8,13 @@ class VideoAdsLog extends Model
 {
     protected $fillable = [
 
+        'video_ads_name',
+        'video_name',
         'video_ads_id',
     	'video_id',
-    	'video_ads_upload',
+        'video_ads_upload',
+        'username',
+        'ip_address',
     	'total_views',
 
     ];

@@ -7,8 +7,9 @@
 <script src="{{asset('admin/global/js/plugins/forms/selects/select2.min.js')}}"></script>
 @stop
 
-@section('content') 
 
+@section('content') 
+@include('videoads::video_ads_log.partial.filter')
 
 <div class="card">
     <div class="card-header header-elements-inline">
@@ -21,33 +22,32 @@
             <thead>
                 <tr class="bg-slate">
                     <th>#</th>
+                    <th>Date</th>
                     <th>Video Ads Name</th>
-                    <th>Video</th>
-                    <th>Total Views</th>
+                    <th>Video Name</th>
+                    <th>User</th>
+                    <th>Ip Address</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 @if($video_ads_log->total() != 0) 
+           
                 @foreach($video_ads_log as $key => $value)
 
-                @inject('video_ads', '\App\Modules\VideoAds\Repositories\VideoAdsRepository')
-                @inject('video', '\App\Modules\Video\Repositories\VideoRepository')
-                @php
-                    $video_ads_name = $video_ads->find($value->video_ads_id);
-                    $video_name = $video->find($value->video_id);
-                @endphp
-                @if(!empty($video_ads_name))
+                
                 <tr>
                     <td>{{$video_ads_log->firstItem() +$key}}</td>
-                     <td>{{ $video_ads_name->vidoe_ads_title }}</td>
-                     <td>{{ $video_name->video_title }}</td>
-                     <td>{{ $value->total_views }}</td>
+                     <td>{{ $value->created_at->format('d-M-Y')}}</td>   
+                     <td>{{ $value->video_ads_name }}</td>
+                     <td>{{ $value->video_name }}</td>
+                     <td>{{ $value->username ? $value->username : 'Guest' }}</td>
+                     <td>{{ $value->ip_address }}</td>
                     <td>
                         <a data-toggle="modal" data-target="#modal_theme_warning" class="btn bg-danger-400 btn-icon rounded-round delete_ads" link="{{route('video_ads_log.delete',$value->id)}}" data-popup="tooltip" data-original-title="Delete" data-placement="bottom"><i class="icon-bin"></i></a>
                     </td>
                 </tr>
-                @endif
+             
                 @endforeach
                 @else
                 <tr>

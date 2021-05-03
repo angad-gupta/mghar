@@ -149,7 +149,7 @@ class HomeController extends Controller
         $data['video_detail'] = $videoInfo = $this->video->find($video_id);
 
         $data['video_ads'] = $this->video_ads->findVideoAdsCategory($input['category']);
-
+        
 
         $videoView = $videoInfo->total_views;
         $newCount = $videoView + 1;
@@ -160,27 +160,25 @@ class HomeController extends Controller
         );
         $this->video->update($video_id, $video_data);
 
-
-        $videoAdsLogInfo = $this->video_ads_log->findVideoAdsLog($video_id);
-
+        // if there is video ads played on video
         if($data['video_ads'] != null){
-            if($videoAdsLogInfo != null ){
-                $video_ads_log_update = array(
-                    'video_id' => $video_id,
-                    'video_ads_id' =>  $data['video_ads']->id,
-                    'total_views' => $videoAdsLogInfo->total_views + 1
-                );
-                $this->video_ads_log->update($videoAdsLogInfo->id, $video_ads_log_update);
-            }else{
-                $video_ads_log_new = array(
-                    'video_id' => $video_id,
-                    'video_ads_id' =>  $data['video_ads']->id,
-                    'total_views' => 1
-                );
-                $this->video_ads_log->save($video_ads_log_new);
-            }
-        }
 
+            $video_ads_log['video_ads_name'] = $data['video_ads']->vidoe_ads_title;
+            $video_ads_log['video_name'] = $data['video_detail']->video_title;
+        
+            if (Auth::guard('subscriber')->check()) {
+                $subscriberInfo = Auth::guard('subscriber')->user();
+                $video_ads_log['username'] = $subscriberInfo->username;
+            }
+            $clientIP = \Request::ip(); 
+            $video_ads_log['ip_address'] =  $clientIP;
+
+            $this->video_ads_log->save($video_ads_log);
+        }
+        // if there is video ads played on video
+
+   
+        // Get Trending Number On Video Detail Page
         $vid_id = (int)$video_id;
         $trending_videos = $this->video->getTrendingVideo($limit=10)->pluck('id')->toArray();
         $new_arr = array_unshift($trending_videos,9999999);
@@ -188,6 +186,7 @@ class HomeController extends Controller
         if($trending_number == true){
             $data['trending_number'] = $trending_number;
         }
+        // Get Trending Number On Video Detail Page
 
         $data['Below_Video_Detail']= $this->ads->getAdsByCategory('Below_Video_Detail');
         $data['Above_Video_Detail']= $this->ads->getAdsByCategory('Above_Video_Detail');
