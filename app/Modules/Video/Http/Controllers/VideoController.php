@@ -124,7 +124,7 @@ class VideoController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(VideoRequest $request, $id)
+    public function update(Request $request, $id)
     {
        $data = $request->all();
         

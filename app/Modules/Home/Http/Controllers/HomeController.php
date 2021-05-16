@@ -94,7 +94,13 @@ class HomeController extends Controller
     {
 
         $search = $request->all();
+     
         $data['message'] = '';
+
+        if(isset($search['search_val'])){
+            $data['search_val'] = $search['search_val'];
+        }
+       
         $data['genre'] = $this->genre->getList();
 
         $data['videos'] = $this->video->findAll($limit = 25);
@@ -193,11 +199,19 @@ class HomeController extends Controller
         $data['Below_Trending_Video_Detail']= $this->ads->getAdsByCategory('Below_Trending_Video_Detail');
         $data['Below_Popular_Video_Detail']= $this->ads->getAdsByCategory('Below_Popular_Video_Detail');
     
+      
 
         $data['trending_videos'] = $this->video->getTrendingVideo($limit= 10);
         $data['popular_vidoes'] = $this->video->getPopularVideo($limit= 20);
         $data['category'] = $input['category'];
 
+        $artist_name = $videoInfo->artist;
+
+
+        if($artist_name != null){
+            $data['related_videos'] = $this->video->getRelatedVideo($video_id,$artist_name, $limit=20);
+        }
+        
         return view('home::video-detail', $data);
     }
 

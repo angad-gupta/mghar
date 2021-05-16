@@ -33,5 +33,7 @@ interface VideoInterface
 
     public function getTrendingVideos($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1]);
 
+    public function getRelatedVideo($video_id,$artist_name,$limit = null);
+
     public function getSearchVideo($keyword);
 }

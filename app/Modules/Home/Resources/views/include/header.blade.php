@@ -55,9 +55,13 @@ $Route = explode('.',$currentRoute);
       <li class="nav-item active">
       <a class="@if($Route[0]=='home') active @endif" href="{{ route('home')}}">Home</a>
       </li>
-      <li class="nav-item">
-      <a class="@if($Route[0]=='khelau') active @endif" href="{{ route('khelau')}}">Khelau Juhari</a>
-      </li>
+     
+      {{-- <li class="nav-item">
+        <a class="@if($Route[0]=='khelau') active @endif" href="{{ route('khelau')}}">Khelau Jhuhari</a>
+        </li> --}}
+        <li class="nav-item">
+            <a href="{{ route('videos',['blockId'=>1])}}">Live Dhori</a>
+        </li>
       <li class="nav-item">
       <a class="@if($Route[0]=='videos') active @endif" href="{{ route('videos')}}">Latest</a>
       </li>
@@ -65,9 +69,10 @@ $Route = explode('.',$currentRoute);
       <a class="@if($Route[0]=='my-wishlist') active @endif" href="{{ route('my-wishlist')}}">My Wishlist</a>
       </li>
     </ul>
+
     <form class="form-inline my-2 my-lg-0 searchForm">
     <div class="mg-search">
-        <input type="text" id="search_val" name="search_val" placeholder="Search..." autocomplete="off">
+        <input type="text" id="search_val" name="search_val" value="{{$search_val ?? null}}" placeholder="Search..." autocomplete="off">
         <input type="hidden" id="search_url" value="{{ route('videos')}}">
         <a href="javascript:void(0);" id="seach_video"><i class="fa fa-search"></i></a>
             <div class="search-box-container">

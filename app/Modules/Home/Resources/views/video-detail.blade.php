@@ -151,6 +151,59 @@ asset($video_detail->file_full_path).'/'.$video_detail->video_cover_image : asse
     </div>
 @endif
 
+@if(isset($related_videos) > 0)
+<div class="featured-post-block">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="featured-post">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="main-title">
+                                <h4 class="mb-0">Related Videos</h4>
+                                <a class="view-all" href="{{ route('videos') }}">View All <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="center latest">
+
+                                @if(sizeof($related_videos) > 0)
+                                @foreach($related_videos as $key => $value)
+                                    @php
+                                    $coverimages = ($value->video_cover_image) ? asset($value->file_full_path).'/'.$value->video_cover_image : asset('admin/default.png');
+                                    @endphp
+                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
+                                        <div class="featured-post-small">
+                                            <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'trending']) }}"
+                                                class="featured-post-small-img">
+                                                <img src="{{$coverimages}}" alt="">
+                                                <a href="{{ route('add-to-wishlist',['video_id'=>$value->id]) }}"
+                                                    class="add-watchlist" data-toggle="tooltip" data-placement="top"
+                                                    title="Add to my Wishlist"><i class="fas fa-plus"></i></a>
+                                            </a>
+
+                                            <div class="featured-post_content">
+                                                <a href="{{ route('video-detail',['video_id'=>$value->id,'category'=>'trending']) }}">
+                                                    <h5>{{$value->video_title}}</h5>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   @endforeach
+                                @endif
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
 <div class="featured-post-block">
     <div class="container-fluid">
         <div class="row">

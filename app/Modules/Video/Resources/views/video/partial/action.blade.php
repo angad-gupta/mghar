@@ -109,6 +109,21 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-6">
+                    <div class="row">
+                        <label class="col-form-label col-lg-3">Artist:<span class="text-danger">*</span></label>
+                        <div class="col-lg-9 form-group-feedback form-group-feedback-right">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-users"></i>
+                                    </span>
+                                </span>
+                                {!! Form::text('artist', $value = null, ['id'=>'artist','class'=>'artist form-control','placeholder'=>'Enter Artist Name']) !!} 
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 

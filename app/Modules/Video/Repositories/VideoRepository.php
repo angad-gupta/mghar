@@ -11,6 +11,7 @@ class VideoRepository implements VideoInterface
 
     public function findAll($limit = null, $filter = [], $sort = ['by' => 'id', 'sort' => 'DESC'], $status = [0, 1])
     {
+
         $result = Video::when(array_keys($filter, true), function ($query) use ($filter) {
 
             if (isset($filter['search_val'])) {
@@ -139,8 +140,29 @@ class VideoRepository implements VideoInterface
         return $result;
     }
 
+    public function getRelatedVideo($video_id, $artist_name, $limit = null)
+    {
+        // dd($artist_name);
+        $result = Video::where('artist', 'like', '%' . $artist_name . '%')->where('id','!=',$video_id)->orderBy('total_views','DESC')->paginate($limit ? $limit : env('DEF_PAGE_LIMIT', 9999));;
+           
+
+        return $result;
+    }
+
     public function getSearchVideo($keyword)
     {
-        return Video::where('video_title', 'like', '%' . $keyword . '%')->paginate(50);
+        $words = explode(' ', $keyword);
+
+        $result = Video::where(function ($query) use ($words) {
+            foreach($words as $word) {
+                $query->orWhere('video_title', 'LIKE', '%' . $word . '%');
+            }
+        })->orWhere(function ($query) use ($words) {
+            foreach($words as $word) {
+                $query->orWhere('artist', 'LIKE', '%' . $word . '%');
+            }
+        })->paginate(50);
+
+        return $result;
     }
 }

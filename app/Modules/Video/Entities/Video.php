@@ -19,6 +19,7 @@ class Video extends Model
         'video_cover_image',
         'video_embeded_url',
         'description',
+        'artist',
         'status',
         'date',
         'total_views',
